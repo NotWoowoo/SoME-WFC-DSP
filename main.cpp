@@ -50,7 +50,6 @@ inline float randf(){
 extern float __heap_base;
 
 extern "C" float *processAudio(int numSamples){
-    constexpr float rate = 44100;
     static float phase = 0;
     float *samples = &__heap_base;
     for(int i = 0; i < numSamples; ++i){
@@ -83,7 +82,7 @@ extern "C" float *processAudio(int numSamples){
             samples[i] += envMelody*.1*(mod(intervalMelody*2*PI*110*phase+vibrato,1)-.5);
         }
         
-        phase += 1/rate;
+        phase += 1/(float)numSamples;
     }
     return samples;
 }

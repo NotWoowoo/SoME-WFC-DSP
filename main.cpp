@@ -54,23 +54,35 @@ extern "C" float *processAudio(int numSamples){
     static float phase = 0;
     float *samples = &__heap_base;
     for(int i = 0; i < numSamples; ++i){
+        bool oddMeasure = mod(.25*phase,2)>1;
+
         //generate hats
-        float env = 1-mod(2*phase,1); //controls white noise volume
-        env *= 1-mod(4*phase,1);
-        env *= env;
-        samples[i] = .2*env*(2*randf()-1);
+        float envHats = 1-mod(2*phase,1); //controls white noise volume
+        envHats *= 1-mod(4*phase,1);
+        envHats *= envHats;
+        samples[i] = .14*envHats*(2*randf()-1);
 
         //generate kick
-        float envK = 1.f-mod(phase,1.f); //controls sine pitch and volume
-        envK = envK*envK*envK*envK*envK*envK*envK*envK*envK*envK; // raise to 10th power lol
-        samples[i] += envK*.5*sin(2*PI*220*mod(phase,1)*envK);
+        float envKick = 1.f-mod(phase,1.f); //controls sine pitch and volume
+        envKick = envKick*envKick*envKick*envKick*envKick*envKick*envKick*envKick*envKick*envKick; // raise to 10th power lol
+        samples[i] += envKick*.5*sin(2*PI*220*mod(phase,1)*envKick);
 
 
-        //generate phase modulation synth
-        static constexpr float notes[] = {1, 5/4.f, 3/2.f, 15/8.f};
-        float interval = notes[(int)(mod(.5*phase,1)*4)];
-        float f = sin(phase/2.0)*50*sin(interval*2*PI*55*phase);
-        samples[i] += .2*sin(interval*2*PI*220*phase+f);
+        //generate phase modulation bass
+        static constexpr float notesBass[] = {1, 5/4.f, 3/2.f, 15/8.f, 9/8.f, 729/512.f, 5/3.f, 15/8.f};
+        float intervalBass = (oddMeasure?.5:1)*notesBass[(int)(mod(.25*phase,1)*8)];
+        float f = sin(phase/2.0)*30*sin(intervalBass*2*PI*55*phase);
+        samples[i] += .2*sin(intervalBass*2*PI*220*phase+f);
+
+        //generate melody synth
+        static constexpr float notesMelody[] = {3/2.f, 3/2.f*9/3.f, 3/2.f*9/3.f*9/8.f, 3/2.f*5/3.f};
+        if(oddMeasure){
+            float intervalMelody = .5*notesMelody[(int)(mod(4*phase,1)*4)];
+            float vibrato = .4*sin(phase*2*PI*6);
+            float envMelody = 1-mod(4*phase,1); //volume
+            samples[i] += envMelody*.1*(mod(intervalMelody*2*PI*110*phase+vibrato,1)-.5);
+        }
+        
         phase += 1/rate;
     }
     return samples;

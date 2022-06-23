@@ -7,5 +7,5 @@ clang++ \
 -Wl,--export=processAudio \
 -Wl,--no-entry \
 -Wl,--import-memory \
--o build/main.wasm \
+-o bin/main.wasm \
 src/main.cpp

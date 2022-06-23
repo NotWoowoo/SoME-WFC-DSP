@@ -92,7 +92,7 @@ function test(){
         draw();
     }
 
-    WebAssembly.instantiateStreaming(fetch('build/main.wasm'), {'env': imports}).then( obj => {
+    WebAssembly.instantiateStreaming(fetch('bin/main.wasm'), {'env': imports}).then( obj => {
         let source = audioCtx.createBufferSource();
 
         source.buffer = audioBuffer;

@@ -120,8 +120,11 @@ function test(){
 // b/c audio only works after user interacts with page
 document.onpointerup = () => {
     // run test once
-    if(!testing){
+    if(!testing) {
         test()
         testing = true
+    } else {
+        // Delete later, just for sanity purposes
+        location.reload()
     }
 }

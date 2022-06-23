@@ -1,0 +1,25 @@
+{
+  "name": "some-wfc-dsp",
+  "version": "1.0.0",
+  "description": "DSP Programming Interactive Tutorial for Summer of Math Exposition 2",
+  "main": "js/main.js",
+  "scripts": {
+    "style": "npx tailwindcss -i ./css/input.css -o ./dist/main.css",
+    "autostyle": "npx tailwindcss -i ./css/input.css -o ./dist/main.css --watch",
+    "build_wasm_unix": "./scripts/build.sh",
+    "build_wasm_windows": "scripts/build.bat"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NotWoowoo/SoME-WFC-DSP.git"
+  },
+  "author": "Woowoo Plugins Discord",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NotWoowoo/SoME-WFC-DSP/issues"
+  },
+  "homepage": "https://github.com/NotWoowoo/SoME-WFC-DSP#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.1.4"
+  }
+}

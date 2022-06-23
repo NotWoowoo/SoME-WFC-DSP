@@ -9,8 +9,26 @@ let audioCtx
 let audioBuffer
 let analyser
 
+const scopeBGColor = "rgb(200,200,200)"
+
+function clearScopes() {
+    const oscCanvas = document.getElementById("oscilloscope")
+    const oscCtx = oscCanvas.getContext("2d");
+    const fftCanvas = document.getElementById("fft")
+    const fftCtx = fftCanvas.getContext("2d");
+
+
+    oscCtx.fillStyle = scopeBGColor;
+    oscCtx.fillRect(0, 0, oscCanvas.width, oscCanvas.height);
+
+    fftCtx.fillStyle = scopeBGColor;
+    fftCtx.fillRect(0, 0, fftCanvas.width, fftCanvas.height);
+}
+
+clearScopes()
+
 let testing = false
-function test(){
+function test() {
     if(!testing){
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         audioBuffer = audioCtx.createBuffer(1, audioCtx.sampleRate * 1, audioCtx.sampleRate);
@@ -35,7 +53,7 @@ function test(){
         
             analyser.getByteTimeDomainData(audioData);
         
-            oscCtx.fillStyle = "rgb(200, 200, 200)";
+            oscCtx.fillStyle = scopeBGColor;
             oscCtx.fillRect(0, 0, oscCanvas.width, oscCanvas.height);
         
             oscCtx.lineWidth = 2;
@@ -65,7 +83,7 @@ function test(){
             
             
             analyser.getByteFrequencyData(fftData)
-            fftCtx.fillStyle = "rgb(200, 200, 200)";
+            fftCtx.fillStyle = scopeBGColor;
             fftCtx.fillRect(0, 0, fftCanvas.width, fftCanvas.height);
             
             fftCtx.lineWidth = 2;

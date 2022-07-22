@@ -141,8 +141,5 @@ document.onpointerup = () => {
     if(!testing) {
         test()
         testing = true
-    } else {
-        // Delete later, just for sanity purposes
-        location.reload()
     }
 }

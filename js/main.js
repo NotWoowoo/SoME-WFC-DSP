@@ -135,7 +135,8 @@ function test() {
 
 }
 
-// b/c audio only works after user interacts with page
+// b/c audio only works after user interacts with page (commenting out for now)
+/*
 document.onpointerup = () => {
     // run test once
     if(!testing) {
@@ -143,3 +144,4 @@ document.onpointerup = () => {
         testing = true
     }
 }
+*/

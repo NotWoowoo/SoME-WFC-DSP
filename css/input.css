@@ -1,3 +1,13 @@
+/* Don't Change this, this is how tailwind is installed in the site */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom CSS Classes */
+.dropdown {
+    @apply m-3 border-b-2 border-slate-300 bg-slate-100;
+}
+
+.section-title {
+    @apply bg-slate-100 transition-colors hover:bg-yellow-100 duration-100;
+}

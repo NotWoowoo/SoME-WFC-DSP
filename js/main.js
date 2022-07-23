@@ -135,13 +135,11 @@ function test() {
 
 }
 
-// b/c audio only works after user interacts with page (commenting out for now)
-/*
-document.onpointerup = () => {
+// audio only works after user interacts with page
+function onTestButtonClicked () {
     // run test once
     if(!testing) {
         test()
         testing = true
     }
 }
-*/

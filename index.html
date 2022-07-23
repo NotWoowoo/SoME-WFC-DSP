@@ -8,83 +8,76 @@
     <title>Audio Programming Tutorial</title>
 </head>
 <body>
-    <h1 class="text-center text-3xl">Woowoo and Sean's Audio Programming Guide</h1>
+    <div class="bg-slate-200 py-2 shadow-sm"> 
+        <h1 class="text-center text-3xl">DSP For Audio Programming</h1>
+        <h3 class="text-center text-xl">An Interactive Guide by Sean McGoff and Woowoo</h3>
+    </div>
+    
 
     <p class="text-center my-2" >
-        <button onclick="expandEverything()" class="bg-slate-100 hover:bg-yellow-100 rounded-md">[Expand Everything]</button> 
+        <button onclick="expandEverything()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1">Expand Everything</button> 
         <!--TODO: make this a toggle between expand & hide-->
     </p>
 
-    <div class="dropdown">
+    <!--ABOUT DROPDOWN-->
+    <div class="dropdown root-dropdown">
         <h3 class="section-title">&#8594; <b>About</b></h3>
         <div class="section-body">
-            <p>This website is designed to teach enough digital signal processing (DSP) 
-            in order for you to be able to start your journey into programming audio software. 
-            Whether you want to create VST plugins for digital audio workstations, add complex 
-            audio to your website / application / game, or just want to pick up a new skill, 
-            this free course will give you a great foundation in DSP.</p>
-            <p>For those interested in what technology powers this site, we are using Github Pages 
-            to host the website, Tailwind CSS to style the pages, and C++ (compiled into web assembly) 
-            for the interactive demos and editing environments. The public GitHub repository can be found 
-            <a href=”https://github.com/NotWoowoo/SoME-WFC-DSP”>here</a>.</p>
+            <p>This website is designed to teach enough digital signal processing (DSP) in order for you to be able to start your journey into programming audio software. Whether you want to create VST plugins for digital audio workstations, add complex audio to your website / application / game, or just want to pick up a new skill, this free course will give you a great foundation in DSP.</p>
+            <p>For those interested in what technology powers this site, we are using Github Pages to host the website, Tailwind CSS to style the pages, and C++ (compiled into web assembly) for the interactive demos and editing environments. The public GitHub repository can be found 
+            <a class="text-blue-600" href=”https://github.com/NotWoowoo/SoME-WFC-DSP”>here</a>.</p>
         </div>
-        <div class="dropdown">
+        <div class="dropdown child-dropdown">
             <p class="section-title">&#8594; How to use this website</p>
             <div class="section-body">
-                <p>This website is organized into a tree of dropdown menus, each expanding on subjects in higher 
-                level dropdowns (such as this "How to use this website" dropdown).</p>
-                <p>To get the most out of this site, it's recommended to start by reading everything 
-                (with "Expand Everything" if you prefer). Once you have gone through the information once, specific 
-                information is easily accessable by navigating the dropdowns.</p>
+                <p>This website is organized into a tree of dropdown menus, each expanding on subjects in higher level dropdowns (such as this "How to use this website" dropdown).</p>
+                <p>To get the most out of this site, it's recommended to start by reading everything (with "Expand Everything" if you prefer). Once you have gone through the information once, specific information is easily accessable by navigating the dropdowns.</p>
             </div>
         </div>
     </div>
 
-    <div class="dropdown">
-        <p class="section-title">&#8594; <b>Section 1:</b> What is digital audio, really?</p>
+    <!--SECTION 1 DROPDOWN-->
+    <div class="dropdown root-dropdown">
+        <h3 class="section-title">&#8594; <b>Section 1:</b> What is digital audio, really?</h3>
 
-        <div class="dropdown">
-            <h3 class="section-title">&#8594; Numbers over Time</h3>
+        <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; The Wide World of DSP</h3>
             <div class="section-body">
-                <p>[Graphic here maybe]</p>
-                <p>It's a bunch of numbers (or samples) that store the volume (or amplitude) of an audio signal 
-                at many multiples of a fixed time interval (sample rate).</p>
-                <p>The fixed time interval (or "sample rate") is usually measured in samples per second (hz). 
-                In most cases, the sample rate of an audio signal is 44100 or a simmilar value like 48000.</p>    
+                <p>It seems pretty reasonable that in order to understand how to process digital audio, you must first understand what digital audio is. As you'll soon find out, digital audio is merely a category of a larger kind of digital data called signals. Signals are that new beat you spent all night working on, the readings from an EKG sensor, seismic data from geophones, and even images of cats on the internet (although that application is a bit more complex). The point is that while this course is specifically geared towards digital audio in particular, that is far from the only application of this course's material. If you want more information on DSP's applications in image processing and data compression, I'd recommend looking through Chapters 23 to 27 of <a class="text-blue-600" href="http://www.dspguide.com/">Dr. Steven W. Smith's “The Scientist and Engineer's Guide to Digital Signal Processing”</a>
+                </p> 
             </div>
         </div>
 
-        <div class="dropdown">
+        <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; Signals, Samples, Amplitude, and Sample Rate</h3>
+            <div class="section-body">
+                <p>So, what is this signal? A signal is a list of numbers over a fixed rate of time. In the case of audio, the numbers are known as the “samples” and they measure the “amplitude” at each sample's point in time. Typically, amplitude is denoted as a decimal value between -1 and 1. The way I like to think about amplitude is by imagining the cone of a speaker. An amplitude of 1 means the cone is pushed all the way out, and -1 is pulled all the way in. From the rapid movement of the cone's position over time, you get sound. The fixed rate of time is known as the “sample rate”, which is commonly measured in samples per second. The most common sample rate in music is 44.1khz, or 44,100 samples per second.</p>    
+            </div>
+        </div>
+
+        <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; The sample rate determines the highest possible frequency that an 
             audio signal can have.</h3>
             <div class="section-body">
-                <p>The "Nyquist frequency" is the highest possible frequency that can be represented by a signal, 
-                and it's exactly half of the sample rate.</p>
-                <p>Since human hearing goes up to 20,000 hz or 20kHz, the sample rate of most audio you listen 
-                to is around 40kHz.</p>
+                <p>The "Nyquist frequency" is the highest possible frequency that can be represented by a signal, and it's exactly half of the sample rate.</p>
+                <p>Since human hearing goes up to 20,000 hz or 20kHz, the sample rate of most audio you listen to is around 40kHz.</p>
             </div>
         </div>
 
-        <div class="dropdown">
-            <h3 class="section-title">&#8594; Numbers in a computer that represent audio samples have FINITE precision! 
-            You can usually find audio being stored in a decimal format called IEEE(link) with a precision of 32 or 64 bits. 
-            The number of bits used to store audio is called the "bit depth."</h3>
+        <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; Numbers in a computer that represent audio samples have FINITE precision! You can usually find audio being stored in a decimal format called IEEE(link) with a precision of 32 or 64 bits. The number of bits used to store audio is called the "bit depth."</h3>
             <div class="section-body">
-                <p>Lower bit depths force samples' amplitudes to be quantized (forced into descrete values). 
-                The effect of this is a noiser audio signal that sounds characteristically "retro" 
-                (since old hardware had lower bit depths).</p>
+                <p>Lower bit depths force samples' amplitudes to be quantized (forced into descrete values). The effect of this is a noiser audio signal that sounds characteristically "retro" (since old hardware had lower bit depths).</p>
                 <p>[two files to compare of different bit depths]</p>
                 <p>[Graphic here maybe]</p>
             </div>
         </div>
 
-        <div class="dropdown">
-            <p class="section-title">&#8594; Audio is usually stored in the "time domain" (samples are a variable of time). 
-            However, audio can also be manipulated and described in the "frequency domain."</p>
-            <div class="dropdown">
-            <h3 class="section-title">&#8594; A sine wave is one of the easiest audio signals to work with. 
-            In the time domain it's just the function sin(x), and in the frequency domain, 
-            it's just a spike at some given frequency.</h3>
+        <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; Audio is usually stored in the "time domain" (samples are a variable of time). 
+            However, audio can also be manipulated and described in the "frequency domain."</h3>
+            <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; A sine wave is one of the easiest audio signals to work with. In the time domain it's just the function sin(x), and in the frequency domain, it's just a spike at some given frequency.</h3>
             <div class="section-body">
                 <p>[Graphic here maybe]</p>    
             </div>
@@ -97,19 +90,23 @@
         </div>
     </div>
 
-    <div class="dropdown">
-        <p class="section-title">&#8594; <b>Section 2</b> uhhh</p>
+    <div class="dropdown root-dropdown">
+        <h3 class="section-title">&#8594; <b>Section 2</b> uhhh</h3>
         <div class="section-body">
             <p>TBD</p>
         </div>
     </div>
 
 
-    <h6 class="text-center mt-2">click to test audio</h6>
-    <div class="h-56 flex justify-center">
-        <canvas class="mx-2" id="oscilloscope"></canvas>
-        <canvas class="mx-2" id="fft"></canvas>
+    <div class="text-center">
+        <h6 class="mt-2">interactive demo (WIP)</h6>
+        <button onclick="onTestButtonClicked()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Run Demo</button>
+        <div class="h-56 flex justify-center">
+            <canvas class="mx-2" id="oscilloscope"></canvas>
+            <canvas class="mx-2" id="fft"></canvas>
+        </div>
     </div>
+    
 
     <!-- PLAN (so far)...
         PROGRAMMING: sine waves & other waves

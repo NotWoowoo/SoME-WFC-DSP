@@ -4,10 +4,20 @@
 @tailwind utilities;
 
 /* Custom CSS Classes */
+/* 
+Anything that we reuse a lot in the design 
+(dropdowns, buttons, etc.) can be defined here 
+using @apply with tailwind classes 
+*/
+
 .dropdown {
-    @apply m-3 border-b-2 border-slate-300 bg-slate-100;
+    @apply m-3 border-b-2 border-slate-300 bg-slate-100 shadow-md p-2 rounded-md;
 }
 
 .section-title {
-    @apply bg-slate-100 transition-colors hover:bg-yellow-100 duration-100;
+    @apply transition-colors hover:bg-yellow-100 duration-100 px-1 rounded-md border-b-2 border-gray-300;
+}
+
+.section-body {
+    @apply container px-3;
 }

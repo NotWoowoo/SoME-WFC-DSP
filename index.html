@@ -10,13 +10,12 @@
 <body>
     <div class="bg-slate-200 py-2 shadow-sm"> 
         <h1 class="text-center text-3xl">DSP For Audio Programming</h1>
-        <h3 class="text-center text-xl">An Interactive Guide by Sean McGoff and Woowoo</h3>
+        <h3 class="text-center text-xl">An Interactive Guide by Sean McGoff and notWoowoo</h3>
     </div>
     
 
     <p class="text-center my-2" >
-        <button onclick="expandEverything()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1">Expand Everything</button> 
-        <!--TODO: make this a toggle between expand & hide-->
+        <button onclick="toggleEverything(this)" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1">SHOW Everything</button>
     </p>
 
     <!--ABOUT DROPDOWN-->
@@ -88,9 +87,8 @@
             </div>
             </div>
             <div class="section-body">
-                <p>3b1b fft video (link)</p>
-                <p>Any audio signal can be broken down into a sum of many different sine waves 
-                (see the previously linked 3b1b video).</p>
+                <p>Any audio signal can be broken down into a sum of many different sine waves using the Fourier Transform.<br />(see the linked 3b1b video for details).</p>
+                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/spUNpyF58BY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </div>
@@ -145,13 +143,16 @@
         })
     }
 
-    function expandEverything(){
+    var toggleEverythingDropped = false;
+    function toggleEverything(eBtn){
         Array.from(document.getElementsByClassName("dropdown")).forEach(e => {
             Array.from(e.children).forEach((c,i) => {
                 if(i===0) return
-                c.style.display = c.dropdown_originalDisplay
+                 c.style.display = toggleEverythingDropped ? 'none' : c.dropdown_originalDisplay
             })
         })
+        toggleEverythingDropped = !toggleEverythingDropped
+        eBtn.innerHTML = toggleEverythingDropped ? 'HIDE Everything' : 'SHOW Everything'
     }
 
     Array.from(document.getElementsByClassName("dropdown")).forEach(e => {

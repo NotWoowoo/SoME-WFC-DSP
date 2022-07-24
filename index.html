@@ -68,11 +68,13 @@
         </div>
 
         <div class="dropdown child-dropdown">
-            <h3 class="section-title">&#8594; Numbers in a computer that represent audio samples have FINITE precision! You can usually find audio being stored in a decimal format called IEEE(link) with a precision of 32 or 64 bits. The number of bits used to store audio is called the "bit depth."</h3>
+            <h3 class="section-title">&#8594; Numbers in a computer that represent audio samples have FINITE precision! You can usually find audio being stored in a decimal format called <a class="text-blue-600" href="https://en.wikipedia.org/wiki/IEEE_754">IEEE</a> with a precision of 32 or 64 bits. The number of bits used to store audio is called the "bit depth."</h3>
             <div class="section-body">
                 <p>Lower bit depths force samples' amplitudes to be quantized (forced into descrete values). The effect of this is a noiser audio signal that sounds characteristically "retro" (since old hardware had lower bit depths).</p>
-                <p>[two files to compare of different bit depths]</p>
-                <p>[Graphic here maybe]</p>
+                <p>[two files to compare of different bit depths maybe]</p>
+                <div class="flex justify-center">
+                    <div id="bitDepthDesmosCalc" style="width: 600px; height: 400px;"></div>
+                </div>
             </div>
         </div>
 
@@ -132,75 +134,7 @@
     -->
 
     <script src="js/main.js"></script>
-    <script src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
     <script>
-    // Wrapper Func for Desmos.GraphingCalculator()
-    function initVisualizer(e) {
-        c = Desmos.GraphingCalculator(e, 
-        {
-            expressions: false, 
-            settingsMenu: false, 
-            zoomButtons: false, 
-            lockViewport: true
-        });
-        var s = c.getState();
-        s.graph.showGrid = false;
-        s.graph.showYAxis = false;
-        s.graph.xAxisNumbers = false;
-        c.setState(s)
-        return c
-    }
-
-    // TODO: possibly move to its own file?
-    var sampleRateDesmosCalcElement = document.getElementById('sampleRateDesmosCalc');
-    var sampleRateDesmosCalculator = initVisualizer(sampleRateDesmosCalcElement)
-    sampleRateDesmosCalculator.setExpressions([
-    { 
-        id: 'list', 
-        latex: 'n=[-10,-10+s^{-1}...10]' 
-    },
-    { 
-        id: 'ampval', 
-        latex: 'a=1', 
-        sliderBounds: { min: 0.1, max: 2, step: 0.1 }
-    },
-    {
-        id: 'ampslider', 
-        latex: '(-6+a,5)', 
-        color: Desmos.Colors.BLACK, 
-        label: "Amplitude", 
-        showLabel: true, 
-        labelOrientation: Desmos.LabelOrientations.ABOVE
-    },
-    {
-        id: 'ampsliderbar', 
-        latex: '(-5.9+1.9t,5)', 
-        color: Desmos.Colors.BLACK
-    },
-    { 
-        id: 'rateval', 
-        latex: 's=1', 
-        sliderBounds: { min: 1, max: 5, step: 0.1 }
-    },
-    {
-        id: 'rateslider', 
-        latex: '(2+s,5)', 
-        color: Desmos.Colors.BLACK, 
-        label: "Sample Rate", 
-        showLabel: true, 
-        labelOrientation: Desmos.LabelOrientations.ABOVE
-    },
-    {
-        id: 'ratesliderbar', 
-        latex: '(3+4t,5)', 
-        color: Desmos.Colors.BLACK
-    },
-    { 
-        id: 'sine', 
-        latex: '(n, a \\sin(n))', 
-        color: Desmos.Colors.BLUE
-    }    
-    ]);
     //NOTE: it could be convenient to cache the status of which dropdowns are visible
     function dropdown(e){
         Array.from(e.children).forEach((c,i) => {
@@ -225,5 +159,7 @@
         dropdown(e)
     })
     </script>
+    <script src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+    <script src="js/calculator.js"></script>
 </body>
 </html>

@@ -42,7 +42,7 @@
         <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; The Wide World of DSP</h3>
             <div class="section-body">
-                <p>It seems pretty reasonable that in order to understand how to process digital audio, you must first understand what digital audio is. As you'll soon find out, digital audio is merely a category of a larger kind of digital data called signals. Signals are that new beat you spent all night working on, the readings from an EKG sensor, seismic data from geophones, and even images of cats on the internet (although that application is a bit more complex). The point is that while this course is specifically geared towards digital audio in particular, that is far from the only application of this course's material. If you want more information on DSP's applications in image processing and data compression, I'd recommend looking through Chapters 23 to 27 of <a class="text-blue-600" href="http://www.dspguide.com/">Dr. Steven W. Smith's “The Scientist and Engineer's Guide to Digital Signal Processing”</a>
+                <p>It seems pretty reasonable that in order to understand how to process digital audio, you must first understand what digital audio is. As you'll soon find out, digital audio is merely a category of a larger kind of digital data called signals. Signals are that new beat you spent all night working on, the readings from an EKG sensor, seismic data from geophones, and even images of cats on the internet! The point is that while this course is specifically geared towards digital audio in particular, that is far from the only application of this course's material. If you want more information on DSP's applications in image processing and data compression, I'd recommend looking through Chapters 23 to 27 of <a class="text-blue-600" href="http://www.dspguide.com/">Dr. Steven W. Smith's “The Scientist and Engineer's Guide to Digital Signal Processing”</a>
                 </p> 
             </div>
         </div>
@@ -58,18 +58,9 @@
         </div>
 
         <div class="dropdown child-dropdown">
-            <h3 class="section-title">&#8594; The sample rate determines the highest possible frequency that an 
-            audio signal can have.</h3>
+            <h3 class="section-title">&#8594; Bit Depth and the "Retro" Sound</h3>
             <div class="section-body">
-                <p>The "Nyquist frequency" is the highest possible frequency that can be represented by a signal, and it's exactly half of the sample rate.</p>
-                <p>Since human hearing goes up to 20,000 hz or 20kHz, the sample rate of most audio you listen to is around 40kHz.</p>
-            </div>
-        </div>
-
-        <div class="dropdown child-dropdown">
-            <h3 class="section-title">&#8594; Numbers in a computer that represent audio samples have FINITE precision! You can usually find audio being stored in a decimal format called <a class="text-blue-600" href="https://en.wikipedia.org/wiki/IEEE_754">IEEE</a> with a precision of 32 or 64 bits. The number of bits used to store audio is called the "bit depth."</h3>
-            <div class="section-body">
-                <p>Lower bit depths force samples' amplitudes to be quantized (forced into descrete values). The effect of this is a noiser audio signal that sounds characteristically "retro" (since old hardware had lower bit depths).</p>
+                <p>Computers, and especially older ones, have a hard time accurately storing non-whole numbers. Since a digital audio signal's values are non-whole numbers by nature, that creates a limitation on how precise each value can be. In DSP, this precision is known as the “Bit Depth” of a digital signal. The bit depth is merely the amount of bits required to hold said number (<a class="text-blue-600" href="https://web.stanford.edu/class/cs101/bits-bytes.html">Here</a> is a good resource to understanding bits and binary numbers). Most modern digital audio workstations use a standard bit depth of 32 bits, meaning that there are 2<sup>32</sup> possible values a sample can have between -1 and 1. Converting to lower bit depths forces samples' amplitudes to be quantized (snapped to the closest intermediate value). The effect of this is a noiser audio signal that sounds characteristically "retro" (since old hardware had lower bit depths).</p>
                 <p>[two files to compare of different bit depths maybe]</p>
                 <div class="flex justify-center">
                     <div id="bitDepthDesmosCalc" style="width: 600px; height: 400px;"></div>
@@ -94,6 +85,15 @@
                 </div>
             </div>
         </div>
+
+        <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; The Nyquist Theorem</h3>
+            <div class="section-body">
+                <p>The "Nyquist frequency" is the highest possible frequency that can be represented by a signal, and it's exactly half of the sample rate.</p>
+                <p>Since human hearing goes up to 20,000 hz or 20kHz, the sample rate of most audio you listen to is around 40kHz.</p>
+            </div>
+        </div>
+
     </div>
 
     <div class="dropdown root-dropdown">

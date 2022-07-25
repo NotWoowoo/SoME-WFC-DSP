@@ -87,6 +87,15 @@ initVisualizer(document.getElementById('bitDepthDesmosCalc'))
     latex: '(-5.5+7.5t,5)',
     color: Desmos.Colors.BLACK
 },
+// keeps amplitude same and DC = 0 for any bit depth
+{
+    id: 'm',
+    latex: 'm=2^b / (2^b -1)'
+},
+{
+    id: 'a',
+    latex: 'a=0.5 \\abs(4m \\floor((2^{b-1}) \\sin(5/3))/((2^{b-1})) + 4m \\floor( (2^{b-1}) \\sin(-5/3) )/((2^{b-1})))'
+},
 //doing sine with list instead of regular function to fill vertical gaps
 {
     id: 'list',
@@ -94,7 +103,7 @@ initVisualizer(document.getElementById('bitDepthDesmosCalc'))
 },
 {
     id: 'sine',
-    latex: '(l, 4 \\floor((2^{b-1}) \\sin(l/3))/((2^{b-1})))',
+    latex: '(l, a+ 4m \\floor((2^{b-1}) \\sin(l/3))/((2^{b-1})))',
     color: Desmos.Colors.BLUE,
     lines: true,
     points: false

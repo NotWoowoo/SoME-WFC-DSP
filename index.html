@@ -24,7 +24,7 @@
         <div class="section-body">
             <p>This website is designed to teach enough digital signal processing (DSP) in order for you to be able to start your journey into programming audio software. Whether you want to create VST plugins for digital audio workstations, add complex audio to your website / application / game, or just want to pick up a new skill, this free course will give you a great foundation in DSP.</p>
             <p>For those interested in what technology powers this site, we are using Github Pages to host the website, Tailwind CSS to style the pages, Desmos' API to create the interactive visualizations, and C++ (compiled into web assembly) for the editing environments. The public GitHub repository can be found 
-            <a class="text-blue-600" href=”https://github.com/NotWoowoo/SoME-WFC-DSP”>here</a>.</p>
+            <a href=”https://github.com/NotWoowoo/SoME-WFC-DSP”>here</a>.</p>
         </div>
         <div class="dropdown child-dropdown">
             <p class="section-title">&#8594; How to use this website</p>
@@ -42,7 +42,7 @@
         <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; The Wide World of DSP</h3>
             <div class="section-body">
-                <p>It seems pretty reasonable that in order to understand how to process digital audio, you must first understand what digital audio is. As you'll soon find out, digital audio is merely a category of a larger kind of digital data called signals. Signals are that new beat you spent all night working on, the readings from an EKG sensor, seismic data from geophones, and even images of cats on the internet! The point is that while this course is specifically geared towards digital audio in particular, that is far from the only application of this course's material. If you want more information on DSP's applications in image processing and data compression, I'd recommend looking through Chapters 23 to 27 of <a class="text-blue-600" href="http://www.dspguide.com/">Dr. Steven W. Smith's “The Scientist and Engineer's Guide to Digital Signal Processing”</a>
+                <p>It seems pretty reasonable that in order to understand how to process digital audio, you must first understand what digital audio is. As you'll soon find out, digital audio is merely a category of a larger kind of digital data called signals. Signals are that new beat you spent all night working on, the readings from an EKG sensor, seismic data from geophones, and even images of cats on the internet! The point is that while this course is specifically geared towards digital audio in particular, that is far from the only application of this course's material. If you want more information on DSP's applications in image processing and data compression, I'd recommend looking through Chapters 23 to 27 of <a href="http://www.dspguide.com/">Dr. Steven W. Smith's “The Scientist and Engineer's Guide to Digital Signal Processing”</a>
                 </p> 
             </div>
         </div>
@@ -60,7 +60,7 @@
         <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; Bit Depth and the "Retro" Sound</h3>
             <div class="section-body">
-                <p>Computers, and especially older ones, have a hard time accurately storing non-whole numbers. Since a digital audio signal's values are non-whole numbers by nature, that creates a limitation on how precise each value can be. In DSP, this precision is known as the “Bit Depth” of a digital signal. The bit depth is merely the amount of bits required to hold said number (<a class="text-blue-600" href="https://web.stanford.edu/class/cs101/bits-bytes.html">Here</a> is a good resource to understanding bits and binary numbers). Most modern digital audio workstations use a standard bit depth of 32 bits, meaning that there are 2<sup>32</sup> possible values a sample can have between -1 and 1. Converting to lower bit depths forces samples' amplitudes to be quantized (snapped to the closest intermediate value). The effect of this is a noiser audio signal that sounds characteristically "retro" (since old hardware had lower bit depths).</p>
+                <p>Computers, and especially older ones, have a hard time accurately storing non-whole numbers. Since a digital audio signal's values are non-whole numbers by nature, that creates a limitation on how precise each value can be. In DSP, this precision is known as the “Bit Depth” of a digital signal. The bit depth is merely the amount of bits required to hold said number (<a href="https://web.stanford.edu/class/cs101/bits-bytes.html">Here</a> is a good resource to understanding bits and binary numbers). Most modern digital audio workstations use a standard bit depth of 32 bits, meaning that there are 2<sup>32</sup> possible values a sample can have between -1 and 1. Converting to lower bit depths forces samples' amplitudes to be quantized (snapped to the closest intermediate value). The effect of this is a noiser audio signal that sounds characteristically "retro" (since old hardware had lower bit depths).</p>
                 <p>[two files to compare of different bit depths maybe]</p>
                 <div class="flex justify-center">
                     <div id="bitDepthDesmosCalc" style="width: 600px; height: 400px;"></div>

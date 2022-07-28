@@ -1,3 +1,4 @@
+//NOTE: messages can be used to pass data to the dsp code. AudioWorkletProcessor has port
 //'use strict' closeDSP doesn't work with use strict (for now)
 
 //Stop all audio processing

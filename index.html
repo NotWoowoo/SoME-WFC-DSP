@@ -6,15 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="dist/main.css" rel="stylesheet">
     <title>Audio Programming Tutorial</title>
-    <style>
-    #editor {
-        /*ace editor needs these properties*/
-        position: relative; /*can also be absolute*/
-        /*W and H can be anything*/
-        width: 100%;
-        height: 400px;
-    }
-    </style>
 </head>
 <body>
     <div class="bg-slate-200 py-2 shadow-sm"> 
@@ -89,9 +80,6 @@
             <div class="section-body">
                 <p>Any audio signal can be broken down into a sum of many different sine waves using the Fourier Transform<br />(see the linked 3b1b video for details).</p>
                 <br />
-                <div class="flex justify-center">
-                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/spUNpyF58BY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
             </div>
         </div>
 
@@ -122,7 +110,19 @@
     <div class="dropdown root-dropdown">
         <h3 class="section-title">&#8594; <b>PLAYGROUND</b></h3>
         <div class="section-body">
-            <div id="editor"></div>
+            <div class="flex">
+                <div id="editor" class="w-1/2 h-80"></div>
+                <div class="w-1/2 h-80">
+                    <div style="height: 10%; background-color: rgb(20, 20, 20);" class="w-full text-center text-white text-xl">
+                        Time Domain
+                    </div>
+                    <canvas style="height: 40%" id="playgroundOsc" class="w-full"></canvas>
+                    <div style="height: 10%; background-color: rgb(20, 20, 20);" class="w-full text-center text-white text-xl">
+                        Frequency Domain
+                    </div>
+                    <canvas style="height: 40%" id="playgroundFFT" class="w-full"></canvas>
+                </div>
+            </div>
             <button onclick="runUserCode()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Run</button>
             <button onclick="closeDSP()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Stop</button>
         </div>
@@ -132,10 +132,6 @@
     <div class="text-center">
         <h6 class="mt-2">interactive demo (WIP)</h6>
         <button onclick="onTestButtonClicked()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Run Demo</button>
-        <div class="h-56 flex justify-center">
-            <canvas class="mx-2" id="oscilloscope"></canvas>
-            <canvas class="mx-2" id="fft"></canvas>
-        </div>
     </div>
     
 
@@ -161,6 +157,7 @@
 
     <!--<script src="js/main.js"></script>-->
     <script src="js/dsp.js"></script>
+    <script src="js/scopes.js"></script>
 
     <!--Dropdown script-->
     <script>
@@ -212,6 +209,10 @@ let h = 50 //number of harmonics
 for(let i = 1; i < h; i+=1)
     v += .15*Math.sin(2*Math.PI*i/50.0 + time)*Math.sin(time*Math.PI*f*i)/i
 return v`)
+
+        const fftCanvas = document.getElementById("playgroundFFT")
+        const oscCanvas = document.getElementById("playgroundOsc")
+        clearScopes(oscCanvas, fftCanvas)
 
         function runUserCode(){
             setDSPsimple(editor.getValue())

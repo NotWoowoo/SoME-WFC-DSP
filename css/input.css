@@ -14,22 +14,26 @@ a {
     @apply text-blue-500;
 }
 
-.dropdown {
-    @apply my-3 border-b-2 border-slate-300 bg-slate-100 shadow-md p-2 rounded-md mx-auto;
+@layer components {
+    .dropdown {
+        @apply my-3 border-b-2 border-slate-300 bg-slate-100 shadow-md p-2 rounded-md mx-auto;
+    }
+
+    .root-dropdown {
+        @apply w-5/6;
+    }
+
+    .child-dropdown {
+        @apply w-full
+    }
+
+    .section-title {
+        @apply transition-colors hover:bg-yellow-100 duration-100 px-1 rounded-md border-b-2 border-gray-300;
+    }
+
+    .section-body {
+        @apply px-3;
+    }  
 }
 
-.root-dropdown {
-    @apply w-5/6;
-}
 
-.child-dropdown {
-    @apply w-full
-}
-
-.section-title {
-    @apply transition-colors hover:bg-yellow-100 duration-100 px-1 rounded-md border-b-2 border-gray-300;
-}
-
-.section-body {
-    @apply px-3;
-}

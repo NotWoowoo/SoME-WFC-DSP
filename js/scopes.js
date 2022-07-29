@@ -1,6 +1,7 @@
 'use strict'
 
 const scopeBGColor = "rgb(100,100,100)"
+const scopeLineColor = "rgb(255, 255, 255)"
 
 function clearScopes(oscCanvas, fftCanvas) {
     const oscCtx = oscCanvas.getContext("2d");
@@ -32,7 +33,7 @@ function draw(audioCtx, oscCanvas, fftCanvas, oscCtx, fftCtx) {
     oscCtx.fillRect(0, 0, oscCanvas.width, oscCanvas.height);
 
     oscCtx.lineWidth = 2;
-    oscCtx.strokeStyle = "rgb(0, 0, 0)";
+    oscCtx.strokeStyle = scopeLineColor;
 
     oscCtx.beginPath();
 
@@ -62,7 +63,7 @@ function draw(audioCtx, oscCanvas, fftCanvas, oscCtx, fftCtx) {
     fftCtx.fillRect(0, 0, fftCanvas.width, fftCanvas.height);
     
     fftCtx.lineWidth = 2;
-    fftCtx.strokeStyle = "rgb(0, 0, 0)";
+    fftCtx.strokeStyle = scopeLineColor;
     
     fftCtx.beginPath();
     

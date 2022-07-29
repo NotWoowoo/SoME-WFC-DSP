@@ -57,7 +57,7 @@ function test() {
             oscCtx.fillRect(0, 0, oscCanvas.width, oscCanvas.height);
         
             oscCtx.lineWidth = 2;
-            oscCtx.strokeStyle = "rgb(0, 0, 0)";
+            oscCtx.strokeStyle = "rgb(255, 255, 255)";
         
             oscCtx.beginPath();
         

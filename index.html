@@ -143,6 +143,7 @@
             </div>
             <button onclick="runUserCode()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Run</button>
             <button onclick="closeDSP()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Stop</button>
+            <button onclick="shareUserCode()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Share</button>
         </div>
     </div>
 
@@ -210,6 +211,8 @@
     <script src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
     <script src="js/calculator.js"></script>
 
+    <script src="./js/lz-string.min.js" type="text/javascript" charset="utf-8"></script>
+
     <script src="./js/ace/src-min/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/ace/src-min/theme-twilight.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/ace/src-min/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
@@ -220,13 +223,19 @@
         var JavaScriptMode = ace.require("ace/mode/javascript").Mode;
         editor.session.setMode(new JavaScriptMode());
 
-        editor.setValue(`//phasey saw!
+        var code = (new URL(window.location)).searchParams.get('code')
+        if(code !== null)
+            code = LZString.decompressFromBase64(code)
+        else
+            code = `//phasey saw!
 let f = 110 //frequency
 let v = 0 //output sample
 let h = 50 //number of harmonics
 for(let i = 1; i < h; i+=1)
     v += .15*Math.sin(2*Math.PI*i/50.0 + time)*Math.sin(time*Math.PI*f*i)/i
-return v`)
+return v`
+
+        editor.setValue(code)
 
         const fftCanvas = document.getElementById("playgroundFFT")
         const oscCanvas = document.getElementById("playgroundOsc")
@@ -234,6 +243,10 @@ return v`)
 
         function runUserCode(){
             setDSPsimple(editor.getValue())
+        }
+
+        function shareUserCode(){
+            alert((new URL(window.location)).host + '?code=' + LZString.compressToBase64(editor.getValue()))
         }
     </script>
 </body>

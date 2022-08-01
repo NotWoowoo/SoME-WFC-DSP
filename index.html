@@ -141,17 +141,18 @@
                     <canvas style="height: 40%" id="playgroundFFT" class="w-full"></canvas>
                 </div>
             </div>
-            <button onclick="runUserCode()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Run</button>
+            <button onclick="runUserCode()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Run + Save</button>
             <button onclick="closeDSP()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Stop</button>
             <button onclick="shareUserCode()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Share</button>
         </div>
     </div>
 
-
+    <!-- I don't think we'll be needing this
     <div class="text-center">
         <h6 class="mt-2">interactive demo (WIP)</h6>
         <button onclick="onTestButtonClicked()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Run Demo</button>
     </div>
+    -->
     
 
     <!-- PLAN (so far)...
@@ -227,13 +228,13 @@
         if(code !== null)
             code = LZString.decompressFromBase64(code)
         else
-            code = `//phasey saw!
+            code = (localStorage.getItem('code') === null) ? `//phasey saw!
 let f = 110 //frequency
 let v = 0 //output sample
 let h = 50 //number of harmonics
 for(let i = 1; i < h; i+=1)
     v += .15*Math.sin(2*Math.PI*i/50.0 + time)*Math.sin(time*Math.PI*f*i)/i
-return v`
+return v` : localStorage.getItem('code')
 
         editor.setValue(code)
 
@@ -243,6 +244,8 @@ return v`
 
         function runUserCode(){
             setDSPsimple(editor.getValue())
+            //also save it
+            localStorage.setItem('code', editor.getValue())
         }
 
         function shareUserCode(){

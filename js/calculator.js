@@ -17,6 +17,7 @@ function initVisualizer(e) {
     return c
 }
 
+// SAMPLE RATE VISUALIZATION
 var sampleRateDesmosCalcElement = document.getElementById('sampleRateDesmosCalc');
 var sampleRateDesmosCalculator = initVisualizer(sampleRateDesmosCalcElement)
 sampleRateDesmosCalculator.setExpressions([
@@ -67,6 +68,7 @@ sampleRateDesmosCalculator.setExpressions([
 }
 ]);
 
+// BIT DEPTH VISUALIZATION
 initVisualizer(document.getElementById('bitDepthDesmosCalc'))
 .setExpressions([
 {
@@ -107,5 +109,34 @@ initVisualizer(document.getElementById('bitDepthDesmosCalc'))
     color: Desmos.Colors.BLUE,
     lines: true,
     points: false
+}
+]);
+
+// FREQUENCY VISUALIZATION
+var frequencyDesmosCalcElement = document.getElementById('frequencyDesmosCalc');
+var frequencyDesmosCalculator = initVisualizer(frequencyDesmosCalcElement)
+frequencyDesmosCalculator.setExpressions([
+{
+    id: 'freqval',
+    latex: 'w=0.5',
+    sliderBounds: { min: 0.5, max: 10, step: 0.1 }
+},
+{
+    id: 'freqslider',
+    latex: '(-5.25+w,5)',
+    color: Desmos.Colors.BLACK,
+    label: "Frequency: ${w}hz",
+    showLabel: true,
+    labelOrientation: Desmos.LabelOrientations.ABOVE
+},
+{
+    id: 'freqsliderbar',
+    latex: '(-4.75+9.6t,5)',
+    color: Desmos.Colors.BLACK
+},
+{
+    id: 'sine',
+    latex: '\\sin(wx)',
+    color: Desmos.Colors.BLUE
 }
 ]);

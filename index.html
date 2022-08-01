@@ -125,7 +125,7 @@
     </div>
 
     <!--CUSTOM EDITOR DROPDOWN-->
-    <div class="dropdown root-dropdown">
+    <div class="dropdown root-dropdown" id="playground-dropdown">
         <h3 class="section-title">&#8594; <b>PLAYGROUND</b></h3>
         <div class="section-body">
             <div class="flex">
@@ -183,7 +183,7 @@
     <!--Dropdown script-->
     <script>
     //NOTE: it could be convenient to cache the status of which dropdowns are visible for future visits
-    function dropdown(e){
+    function toggleDropdown(e){
         Array.from(e.children).forEach((c,i) => {
             if(i===0) return
             if(c.dropdown_originalDisplay === undefined) c.dropdown_originalDisplay = c.style.display //janky?
@@ -205,8 +205,8 @@
     }
 
     Array.from(document.getElementsByClassName("dropdown")).forEach(e => {
-        e.getElementsByClassName('section-title')[0].onclick = () => dropdown(e)
-        dropdown(e)
+        e.getElementsByClassName('section-title')[0].onclick = () => toggleDropdown(e)
+        toggleDropdown(e)
     })
     </script>
 
@@ -226,9 +226,10 @@
         editor.session.setMode(new JavaScriptMode());
 
         var code = (new URL(window.location)).searchParams.get('code')
-        if(code !== null)
+        if(code !== null){
             code = LZString.decompressFromBase64(code)
-        else
+            toggleDropdown(document.getElementById('playground-dropdown')) //slightly janky b/c toggle expects that all dropdowns are initially hidden
+        }else
             code = (localStorage.getItem('code') === null) ? `//phasey saw!
 let f = 110 //frequency
 let v = 0 //output sample

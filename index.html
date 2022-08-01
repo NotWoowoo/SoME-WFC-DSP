@@ -141,7 +141,8 @@
                     <canvas style="height: 40%" id="playgroundFFT" class="w-full"></canvas>
                 </div>
             </div>
-            <button onclick="runUserCode()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Run + Save</button>
+            <button onclick="runUserCode(false)" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Run</button>
+            <button onclick="runUserCode(true)" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2" title="Save the code for your next visit to this site">Run + Save</button>
             <button onclick="closeDSP()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Stop</button>
             <button onclick="shareUserCode()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Share</button>
         </div>
@@ -242,10 +243,11 @@ return v` : localStorage.getItem('code')
         const oscCanvas = document.getElementById("playgroundOsc")
         clearScopes(oscCanvas, fftCanvas)
 
-        function runUserCode(){
+        function runUserCode(save){
             setDSPsimple(editor.getValue())
             //also save it
-            localStorage.setItem('code', editor.getValue())
+            if(save)
+                localStorage.setItem('code', editor.getValue())
         }
 
         function shareUserCode(){

@@ -1,4 +1,4 @@
-//NOTE: messages can be used to pass data to the dsp code. AudioWorkletProcessor has port
+//NOTE: messages can be used to pass data to the dsp code. AudioWorkletProcessor has 'port' variable for this
 //'use strict' closeDSP doesn't work with use strict (for now)
 
 //Stop all audio processing
@@ -8,7 +8,7 @@ function closeDSP(){
     }
 }
 
-//restart audio -- js is implementation of processor
+//restart audio -- js has to be implementation of processor class
 function setDSP(js){
     closeDSP()
 
@@ -30,7 +30,7 @@ function setDSP(js){
     })(js)
 }
 
-//restart audio -- js is the inside of a function that resurns a sample AND has access to variables: time, sampleRate, sample
+//restart audio -- js is the inside of a function that returns a sample AND has access to the follownig variables: time, sampleRate, sample
 function setDSPsimple(js){
     setDSP(`
     let time = 0

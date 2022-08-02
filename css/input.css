@@ -11,7 +11,7 @@ using @apply with tailwind classes
 */
 
 a {
-    @apply text-blue-500;
+    @apply text-blue-500 hover:text-blue-600;
 }
 
 @layer components {

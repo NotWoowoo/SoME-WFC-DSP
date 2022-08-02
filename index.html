@@ -27,7 +27,7 @@
             <a href=”https://github.com/NotWoowoo/SoME-WFC-DSP”>here</a>.</p>
         </div>
         <div class="dropdown child-dropdown">
-            <p class="section-title">&#8594; How to use this website</p>
+            <h3 class="section-title">&#8594; How to use this website</h3>
             <div class="section-body">
                 <p>This website is organized into a tree of dropdown menus, each expanding on subjects in higher level dropdowns (such as this "How to use this website" dropdown).</p>
                 <p>To get the most out of this site, it's recommended to start by reading everything (with "Expand Everything" if you prefer). Once you have gone through the information once, specific information is easily accessable by navigating the dropdowns.</p>
@@ -111,6 +111,13 @@
         </div>
 
         <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; The Vocabulary of Frequency</h3>
+            <div class="section-body">
+                <p></p>
+            </div>
+        </div>
+
+        <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; The Nyquist Sampling Theorem</h3>
             <div class="section-body">
                 <p>The "Nyquist frequency" is the highest possible frequency that can be represented by a signal, and it's exactly half of the sample rate.</p>
@@ -187,13 +194,24 @@
     <!--Dropdown script-->
     <script>
     //NOTE: it could be convenient to cache the status of which dropdowns are visible for future visits
-    function toggleDropdown(e){
+    function toggleDropdown(e) {
+        // Flip visibility of children
         Array.from(e.children).forEach((c,i) => {
             if(i===0) return
             if(c.dropdown_originalDisplay === undefined) c.dropdown_originalDisplay = c.style.display //janky?
             c.style.display = c.style.display === 'none' ? c.dropdown_originalDisplay : 'none'
-            //TODO: Add switching arrow from → to ↓ on expand and vice versa
         })
+        // Change dropdown arrow
+        e.isOpen = !e.isOpen
+        if (e.classList.contains('dropdown')) {     
+            if(e.isOpen) {
+                console.log(e.querySelector('.section-title').innerText)
+                e.querySelector('.section-title').innerText = e.querySelector('.section-title').innerText.replace('→', '↓')
+            } else {
+                console.log(e.querySelector('.section-title').innerText)
+                e.querySelector('.section-title').innerText = e.querySelector('.section-title').innerText.replace('↓', '→')
+            }
+        }
     }
 
     var toggleEverythingDropped = false;
@@ -205,11 +223,24 @@
             })
         })
         toggleEverythingDropped = !toggleEverythingDropped
-        eBtn.innerHTML = toggleEverythingDropped ? 'HIDE Everything' : 'SHOW Everything'
+        // Change all arrows
+        if (toggleEverythingDropped) {
+            Array.from(document.getElementsByClassName("dropdown")).forEach(e => {
+                e.isOpen = true;
+                e.querySelector('.section-title').innerText = e.querySelector('.section-title').innerText.replace('→', '↓')
+            })
+        } else {
+            Array.from(document.getElementsByClassName("dropdown")).forEach(e => {
+                e.isOpen = false;
+                e.querySelector('.section-title').innerText = e.querySelector('.section-title').innerText.replace('↓', '→')
+            }) 
+        }
+        eBtn.innerHTML = toggleEverythingDropped ? 'Hide Everything' : 'Show Everything'
     }
 
     Array.from(document.getElementsByClassName("dropdown")).forEach(e => {
         e.getElementsByClassName('section-title')[0].onclick = () => toggleDropdown(e)
+        e.isOpen = true;
         toggleDropdown(e)
     })
     </script>

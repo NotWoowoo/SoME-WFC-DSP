@@ -7,9 +7,7 @@ function initVisualizer(e) {
         expressions: false,
         settingsMenu: false,
         zoomButtons: false,
-        lockViewport: true,
-        // Dark Mode inverts colors
-        invertedColors: window.matchMedia("(prefers-color-scheme: dark)").matches
+        lockViewport: true
     });
     var s = c.getState();
     s.graph.showGrid = false;

@@ -247,18 +247,6 @@
     })
     </script>
 
-    <!--Dark Mode Listener Script-->
-    <script>
-        const dt = window.matchMedia("(prefers-color-scheme: dark)");
-        dt.addListener(e => {
-            if (e.matches) {
-                setCalculatorColorInversion(calculators, true)
-            } else {
-                setCalculatorColorInversion(calculators, false)
-            }
-        });
-    </script>
-
     <!-- Manage shared or saved code BEFORE initializing the editor(b/c the editor takes a second to load) -->
     <script src="./js/lz-string.min.js" type="text/javascript" charset="utf-8"></script>
     <script>
@@ -287,7 +275,6 @@ return v` : localStorage.getItem('code')
     <script src="./js/ace/src-min/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
     <script>
         var editor = ace.edit("editor");
-        editor.setTheme("ace/theme/twilight");
         var JavaScriptMode = ace.require("ace/mode/javascript").Mode;
         editor.session.setMode(new JavaScriptMode());
         editor.setValue(code)
@@ -313,6 +300,22 @@ return v` : localStorage.getItem('code')
                 alert('Unable to Copy to Clipboard: ', err);
             });
         }
+    </script>
+
+    <!--Dark Mode Listener Script-->
+    <script>
+        function setThemeToPrefered(matches){
+            if (matches) {
+                setCalculatorColorInversion(calculators, true);
+                editor.setTheme("ace/theme/twilight");
+            } else {
+                setCalculatorColorInversion(calculators, false);
+                editor.setTheme(0);
+            }
+        }
+        const dt = window.matchMedia("(prefers-color-scheme: dark)");
+        dt.addListener(e => setThemeToPrefered(e.matches));
+        setThemeToPrefered(window.matchMedia("(prefers-color-scheme: dark)").matches)
     </script>
 </body>
 </html>

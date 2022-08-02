@@ -143,11 +143,11 @@
                     <div style="height: 10%; background-color: rgb(20, 20, 20);" class="w-full text-center text-white text-xl">
                         Time Domain
                     </div>
-                    <canvas style="height: 40%" id="playgroundOsc" class="w-full"></canvas>
+                    <canvas style="height: 40%" id="playgroundOsc" class="w-full" width="1560" height="256"></canvas>
                     <div style="height: 10%; background-color: rgb(20, 20, 20);" class="w-full text-center text-white text-xl">
                         Frequency Domain
                     </div>
-                    <canvas style="height: 40%" id="playgroundFFT" class="w-full"></canvas>
+                    <canvas style="height: 40%" id="playgroundFFT" class="w-full" width="1560" height="256"></canvas>
                 </div>
             </div>
             <button onclick="runUserCode(false)" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Run</button>
@@ -288,7 +288,12 @@ return v` : localStorage.getItem('code')
         }
 
         function shareUserCode(){
-            alert((new URL(window.location)).host + '?code=' + encodeURIComponent( LZString.compressToBase64(editor.getValue()) ))
+            let codeURL = (new URL(window.location)).host + '?code=' + encodeURIComponent(LZString.compressToBase64(editor.getValue()))
+            navigator.clipboard.writeText(codeURL).then(function() {
+                alert('Link Copied to Clipboard!');
+            }, function(err) {
+                alert('Unable to Copy to Clipboard: ', err);
+            });
         }
     </script>
 </body>

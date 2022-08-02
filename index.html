@@ -13,15 +13,15 @@
     <link href="dist/main.css" rel="stylesheet">
     <title>Audio Programming Tutorial</title>
 </head>
-<body>
-    <div class="bg-slate-200 py-2 shadow-sm"> 
+<body class="dark:bg-black">
+    <div class="bg-slate-200 dark:bg-slate-800 dark:text-white py-2 shadow-sm"> 
         <h1 class="text-center text-3xl">DSP For Audio Programming</h1>
         <h3 class="text-center text-xl">An Interactive Guide by Sean McGoff and notWoowoo</h3>
     </div>
     
 
     <p class="text-center my-2" >
-        <button onclick="toggleEverything(this)" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1">SHOW Everything</button>
+        <button onclick="toggleEverything(this)" class="button-colors rounded-md px-2 py-1">Show Everything</button>
     </p>
 
     <!--ABOUT DROPDOWN-->
@@ -137,7 +137,7 @@
         </div>
     </div>
 
-    <p id="shared-msg" align=center style="display:none;"><b>Playground's Code Was Supplied By URL!</b></p>
+    <p id="shared-msg" style="display:none;" class="text-center dark:text-white"><b>Playground's Code Was Supplied By URL!</b></p>
 
     <!--CUSTOM EDITOR DROPDOWN-->
     <div class="dropdown root-dropdown" id="playground-dropdown">
@@ -156,10 +156,10 @@
                     <canvas style="height: 40%" id="playgroundFFT" class="w-full" width="1560" height="256"></canvas>
                 </div>
             </div>
-            <button onclick="runUserCode(false)" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Run</button>
-            <button onclick="runUserCode(true)" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2" title="Save the code for your next visit to this site">Run + Save</button>
-            <button onclick="closeDSP()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Stop</button>
-            <button onclick="shareUserCode()" class="bg-slate-200 hover:bg-yellow-100 rounded-md px-2 py-1 mb-2">Share</button>
+            <button onclick="runUserCode(false)" class="button-colors rounded-md px-2 py-1 mb-2">Run</button>
+            <button onclick="runUserCode(true)" class="button-colors rounded-md px-2 py-1 mb-2" title="Save the code for your next visit to this site">Run + Save</button>
+            <button onclick="closeDSP()" class="button-colors rounded-md px-2 py-1 mb-2">Stop</button>
+            <button onclick="shareUserCode()" class="button-colors rounded-md px-2 py-1 mb-2">Share</button>
         </div>
     </div>
 

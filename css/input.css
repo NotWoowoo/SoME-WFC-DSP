@@ -15,8 +15,12 @@ a {
 }
 
 @layer components {
+    .button-colors {
+        @apply bg-slate-200 dark:bg-slate-800 dark:text-white hover:bg-yellow-100 dark:hover:bg-purple-800;
+    }
+    
     .dropdown {
-        @apply my-3 border-b-2 border-slate-300 bg-slate-100 shadow-md p-2 rounded-md mx-auto;
+        @apply my-3 border-b-2 border-slate-300 dark:border-slate-900 bg-slate-100 dark:bg-slate-600 dark:text-white shadow-md p-2 rounded-md mx-auto;
     }
 
     .root-dropdown {
@@ -24,11 +28,11 @@ a {
     }
 
     .child-dropdown {
-        @apply w-full
+        @apply w-full;
     }
 
     .section-title {
-        @apply transition-colors hover:bg-yellow-100 duration-100 px-1 rounded-md border-b-2 border-gray-300;
+        @apply transition-colors hover:bg-yellow-100 dark:hover:bg-purple-800 duration-100 px-1 rounded-md border-b-2 border-gray-300 dark:border-gray-700;
     }
 
     .section-body {

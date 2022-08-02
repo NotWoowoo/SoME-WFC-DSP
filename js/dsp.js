@@ -24,15 +24,15 @@ function setDSP(js){
             { type: 'application/javascript' }
         );
         const url = URL.createObjectURL(blob);
-        const audioContext = new AudioContext();
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
         await audioContext.audioWorklet.addModule(url);
-
         const audioWorkletNode = new AudioWorkletNode(audioContext, 'my-processor');
-
         audioWorkletNode.connect(audioContext.destination);
 
         dspAudioContextAnalyzer = audioContext.createAnalyser()
+        audioWorkletNode.connect(dspAudioContextAnalyzer)
+
         return audioContext
     })(js)
 }

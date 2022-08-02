@@ -205,9 +205,9 @@
         e.isOpen = !e.isOpen
         if (e.classList.contains('dropdown')) {     
             if(e.isOpen) {
-                e.querySelector('.section-title').innerText = e.querySelector('.section-title').innerText.replace('→', '↓')
+                e.querySelector('.section-title').innerHTML = e.querySelector('.section-title').innerHTML.replace('→', '↓')
             } else {
-                e.querySelector('.section-title').innerText = e.querySelector('.section-title').innerText.replace('↓', '→')
+                e.querySelector('.section-title').innerHTML = e.querySelector('.section-title').innerHTML.replace('↓', '→')
             }
         }
     }
@@ -225,12 +225,12 @@
         if (toggleEverythingDropped) {
             Array.from(document.getElementsByClassName("dropdown")).forEach(e => {
                 e.isOpen = true;
-                e.querySelector('.section-title').innerText = e.querySelector('.section-title').innerText.replace('→', '↓')
+                e.querySelector('.section-title').innerHTML = e.querySelector('.section-title').innerHTML.replace('→', '↓')
             })
         } else {
             Array.from(document.getElementsByClassName("dropdown")).forEach(e => {
                 e.isOpen = false;
-                e.querySelector('.section-title').innerText = e.querySelector('.section-title').innerText.replace('↓', '→')
+                e.querySelector('.section-title').innerHTML = e.querySelector('.section-title').innerHTML.replace('↓', '→')
             }) 
         }
         eBtn.innerHTML = toggleEverythingDropped ? 'Hide Everything' : 'Show Everything'

@@ -3,11 +3,7 @@
 const scopeBGColor = "rgb(100,100,100)"
 const scopeLineColor = "rgb(255, 255, 255)"
 
-function clearScopes(oscCanvas, fftCanvas) {
-    const oscCtx = oscCanvas.getContext("2d");
-    const fftCtx = fftCanvas.getContext("2d");
-
-
+function clearScopes(oscCanvas, fftCanvas, oscCtx, fftCtx) {
     oscCtx.fillStyle = scopeBGColor;
     oscCtx.fillRect(0, 0, oscCanvas.width, oscCanvas.height);
 
@@ -15,19 +11,19 @@ function clearScopes(oscCanvas, fftCanvas) {
     fftCtx.fillRect(0, 0, fftCanvas.width, fftCanvas.height);
 }
 
-//TODO: Fix this function
-function draw(audioCtx, oscCanvas, fftCanvas, oscCtx, fftCtx) {
-
-    let analyser = audioCtx.createAnalyser();
-    analyser.fftSize = 2048;
-
-    const bufferLength = analyser.frequencyBinCount
-    const audioData = new Uint8Array(bufferLength)
-    const fftData = new Uint8Array(analyser.fftSize)
-
+function draw() {
     requestAnimationFrame(draw);
+    if(typeof dspAudioContextAnalyzer === 'undefined'){
+        return
+    }
 
-    analyser.getByteTimeDomainData(audioData);
+    dspAudioContextAnalyzer.fftSize = 2048;
+
+    const bufferLength = dspAudioContextAnalyzer.frequencyBinCount
+    const audioData = new Uint8Array(bufferLength)
+    const fftData = new Uint8Array(dspAudioContextAnalyzer.fftSize)
+
+    dspAudioContextAnalyzer.getByteTimeDomainData(audioData);
 
     oscCtx.fillStyle = scopeBGColor;
     oscCtx.fillRect(0, 0, oscCanvas.width, oscCanvas.height);
@@ -58,7 +54,7 @@ function draw(audioCtx, oscCanvas, fftCanvas, oscCtx, fftCtx) {
     oscCtx.stroke();
     
     
-    analyser.getByteFrequencyData(fftData)
+    dspAudioContextAnalyzer.getByteFrequencyData(fftData)
     fftCtx.fillStyle = scopeBGColor;
     fftCtx.fillRect(0, 0, fftCanvas.width, fftCanvas.height);
     
@@ -67,8 +63,8 @@ function draw(audioCtx, oscCanvas, fftCanvas, oscCtx, fftCtx) {
     
     fftCtx.beginPath();
     
-    for (let i = 0; i < analyser.fftSize; i++) {
-        let x = Math.log(999*i/analyser.fftSize+1)/Math.log(1000)*fftCanvas.width
+    for (let i = 0; i < dspAudioContextAnalyzer.fftSize; i++) {
+        let x = Math.log(999*i/dspAudioContextAnalyzer.fftSize+1)/Math.log(1000)*fftCanvas.width
         const v = 1-(fftData[i] / 256.0)+1;
         const y = v * fftCanvas.height / 2;
     
@@ -79,6 +75,7 @@ function draw(audioCtx, oscCanvas, fftCanvas, oscCtx, fftCtx) {
         }
     }
 
-        fftCtx.lineTo(fftCanvas.width, fftCanvas.height / 2);
-        fftCtx.stroke();
+    fftCtx.lineTo(fftCanvas.width, fftCanvas.height / 2);
+    fftCtx.stroke();
 }
+draw()

@@ -143,14 +143,14 @@
     <div class="dropdown root-dropdown" id="playground-dropdown">
         <h3 class="section-title">&#8594; <b>PLAYGROUND</b></h3>
         <div class="section-body">
-            <div class="flex">
+            <div class="flex mt-2">
                 <div id="editor" class="w-1/2 h-80"></div>
                 <div class="w-1/2 h-80">
-                    <div style="height: 10%; background-color: rgb(20, 20, 20);" class="w-full text-center text-white text-xl">
+                    <div style="height: 10%;" class="w-full text-center bg-gray-200 dark:bg-zinc-900 dark:text-white shadow-sm text-xl">
                         Time Domain
                     </div>
                     <canvas style="height: 40%" id="playgroundOsc" class="w-full" width="1560" height="256"></canvas>
-                    <div style="height: 10%; background-color: rgb(20, 20, 20);" class="w-full text-center text-white text-xl">
+                    <div style="height: 10%;" class="w-full text-center bg-gray-200 dark:bg-zinc-900 dark:text-white  text-xl">
                         Frequency Domain
                     </div>
                     <canvas style="height: 40%" id="playgroundFFT" class="w-full" width="1560" height="256"></canvas>
@@ -314,8 +314,17 @@ return v` : localStorage.getItem('code')
                 setCalculatorColorInversion(calculators, false);
                 editor.setTheme(0);
             }
+            // Change scope color (clears canvas but thats not too big of a problem)
+            scopeBGColor = dark ? scopeBGDarkColor : scopeBGLightColor
+            scopeLineColor = dark ? scopeLineDarkColor : scopeLineLightColor
+            clearScopes(oscCanvas, fftCanvas, oscCtx, fftCtx)
         }
+        // Set bg and scope line color initially
         const dt = window.matchMedia("(prefers-color-scheme: dark)");
+        scopeBGColor = dt ? scopeBGDarkColor : scopeBGLightColor
+        scopeLineColor = dt ? scopeLineDarkColor : scopeLineLightColor
+        clearScopes(oscCanvas, fftCanvas, oscCtx, fftCtx)
+        // Add dark mode listener
         dt.addListener(e => setThemeToPrefered(e.matches));
         setThemeToPrefered(window.matchMedia("(prefers-color-scheme: dark)").matches)
     </script>

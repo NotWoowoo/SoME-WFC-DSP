@@ -1,7 +1,12 @@
 'use strict'
 
-const scopeBGColor = "rgb(100,100,100)"
-const scopeLineColor = "rgb(255, 255, 255)"
+const scopeBGDarkColor = "rgb(100,100,100)"
+const scopeBGLightColor = "rgb(240, 240, 240)"
+const scopeLineDarkColor = "rgb(255, 255, 255)"
+const scopeLineLightColor = "rgb(0, 0, 0)"
+
+let scopeBGColor = "rgb(100,100,100)"
+let scopeLineColor = "rgb(255, 255, 255)"
 
 function clearScopes(oscCanvas, fftCanvas, oscCtx, fftCtx) {
     oscCtx.fillStyle = scopeBGColor;

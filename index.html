@@ -205,10 +205,8 @@
         e.isOpen = !e.isOpen
         if (e.classList.contains('dropdown')) {     
             if(e.isOpen) {
-                console.log(e.querySelector('.section-title').innerText)
                 e.querySelector('.section-title').innerText = e.querySelector('.section-title').innerText.replace('→', '↓')
             } else {
-                console.log(e.querySelector('.section-title').innerText)
                 e.querySelector('.section-title').innerText = e.querySelector('.section-title').innerText.replace('↓', '→')
             }
         }

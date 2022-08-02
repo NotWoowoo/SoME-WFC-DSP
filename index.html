@@ -69,7 +69,7 @@
             <div class="section-body">
                 <p>So, what is this signal? A signal is a list of numbers over a fixed rate of time. In the case of audio, the numbers are known as the “samples” and they measure the “amplitude” at each sample's point in time. Typically, amplitude is denoted as a decimal value between -1 and 1. The way I like to think about amplitude is by imagining the cone of a speaker. An amplitude of 1 means the cone is pushed all the way out, and -1 is pulled all the way in. From the rapid movement of the cone's position over time, you get sound. The fixed rate of time is known as the “sample rate”, which is commonly measured in samples per second. The most common sample rate in music is 44.1khz, or 44,100 samples per second.</p>
                 <div class="flex justify-center">
-                    <div id="sampleRateDesmosCalc" style="width: 600px; height: 400px;"></div>
+                    <div id="sampleRateDesmosCalc" class="calculator" style="width: 600px; height: 400px;"></div>
                 </div>
             </div>
         </div>
@@ -80,7 +80,7 @@
                 <p>Computers, and especially older ones, have a hard time accurately storing non-whole numbers. Since a digital audio signal's values are non-whole numbers by nature, that creates a limitation on how precise each value can be. In DSP, this precision is known as the “Bit Depth” of a digital signal. The bit depth is merely the amount of bits required to hold said number (<a href="https://web.stanford.edu/class/cs101/bits-bytes.html">Here</a> is a good resource to understanding bits and binary numbers). Most modern digital audio workstations use a standard bit depth of 32 bits, meaning that there are 2<sup>32</sup> possible values a sample can have between -1 and 1. Converting to lower bit depths forces samples' amplitudes to be quantized (snapped to the closest intermediate value). The effect of this is a noiser audio signal that sounds characteristically "retro" (since old hardware had lower bit depths).</p>
                 <p>[two files to compare of different bit depths maybe]</p>
                 <div class="flex justify-center">
-                    <div id="bitDepthDesmosCalc" style="width: 600px; height: 400px;"></div>
+                    <div id="bitDepthDesmosCalc" class="calculator" style="width: 600px; height: 400px;"></div>
                 </div>
             </div>
         </div>
@@ -101,7 +101,7 @@
                 <p>We can measure the “frequency” by finding how many times the cat makes a full rotation per unit time. The standard unit for frequency is the hertz (hz), or cycles/second. Since the cat is spinning on a 33 rpm (revolutions per minute) record, we can find the revolutions per second by dividing 33 by 60. Therefore, we can find that the cat is spinning at a frequency of 0.55 hz, or roughly one full rotation for every 1.8 seconds.</p>
                 <p>The best equivalent to this spinning cat in the world of DSP is the sine wave. Much like the GIF of the cat, sine waves are periodic, or repeat infinitely in a very predictable manner. Because of this property, we can measure a sine wave's frequency in a similar way. The frequency of a sine wave is 1 divided by the “period” of the wave, or the time it takes to complete one cycle.</p>
                 <div class="flex justify-center">
-                    <div id="frequencyDesmosCalc" style="width: 600px; height: 400px;"></div>
+                    <div id="frequencyDesmosCalc" class="calculator" style="width: 600px; height: 400px;"></div>
                 </div>
             </div>
         </div>
@@ -245,6 +245,18 @@
         e.isOpen = true;
         toggleDropdown(e)
     })
+    </script>
+
+    <!--Dark Mode Listener Script-->
+    <script>
+        const dt = window.matchMedia("(prefers-color-scheme: dark)");
+        dt.addListener(e => {
+            if (e.matches) {
+                setCalculatorColorInversion(calculators, true)
+            } else {
+                setCalculatorColorInversion(calculators, false)
+            }
+        });
     </script>
 
     <!-- Manage shared or saved code BEFORE initializing the editor(b/c the editor takes a second to load) -->

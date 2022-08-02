@@ -7,7 +7,9 @@ function initVisualizer(e) {
         expressions: false,
         settingsMenu: false,
         zoomButtons: false,
-        lockViewport: true
+        lockViewport: true,
+        // Dark Mode inverts colors
+        invertedColors: window.matchMedia("(prefers-color-scheme: dark)").matches
     });
     var s = c.getState();
     s.graph.showGrid = false;
@@ -17,9 +19,20 @@ function initVisualizer(e) {
     return c
 }
 
+function setCalculatorColorInversion(calculators, invert) {
+    Array.from(calculators).forEach(c => {
+        c.updateSettings({
+            invertedColors: invert
+        })
+    })
+}
+
+// For dark mode to work properly, every calculator needs to be pushed to this list
+let calculators = []
+
 // SAMPLE RATE VISUALIZATION
-var sampleRateDesmosCalcElement = document.getElementById('sampleRateDesmosCalc');
-var sampleRateDesmosCalculator = initVisualizer(sampleRateDesmosCalcElement)
+var sampleRateDesmosCalculator = initVisualizer(document.getElementById('sampleRateDesmosCalc'))
+calculators.push(sampleRateDesmosCalculator)
 sampleRateDesmosCalculator.setExpressions([
 {
     id: 'list',
@@ -69,8 +82,9 @@ sampleRateDesmosCalculator.setExpressions([
 ]);
 
 // BIT DEPTH VISUALIZATION
-initVisualizer(document.getElementById('bitDepthDesmosCalc'))
-.setExpressions([
+var bitDepthDesmosCalculator = initVisualizer(document.getElementById('bitDepthDesmosCalc'))
+calculators.push(bitDepthDesmosCalculator)
+bitDepthDesmosCalculator.setExpressions([
 {
     id: 'depthval',
     latex: 'b=8',
@@ -113,8 +127,8 @@ initVisualizer(document.getElementById('bitDepthDesmosCalc'))
 ]);
 
 // FREQUENCY VISUALIZATION
-var frequencyDesmosCalcElement = document.getElementById('frequencyDesmosCalc');
-var frequencyDesmosCalculator = initVisualizer(frequencyDesmosCalcElement)
+var frequencyDesmosCalculator = initVisualizer(document.getElementById('frequencyDesmosCalc'))
+calculators.push(frequencyDesmosCalculator)
 frequencyDesmosCalculator.setExpressions([
 {
     id: 'freqval',

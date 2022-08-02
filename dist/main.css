@@ -786,11 +786,6 @@ a:hover {
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
   }
-
-  .dark\:hover\:bg-purple-800:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(107 33 168 / var(--tw-bg-opacity));
-  }
 }
 
 

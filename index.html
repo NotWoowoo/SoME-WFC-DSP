@@ -304,11 +304,13 @@ return v` : localStorage.getItem('code')
 
     <!--Dark Mode Listener Script-->
     <script>
-        function setThemeToPrefered(matches){
-            if (matches) {
+        function setThemeToPrefered(dark){
+            if (dark) {
+                document.documentElement.classList.add('dark')
                 setCalculatorColorInversion(calculators, true);
                 editor.setTheme("ace/theme/twilight");
             } else {
+                document.documentElement.classList.remove('dark')
                 setCalculatorColorInversion(calculators, false);
                 editor.setTheme(0);
             }

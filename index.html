@@ -131,8 +131,6 @@
         </div>
     </div>
 
-
-
     <p id="shared-msg" align=center style="display:none;"><b>Playground's Code Was Supplied By Shared Link!</b></p>
 
     <!--CUSTOM EDITOR DROPDOWN-->
@@ -261,13 +259,14 @@ for(let i = 1; i < h; i+=1)
 return v` : localStorage.getItem('code')
     </script>
 
+    <!-- desmos stuff for some graphics -->
     <script src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
     <script src="js/calculator.js"></script>
 
+    <!--Editor stuff-->
     <script src="./js/ace/src-min/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/ace/src-min/theme-twilight.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/ace/src-min/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
-    <!--Editor script-->
     <script>
         var editor = ace.edit("editor");
         editor.setTheme("ace/theme/twilight");
@@ -277,7 +276,9 @@ return v` : localStorage.getItem('code')
 
         const fftCanvas = document.getElementById("playgroundFFT")
         const oscCanvas = document.getElementById("playgroundOsc")
-        clearScopes(oscCanvas, fftCanvas)
+        const oscCtx = oscCanvas.getContext("2d");
+        const fftCtx = fftCanvas.getContext("2d");
+        clearScopes(oscCanvas, fftCanvas, oscCtx, fftCtx)
 
         function runUserCode(save){
             setDSPsimple(editor.getValue())

@@ -39,6 +39,12 @@
                 <p>To get the most out of this site, it's recommended to start by reading everything (with "Expand Everything" if you prefer). Once you have gone through the information once, specific information is easily accessable by navigating the dropdowns.</p>
             </div>
         </div>
+        <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; Prerequisite knowledge</h3>
+            <div class="section-body">
+                <p>While we do aim to make this course beginner friendly, there are a couple things that we recommend that you learn before starting this course. The programming sections use Javascript as the language, so we recommend learning the fundamentals of programming and the Javascript language before trying the programming sections. As for the math in this course, it should be accessible to anyone who has taken a pre-calculus course or higher.</p>
+            </div>
+        </div>
     </div>
 
     <!--SECTION 1 DROPDOWN-->
@@ -56,11 +62,11 @@
         <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; Analog vs Digital</h3>
             <div class="section-body">
-                <p>What even is analog? Why does that older fellow in the music store keep insisting that his dusty old analog synthesizers sound so much warmer and natural than the modern digital trash? Does he even know what analog means? Since the D in DSP stands for “digital”, it only makes sense to start by explaining what that means. Before computers became the standard for audio processing, the main option for synthesizing and processing audio were dedicated circuits. The sound wave in these circuits is transferred through fluctuations in voltage over time. What makes this method of sound synthesis and processing analog is the continuity of the signal. In other words, if you attached a polygraph machine to the source of an analog signal, and traced your finger across the resulting curve, you would never have to pick up your finger. To answer the question about the older fellow in the music store, there is some truth to his claim that analog synths can sound more natural. Electronic components like resistors and capacitors are prone to minor fluctuations in their current, voltage, and resistance, which results in a less “perfect” signal.</p>
+                <p>What even is analog? Why does that older fellow in the music store keep insisting that his dusty old analog synthesizers sound so much warmer and natural than the modern digital trash? Does he even know what the word “analog” means? Since the D in DSP stands for “digital,” it only makes sense to start by explaining the difference. Before computers became the standard for audio processing, the main option for synthesizing and processing audio came in the form of dedicated electronic circuits. The sound waves in these circuits were represented through fluctuations of voltage over time. In other words, the fluctuations in voltage were an <i>analog</i> of the actual signal it represents (and that's why it's called "analog." The older meaning of the word "analog" is a noun and synonymous with words like "comparable" or "representation")! Since analog signals are represented by changes in energy, and physical levels of energy can't jump from one value to another in 0 units of time, the resulting signal is continuous. In other words, if you attached a polygraph machine to the source of an analog signal, and traced your finger across the resulting curve, you would never have to pick up your finger; the polygraph's position won't teleport from one position to another. To answer the question about the older fellow in the music store, there is some truth to his claim that analog synths can sound more natural. Electronic components like resistors and capacitors are prone to minor fluctuations in their current, voltage, and resistance. The result of this interference is noise which gives analog signals their characteristic warmth.</p>
                 <div class="flex justify-center">
                     <img src="img/polygraph.jpeg">
                 </div>
-                <p>In comparison, digital signals are discrete. Rather than a continuous curve, the polygraph would show a set of evenly spaced points for a digital sound source. This method works well for computers as you can store a digital signal pretty efficiently on a hard drive, while you would need an infinite amount of storage space to store an analog one. Since our application is audio programming, we will only focus on digital signals from now on.</p>
+                <p>In comparison, digital signals are discrete. Rather than a continuous curve, the polygraph would show a set of evenly spaced points for a digital sound source. This method works well for computers as you can store a digital signal pretty efficiently on a hard drive, while you would need an infinite amount of storage space to store an analog one. Since computers store signals using lists of numbers that represent sound rather than the continuous voltage signals in analog circuits, digital signals don't suffer from the same noise interference that analog signals do. Since our application is audio programming, we will only focus on digital signals from now on.</p>
             </div>
         </div>
 
@@ -119,7 +125,15 @@
         <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; The Vocabulary of Frequency</h3>
             <div class="section-body">
-                <p></p>
+                <p>As we briefly touched on in the previous section, a lot of language surrounding frequency and the frequency domain is abstracted from the actual concepts. The ideas of harmonics, pitch, and timbre are intimately tied with the idea of frequency, even if the hobbyist musician doesn't necessarily think of them in this way. For example, if you ever hear a musician talking about “harmonics”, they are merely talking about what you know as the frequency components of a sound. For any given sound, there is a “fundamental” harmonic/frequency, which is the lowest frequency of a sound, and then its “overtones”, or subsequent harmonics above the fundamental. The “pitch” of a sound is determined by the frequency of the fundamental, while the timbre (a fancy french word for the <i>sound</i> of a sound) is determined by the overtones of a sound. In the example below, you can add overtones to a fundamental sine wave and watch the signal morph into what is called a “square wave”, which is a signal that regularly alternates between a positive and negative value, such that the signal is positive 50% of the time and negative the other 50% of the time.</p>
+                <div class="flex justify-center">
+                    <div id="squareDesmosCalc" class="calculator" style="width: 600px; height: 400px;"></div>
+                </div>
+                <p>Below is a similar example, but this time, the harmonics added turn the fundamental sine wave into a “sawtooth wave”, which is given its name by how it looks like the teeth of a saw blade.</p>
+                <div class="flex justify-center">
+                    <div id="sawtoothDesmosCalc" class="calculator" style="width: 600px; height: 400px;"></div>
+                </div>
+                <p>So what makes these signals look different? In the case of the sawtooth wave, the overtones are added at every integer multiple of the fundamental frequency, at an amplitude of 1 divided by the number of the harmonic (the first overtone will be half as strong as the fundamental, the second will be one third, and so on). For the square wave, only the harmonics with a frequency with an odd multiple of the fundamental are added. For more complicated sounds, such as guitars and pianos, these harmonics will be much less orderly than basic shapes such as square and sawtooth waves, and are subject to change over time. For example, the start of a piano has a lot of high frequency content as the mallet hits the string, but over time, those higher harmonics are dampened out.</p>
             </div>
         </div>
 

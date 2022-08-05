@@ -152,3 +152,61 @@ frequencyDesmosCalculator.setExpressions([
     color: Desmos.Colors.BLUE
 }
 ]);
+
+// SQUARE WAVE VISUALIZATION
+var squareDesmosCalculator = initVisualizer(document.getElementById('squareDesmosCalc'))
+calculators.push(squareDesmosCalculator)
+squareDesmosCalculator.setExpressions([
+{
+    id: 'harmval',
+    latex: 'k=1',
+    sliderBounds: { min: 1, max: 20, step: 1 }
+},
+{
+    id: 'harmslider',
+    latex: '(0.1k-1,3)',
+    color: Desmos.Colors.BLACK,
+    label: "Harmonics: ${k}",
+    showLabel: true,
+    labelOrientation: Desmos.LabelOrientations.ABOVE
+},
+{
+    id: 'harmsliderbar',
+    latex: '(-0.9+1.9t,3)',
+    color: Desmos.Colors.BLACK
+},
+{
+    id: 'wave',
+    latex: '(4/\\pi)\\sum_{n=1}^{k}\\frac{\\sin(\\pi(2n-1)x)}{2n-1}',
+    color: Desmos.Colors.BLUE
+}
+]);
+
+// SAWTOOTH WAVE VISUALIZATION
+var sawtoothDesmosCalculator = initVisualizer(document.getElementById('sawtoothDesmosCalc'))
+calculators.push(sawtoothDesmosCalculator)
+sawtoothDesmosCalculator.setExpressions([
+{
+    id: 'harmval',
+    latex: 'k=1',
+    sliderBounds: { min: 1, max: 20, step: 1 }
+},
+{
+    id: 'harmslider',
+    latex: '(0.1k-1,3)',
+    color: Desmos.Colors.BLACK,
+    label: "Harmonics: ${k}",
+    showLabel: true,
+    labelOrientation: Desmos.LabelOrientations.ABOVE
+},
+{
+    id: 'harmsliderbar',
+    latex: '(-0.9+1.9t,3)',
+    color: Desmos.Colors.BLACK
+},
+{
+    id: 'wave',
+    latex: "\\sum_{n=1}^{k}(1/n)\\sin(n\\pi x)",
+    color: Desmos.Colors.BLUE
+}
+]);

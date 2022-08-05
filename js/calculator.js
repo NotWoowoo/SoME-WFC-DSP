@@ -153,6 +153,73 @@ frequencyDesmosCalculator.setExpressions([
 }
 ]);
 
+// PHASE VISUALIZATION
+var phaseDesmosCalculator = initVisualizer(document.getElementById('phaseDesmosCalc'))
+calculators.push(phaseDesmosCalculator)
+phaseDesmosCalculator.setExpressions([
+{
+    id: 'wave1',
+    latex: '\\left\\{-4<x<-2:0.5\\sin\\left(\\pi\\left(x+\\frac{p}{180}\\right)\\right)+3\\right\\}',
+    color: Desmos.Colors.RED,
+},
+{
+    id: 'phase1val',
+    latex: 'p=0',
+    sliderBounds: { min: 0, max: 360 }
+},
+{
+    id: 'phase1slider',
+    latex: '((\\pi^2/1800)p-4,5)',
+    color: Desmos.Colors.BLACK,
+    label: "Phase: ${p} deg",
+    showLabel: true,
+    labelOrientation: Desmos.LabelOrientations.ABOVE
+},
+{
+    id: 'phase1sliderbar',
+    latex: '(-4+1.95t,5)',
+    color: Desmos.Colors.BLACK
+},
+{
+    id: 'wave2',
+    latex: '\\left\\{2<x<4:0.5\\sin\\left(\\pi\\left(x+\\frac{q}{180}\\right)\\right)+3\\right\\}',
+    color: Desmos.Colors.BLUE,
+},
+{
+    id: 'phase2val',
+    latex: 'q=0',
+    sliderBounds: { min: 0, max: 360 }
+},
+{
+    id: 'phase2slider',
+    latex: '((\\pi^2/1800)q+2,5)',
+    color: Desmos.Colors.BLACK,
+    label: "Phase: ${q} deg",
+    showLabel: true,
+    labelOrientation: Desmos.LabelOrientations.ABOVE
+},
+{
+    id: 'phase2sliderbar',
+    latex: '(2+1.95t,5)',
+    color: Desmos.Colors.BLACK
+},
+{
+    id: 'wavesum',
+    latex: '0.5\\left(\\sin\\left(\\pi\\left(x+\\frac{p}{180}\\right)\\right)+\\sin\\left(\\pi\\left(x+\\frac{q}{180}\\right)\\right)\\right)',
+    color: Desmos.Colors.PURPLE
+},
+{
+    id: 'plusVerticalLine',
+    latex: 'x=0\\left\\{2.75<y<3.25\\right\\}',
+    color: Desmos.Colors.BLACK
+},
+{
+    id: 'plusHorizontalLine',
+    latex: 'y=3\\left\\{-0.25<x<0.25\\right\\}',
+    color: Desmos.Colors.BLACK
+},
+]);
+
 // SQUARE WAVE VISUALIZATION
 var squareDesmosCalculator = initVisualizer(document.getElementById('squareDesmosCalc'))
 calculators.push(squareDesmosCalculator)

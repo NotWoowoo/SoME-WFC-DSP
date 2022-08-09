@@ -195,6 +195,8 @@
             <button onclick="closeDSP()" class="button-colors rounded-md px-2 py-1 mb-2">Stop</button>
             <button onclick="shareUserCode()" class="button-colors rounded-md px-2 py-1 mb-2">Share</button>
             <p id="editor-err" class="text-red-700 dark:text-red-300"></p>
+            <p>Volume:</p>
+            <input oninput="dspSetVolume(this.value/100)" type="range" min="0" max="100" value="100">
             <div class="dropdown child-dropdown">
                 <h3 class="section-title">&#8594; How This Works</h3>
                 <p>The code in this editor is executed in a function that is called for every processed sample; you just have to return a number for each sample to process.</p>

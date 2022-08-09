@@ -3,6 +3,7 @@
 
 var dspAudioContext //starts undefined
 var dspAudioContextAnalyzer //starts undefined
+var dspSetVolume = ()=>{}
 
 //Stop all audio processing
 function closeDSP(){
@@ -28,10 +29,15 @@ function setDSP(js){
 
         await audioContext.audioWorklet.addModule(url);
         const audioWorkletNode = new AudioWorkletNode(audioContext, 'my-processor');
-        audioWorkletNode.connect(audioContext.destination);
 
         dspAudioContextAnalyzer = audioContext.createAnalyser()
         audioWorkletNode.connect(dspAudioContextAnalyzer)
+
+        let gainNode = audioContext.createGain()
+        audioWorkletNode.connect(gainNode)
+        gainNode.connect(audioContext.destination)
+
+        dspSetVolume = v => gainNode.gain.value = v
 
         document.getElementById('editor-err').innerHTML = ''
         audioWorkletNode.port.onmessage = e => document.getElementById('editor-err').innerHTML = '<b>ERROR: </b>' + e.data

@@ -198,10 +198,10 @@
             <button onclick="shareUserCode()" class="button-colors rounded-md px-2 py-1 mb-2">Share</button>
             <p id="editor-err" class="text-red-700 dark:text-red-300"></p>
             <p>Volume:</p>
-            <input oninput="dspSetVolume(this.value/100)" type="range" min="0" max="100" value="100">
+            <input id="vol-slider" oninput="dspSetVolume(this.value/100)" type="range" min="0" max="100" value="100">
             <div class="dropdown child-dropdown">
                 <h3 class="section-title">&#8594; How This Works</h3>
-                <p>The code in this editor is executed in a function that is called for every processed sample; you just have to return a number for each sample to process.</p>
+                <p>The code in this editor is executed in a function that is called for every processed sample; you just have to return a number for each sample.</p>
                 <br />
                 <h3><b>Things You Can Use (on top of things already supplied by Javascript):</b></h3>
                 <br />
@@ -218,7 +218,7 @@
                     <li><b>Functions</b></li>
                     <ul>
                         <li>sin, cos, tan</li>
-                        <li>min, max</li>
+                        <li>min, max, floor</li>
                         <li>globalSet(variable, value) <i>(Initialize a persistant variable with a value. Variable name has to be passed in as a string!)</i></li>
                         <li>lerp(a, b, t) <i>(Linear interpolation between a and b with ratio t between 0 and 1)</i></li>
                         <li>clamp(value, low, high) <i>(return value or the lower/upper limit if value is outside of the bounds)</i></li>

@@ -38,6 +38,7 @@ function setDSP(js){
         gainNode.connect(audioContext.destination)
 
         dspSetVolume = v => gainNode.gain.value = v
+        dspSetVolume(document.getElementById('vol-slider').value/100)
 
         document.getElementById('editor-err').innerHTML = ''
         audioWorkletNode.port.onmessage = e => document.getElementById('editor-err').innerHTML = '<b>ERROR: </b>' + e.data
@@ -62,7 +63,8 @@ function setDSPsimple(js){
     let min = Math.min
     let max = Math.max
     let clamp = (v, lo, hi) => min(hi, max(lo, v))
-    let rand = () => 2*Math.random()+1
+    let rand = () => 2*Math.random()-1
+    let floor = Math.floor
     class MyProcessor extends AudioWorkletProcessor {
         process(_, outputs) {
             if(!_stillGood) return false

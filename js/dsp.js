@@ -57,7 +57,12 @@ function setDSPsimple(js){
     let PI = Math.PI
     let _stillGood = true
     let global = {}
-    let globalInit = (v, n) => {if(!(v in global)) global[v] = n}
+    let globalSet = (v, n) => {if(!(v in global)) global[v] = n}
+    let lerp = (a,b,t) => a + t*(b-a)
+    let min = Math.min
+    let max = Math.max
+    let clamp = (v, lo, hi) => min(hi, max(lo, v))
+    let rand = () => 2*Math.random()+1
     class MyProcessor extends AudioWorkletProcessor {
         process(_, outputs) {
             if(!_stillGood) return false

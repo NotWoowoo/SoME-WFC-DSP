@@ -14,6 +14,8 @@
     <title>Audio Programming Tutorial</title>
 </head>
 <body class="dark:bg-black">
+    <button id="darkmode-btn" onclick="invertTheme()" class="button-colors rounded-md px-2 py-1" style="position:absolute;"></button>
+
     <div class="bg-slate-200 dark:bg-slate-800 dark:text-white py-2 shadow-sm"> 
         <h1 class="text-center text-3xl">DSP For Audio Programming</h1>
         <h3 class="text-center text-xl">An Interactive Guide by Sean McGoff and not_woowoo</h3>
@@ -368,7 +370,8 @@ return v` : localStorage.getItem('code')
 
     <!--Dark Mode Listener Script-->
     <script>
-        function setThemeToPrefered(dark){
+        function setThemeToPrefered(){
+            let dark = localStorage.useDarkMode === 'true'
             if (dark) {
                 document.documentElement.classList.add('dark')
                 setCalculatorColorInversion(calculators, true);
@@ -382,6 +385,8 @@ return v` : localStorage.getItem('code')
             scopeBGColor = dark ? scopeBGDarkColor : scopeBGLightColor
             scopeLineColor = dark ? scopeLineDarkColor : scopeLineLightColor
             clearScopes(oscCanvas, fftCanvas, oscCtx, fftCtx)
+
+            document.getElementById('darkmode-btn').innerHTML = dark ? 'Use Light Mode' : 'Use Dark Mode'
         }
         // Set bg and scope line color initially
         const dt = window.matchMedia("(prefers-color-scheme: dark)");
@@ -390,7 +395,13 @@ return v` : localStorage.getItem('code')
         clearScopes(oscCanvas, fftCanvas, oscCtx, fftCtx)
         // Add dark mode listener
         dt.addListener(e => setThemeToPrefered(e.matches));
-        setThemeToPrefered(window.matchMedia("(prefers-color-scheme: dark)").matches)
+        if(!('useDarkMode' in localStorage)) localStorage.useDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+        setThemeToPrefered()
+
+        function invertTheme(){
+            localStorage.useDarkMode = localStorage.useDarkMode === 'true' ? false : true
+            setThemeToPrefered()
+        }
     </script>
 </body>
 </html>

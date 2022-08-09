@@ -34,7 +34,7 @@ function setDSP(js){
         audioWorkletNode.connect(dspAudioContextAnalyzer)
 
         document.getElementById('editor-err').innerHTML = ''
-        audioWorkletNode.port.onmessage = e => document.getElementById('editor-err').innerHTML = '<div class="text-red-700 dark:text-red-300"><b>ERROR: </b>' + e.data + '</div>'
+        audioWorkletNode.port.onmessage = e => document.getElementById('editor-err').innerHTML = '<b>ERROR: </b>' + e.data
 
         return audioContext
     })(js)

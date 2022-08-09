@@ -317,7 +317,7 @@ let f = 110 //frequency
 let v = 0 //output sample
 let h = 50 //number of harmonics
 for(let i = 1; i < h; i+=1)
-    v += .15*Math.sin(2*Math.PI*i/50.0 + time)*Math.sin(time*Math.PI*f*i)/i
+    v += .15*sin(2*PI*i/50.0 + time)*sin(time*PI*f*i)/i
 return v` : localStorage.getItem('code')
     </script>
 

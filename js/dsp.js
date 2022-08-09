@@ -33,6 +33,9 @@ function setDSP(js){
         dspAudioContextAnalyzer = audioContext.createAnalyser()
         audioWorkletNode.connect(dspAudioContextAnalyzer)
 
+        document.getElementById('editor-err').innerHTML = ''
+        audioWorkletNode.port.onmessage = e => document.getElementById('editor-err').innerHTML = '<div style="color:red;"><b>ERROR: </b>' + e.data + '</div>'
+
         return audioContext
     })(js)
 }
@@ -42,21 +45,30 @@ function setDSPsimple(js){
     setDSP(`
     let time = 0
     let sample = 0
+    let sin = Math.sin
+    let cos = Math.cos
+    let tan = Math.tan
+    let PI = Math.PI
+    let _stillGood = true
     class MyProcessor extends AudioWorkletProcessor {
         process(_, outputs) {
-            for (const output of outputs) {
-                for (const channelData of output) {
-                    for (let sample_index = 0; sample_index < channelData.length; sample_index += 1) {
-                        channelData[sample_index] = (()=>{`+js+`})()
-                        time += 1/sampleRate
-                        sample+=1
+            if(!_stillGood) return false
+            try{
+                for (const output of outputs) {
+                    for (const channelData of output) {
+                        for (let sample_index = 0; sample_index < channelData.length; sample_index += 1) {
+                            channelData[sample_index] = (()=>{`+js+`})()
+                            time += 1/sampleRate
+                            sample+=1
+                        }
                     }
                 }
+            }catch(err){
+                _stillGood = false
+                this.port.postMessage(err.message)
             }
             return true
         }
     }
     `)
 }
-
-//if(sample%(sampleRate*2) == sampleRate ) console.log(\``+js+`\n\`, sample, time)

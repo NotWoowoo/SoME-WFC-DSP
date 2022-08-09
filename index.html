@@ -194,6 +194,28 @@
             <button onclick="runUserCode(true)" class="button-colors rounded-md px-2 py-1 mb-2" title="Save the code for your next visit to this site">Run + Save</button>
             <button onclick="closeDSP()" class="button-colors rounded-md px-2 py-1 mb-2">Stop</button>
             <button onclick="shareUserCode()" class="button-colors rounded-md px-2 py-1 mb-2">Share</button>
+            <p id="editor-err"></p>
+            <div class="dropdown child-dropdown">
+                <h3 class="section-title">&#8594; How This Works</h3>
+                <p>The code in this editor is executed in a function that is called for every processed sample; you just have to return a number for each sample to process.</p>
+                <br />
+                <h3><b>Things You Can Use (on top of things already supplied by Javascript):</b></h3>
+                <br />
+                <ul>
+                    <li><b>Variables</b></li>
+                    <ul>
+                        <li>time <i>(seconds)</i></li>
+                        <li>sampleRate <i>(samples per second)</i></li>
+                        <li>sample <i>(number of samples since beginning)</i></li>
+                        <li>PI</li>
+                    </ul>
+                    <br />
+                    <li><b>Functions</b></li>
+                    <ul>
+                        <li>sin, cos, tan</li>
+                    </ul>
+                </ul>
+            </div>
         </div>
     </div>
 

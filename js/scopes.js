@@ -43,7 +43,7 @@ function draw() {
 
     for (let i = 0; i < bufferLength; i++) {
 
-        let v = audioData[i] / 128.0;
+        let v = (256-audioData[i]) / 128.0;
         let y = v * oscCanvas.height / 2;
 
         if (i === 0) {

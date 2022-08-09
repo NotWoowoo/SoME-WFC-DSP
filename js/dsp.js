@@ -50,6 +50,8 @@ function setDSPsimple(js){
     let tan = Math.tan
     let PI = Math.PI
     let _stillGood = true
+    let global = {}
+    let globalInit = (v, n) => {if(!(v in global)) global[v] = n}
     class MyProcessor extends AudioWorkletProcessor {
         process(_, outputs) {
             if(!_stillGood) return false

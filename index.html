@@ -147,10 +147,19 @@
         <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; Everything is Sine Waves!</h3>
             <div class="section-body">
-                <p>For those who have seen less idealistic audio signals, you'll know that you'll very rarely have something as clean as a sine wave. For these cases, there's no way to measure frequency in the same way we did the perfect sine wave. The key insight comes when we start thinking of signals of having <i>multiple</i> frequencies instead. This idea comes from a subject in math known as Fourier Analysis, named after French mathematician and physicist Joseph Fourier. What Fourier tells us is that any signal (analog or digital) can be decomposed into a series (sum) of sinusoidal waves of ascending frequency. The first term will be the “DC component”, or a flat line that represents the average amplitude of the signal, and each succeeding term is a sinusoidal wave of a certain amplitude and phase (starting position in the cycle). In some cases, this sum can be infinite, but for digital signals, there is a finite limit (this idea will be explored when we talk about the Nyquist Sampling Theorem). What the frequency domain shows us is the amplitude of a signal as a function of the corresponding sinusoidal component at each frequency. Since saying “the corresponding sinusoidal components at each frequency” is a mouthful, the more common term is “the frequencies of the signal”. If you got all of that, great job! Take a breath knowing that you now understand the (rather dated) meme below.</p>
+                <p>While a sine wave's signal can be described as having a single frequency, most audio signals are not a simple sine wave. For instance, take a look this signal which is the sum of <i>two</i> sine waves where the second has a higher frequency and lower amplitude than the first:</p>
+                <br/>
                 <div class="flex justify-center">
-                    <img src="img/fourier-meme.png">
+                    <img width=400 src="img/sine-sum.png">
                 </div>
+                <br/>
+                <p>Instead of assigning this complicated signal a single frequency value, it can be thought of as having two coexisting frequencies. If you graph this signal in the frequency domain instead of the time domain, you can see two distinct peaks which represent the amplitude of each sine wave in the original signal.</p>
+                <br/>
+                <div class="flex justify-center">
+                    <img width=400 src="img/sine-sum-fourier.png">
+                </div>
+                <br/>
+                <p>The horizontal position of each peak represents the frequency of each sine wave (higher frequencies are farther right), and the height of each peak represents the amplitude of each sine wave (amplitude in this case is the value which each sine function is multiplied by). The various smaller peaks are just debris from the method used to convert this signal from the time domain to the frequency domain: <b>the Fourier Transform!</b> In the 1800s, French mathematician Joseph Fourier discovered/invented the idea that ANY signal can be decomposed into a sum of many (or few) sine waves with different amplitudes, frequencies, and phases. Every sound can be thought of as a sum of many different sine waves! </p>
             </div>
         </div>
 

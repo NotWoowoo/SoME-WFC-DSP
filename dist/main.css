@@ -686,16 +686,16 @@ video {
   height: 20rem;
 }
 
+.w-1\/6 {
+  width: 16.666667%;
+}
+
 .w-1\/2 {
   width: 50%;
 }
 
 .w-full {
   width: 100%;
-}
-
-.w-1\/6 {
-  width: 16.666667%;
 }
 
 .justify-center {

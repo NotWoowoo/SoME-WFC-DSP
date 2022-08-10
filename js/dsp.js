@@ -55,6 +55,7 @@ function setDSPsimple(js){
     let sin = Math.sin
     let cos = Math.cos
     let tan = Math.tan
+    let pow = Math.pow
     let PI = Math.PI
     let _stillGood = true
     let global = {}
@@ -65,6 +66,7 @@ function setDSPsimple(js){
     let clamp = (v, lo, hi) => min(hi, max(lo, v))
     let rand = () => 2*Math.random()-1
     let floor = Math.floor
+    let ceil = Math.ceil
     class MyProcessor extends AudioWorkletProcessor {
         process(_, outputs) {
             if(!_stillGood) return false

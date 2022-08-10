@@ -93,6 +93,15 @@
                 </div>
             </div>
         </div>
+
+        <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; <i>Try it Yourself</i>: Your First Waveform</h3>
+            <div class="section-body">
+                <p>We've been doing an awful lot of talking, so it's only fair now to let you do some programming. In addition to the lessons, we have included a playground where you can test out your audio programming skills, make cool sounds, and share your creations. This playground uses a slightly modified version of javascript, where the editor exists inside a function “processAudio” that expects a sample to be returned at the end of your code. Also, we have included aliases for multiple useful functions such as shortening Math.sin() to just sin().</p>
+                <p>Without further ado, here's your first exercise. You might have noticed that for the examples, we have been using a sine wave. The filled in code produces a sine wave, but a very slow one. You first want to speed that wave up so that it's audible (You can peek ahead to the frequency section if you get stuck). Next, try adjusting the amplitude of the wave (without adjusting the volume slider). Finally, try experimenting with adding sine waves of different speeds and amplitudes together. You can start the exercise <a href=".?code=PTAEGEAsEMBtYKYDsDmDQEYBcoDKAHBBAE1ABdIBLAZ1GsqXQHdoA3dAV3zoHtQBPHh1ABjaElCQE0AE6hKZAIQAoEBBjxkaUACYcAFQ4yJFdPUagW7UMR5MJACiYLIQsuSEiqqclNCseWA4AWzNYSmIEGQBKVTAoOERUdABmHABRAA9CGUpQpHdnClBgjlgySnxEOgZmNgRaaGJI0jIeNFMZZRkEMiMJcwcK0OigA%3D%3D">here</a>.</p>
+            </div>
+        </div>
+
     </div>
 
 
@@ -171,8 +180,13 @@
         </div>
 
         <div class="dropdown child-dropdown">
-            <h3 class="section-title">&#8594; <i>Try it Yourself:</i> sine waves and other waves.</h3>
-            <p>wip</p>
+            <h3 class="section-title">&#8594; <i>Try it Yourself<i>: Basic Shapes</h3>
+            <p>Now that we understand how frequencies work, we can now make basic shapes other than sine waves using a process known as <i>Additive Synthesis</i>. Additive Synthesis is merely the process of creating sounds using the sum of sine waves at different frequencies, phases, and amplitudes. In the starter code, we are using a for loop to create a sawtooth wave, where each harmonic is at an amplitude of 1 divided by the harmonic number. Your first challenge is to make this code produce a square wave. If you remember from the “Vocabulary of Frequency” section, a square wave contains only odd numbered harmonics. If you feel good about that, try producing a triangle wave. Similarly to square waves, triangle waves only contain odd harmonics. What differs is that the phase of each harmonic is a 180 degree turn from the previous harmonic (which is equivalent to multiplying the wave by -1). Additionally, the amplitude of each harmonic dampens by 1 over the harmonic number squared (or the harmonic number to the -2nd power). In this exercise, we have also included possible solutions for each challenge with comments explaining how they work.</p>
+            <ul>
+                <li><a href=".?code=PTDCAsEMBtoUwHYHM4AICMAuVBZSBrNAF3AEsBnVAYwHsATNABwCd6BXKtSVcgRzcjM0Ad0gA3OACgQAIRoI25bHkKoSFavSas6HLmualIyeKlETJ8IqgBmqALyoALE4AMqEDaH9EVAJ6WcNYIDqjuIDRsRIxRPJAAtozwgdbgoQCs4cAK8QBGcMyoNHZQzPHypFTkkjY0zAAUVqikoegA3M2oADyo4B2kANT26ACUqADekqjTqCFDqPXoHs1jAFQ8pAj1AEyo6wAKAJJ7tict60Sk8XBjkgC%2BkpJCRGzMIa4AdOknCEA%3D%3D%3D">Starter Code</a></li>
+                <li><a href=".?code=PTAEGEAsEMBtYKYDsDmDQEZQGUD2sBXAFwEtckAoRI0AM1AF5QAWZgBioRqUdA%2BtCReAVg4hQJUElwB3UClwIAznQBOuALaYANKADMu4buhIAJqCW5Q5AHR2KtXKoAUAyUwwBuCaAA8g7xIAagYAJgBKUABvClA4qVAQ0GcsMBJIgCoLEiRnUNAsgAUASQK6Msks0g0ESIoAXwoKVS4CVR42G2EypCA%3D">Challenge 1 Solution</a></li>
+                <li><a href=".?code=PTAECEHsDsFcGdQGEAWBDANhgptA5tqAMqQawAuAljAFA7mgBmoAvKACzsAMd2D0rUD3qgUggKw9GkAE4AKEZUEBGANyglAHlHrKAahbKAlKADeNUJdAhQAFRSVEAd0pZQAI0LkUhRjOwAjrC4AMYAnqAAtrAYVAAOGJTYMkyyoNhoIWLoMpEwlCEWViIoAHKwkYJyAEygAFQaJgC0oMpFljZxkE5yTcoANI1MiXGI3oRx6PCETg44oF09ZRWD1SYAJmiRcbhjPqBbCZTksOvY7aACBgvdvQNDDYtyy5GDTWv1oPCU0DWfAAoASU%2BzAaL0%2BVEi2BMNAAvjQaP4TjIBFwAHTiT7QIA%3D%3D%3D">Bonus Challenge Solution</a></li>
+            </ul>
         </div>
     </div>
 
@@ -214,15 +228,17 @@
                         <li>time <i>(seconds)</i></li>
                         <li>sampleRate <i>(samples per second)</i></li>
                         <li>sample <i>(number of samples since beginning)</i></li>
-                        <li>PI</li>
-                        <li>global <i>(An empty JS object to store data that's persistant across samples. <a href=".?code=OYGw9gRghiDKCmAXAFAIjAV0agNAAgDoBmASgCgAnJDCgOz1EhgM0SA%3D">Here</a> is a link showing how you can use it.)</i></li>
+                        <li>PI <i>(3.141592...)</i></li>
+                        <li>global <i>(An empty JS object to store data that's persistent across samples. <a href=".?code=OYGw9gRghiDKCmAXAFAIjAV0agNAAgDoBmASgCgAnJDCgOz1EhgM0SA%3D">Here</a> is a link showing how you can use it.)</i></li>
                     </ul>
                     <br />
                     <li><b>Functions</b></li>
                     <ul>
-                        <li>sin, cos, tan</li>
-                        <li>min, max, floor</li>
-                        <li>globalSet(variable, value) <i>(Initialize a persistant variable with a value. Variable name has to be passed in as a string!)</i></li>
+                        <li>sin(), cos(), tan() <i>(The trig functions for sine, cosine, and tangent)</i></li>
+                        <li>pow(a, b) <i>(Raises a to the power of b, and returns the result)</i></li>
+                        <li>min(), max() <i>(functions that return the lowest and highest values of what you pass into it)</i></li>
+                        <li>floor(), ceil() <i>(functions that round down and round up floating point numbers respectively)</i></li>
+                        <li>globalSet(variable, value) <i>(Initialize a persistent variable with a value. Variable name has to be passed in as a string!)</i></li>
                         <li>lerp(a, b, t) <i>(Linear interpolation between a and b with ratio t between 0 and 1)</i></li>
                         <li>clamp(value, low, high) <i>(return value or the lower/upper limit if value is outside of the bounds)</i></li>
                         <li>rand() <i>(Random value between -1 and 1)</i></li>

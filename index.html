@@ -160,10 +160,12 @@
         </div>
 
         <div class="dropdown child-dropdown">
-            <h3 class="section-title">&#8594; The Nyquist Sampling Theorem</h3>
+            <h3 class="section-title">&#8594; Nyquist Sampling Theorem and Aliasing</h3>
             <div class="section-body">
-                <p>The "Nyquist frequency" is the highest possible frequency that can be represented by a signal, and it's exactly half of the sample rate.</p>
-                <p>Since human hearing goes up to 20,000 hz or 20kHz, the sample rate of most audio you listen to is around 40kHz.</p>
+                <p>The Nyquist Sampling Theorem connects two of the concepts that we touched on previously: sample rate, and frequency. One of the main limitations of digital audio is the fact that it can only be precise to a finite amount. We explored this idea in the section about bit depth by talking about how lower bit depths quantize a digital signal, but there exists another form of digital information loss known as <i>aliasing</i>. When digitally sampling an analog signal, the highest frequency that a system can accurately store is equal to one half of the sampling rate of the system. This frequency is known as the “nyquist frequency”. This theorem is one of the main reasons why the most common sampling rate for digitally storing music is 44.1khz. Humans can only hear sounds up to about 20khz, which is close to half of 44.1khz (with a bit more room for good measure). When a wave containing frequencies higher than a sampler's nyquist frequency is sampled, aliasing occurs, where extra frequency content is introduced. By interacting with the graph below, you can see the effects that sampling a sine wave at different frequencies and sample rates has. The two sliders are scaled such that when they are lined up, the sine wave will be at the sampling rate's corresponding nyquist frequency. Pushing the frequency slider to the right of the sample rate slider shows the effects of aliasing, where the samples collected incorrectly introduce a sine wave that didn't exist in the source signal. </p>
+                <div class="flex justify-center">
+                    <div id="nyquistDesmosCalc" class="calculator" style="width: 600px; height: 400px;"></div>
+                </div>    
             </div>
         </div>
 

@@ -17,6 +17,12 @@ function initVisualizer(e) {
     return c
 }
 
+function hideXAxis(c) {
+    var s = c.getState();
+    s.graph.showXAxis = false;
+    c.setState(s)
+}
+
 function setCalculatorColorInversion(calculators, invert) {
     Array.from(calculators).forEach(c => {
         c.updateSettings({
@@ -276,4 +282,99 @@ sawtoothDesmosCalculator.setExpressions([
     latex: "\\sum_{n=1}^{k}(1/n)\\sin(n\\pi x)",
     color: Desmos.Colors.BLUE
 }
+]);
+
+//NYQUIST VISUALIZATION
+var nyquistDesmosCalculator = initVisualizer(document.getElementById('nyquistDesmosCalc'))
+hideXAxis(nyquistDesmosCalculator)
+calculators.push(nyquistDesmosCalculator)
+nyquistDesmosCalculator.setExpressions([
+    {
+        id: 'samplerateval',
+        latex: 's=8',
+        sliderBounds: { min: 0, max: 40, step: 1 }
+    },
+    {
+        id: 'freqval',
+        latex: 'f=4',
+        sliderBounds: { min: 0, max: 40, step: 0.1 }
+    },
+    {
+        id: 'samplelist',
+        latex: 'n=[-10,-10+\\frac{1}{s},...,10]',
+    },
+    {
+        id: 'aliasfreq',
+        latex: 'f_{a}=\\operatorname{abs}\\left(\\left(s\\operatorname{round}\\left(\\frac{f}{s}\\right)\\right)-f\\right)',
+    },
+    {
+        id: 'realwavelabel',
+        color: Desmos.Colors.BLUE,
+        latex: "(0,5.25)",
+        showLabel: true,
+        pointSize: 0,
+        labelOrientation: Desmos.LabelOrientations.ABOVE,
+        label: "Real Wave"
+    },
+    {
+        id: 'sampledwavelabel',
+        color: Desmos.Colors.PURPLE,
+        latex: "(-5,-4)",
+        showLabel: true,
+        pointSize: 0,
+        labelOrientation: Desmos.LabelOrientations.ABOVE,
+        label: "Sampled Wave"
+    },
+    {
+        id: 'aliaswavelabel',
+        color: Desmos.Colors.RED,
+        latex: "(4,-4)",
+        showLabel: true,
+        pointSize: 0,
+        labelOrientation: Desmos.LabelOrientations.ABOVE,
+        label: "Aliased Wave (${f_a}hz)"
+    },
+    {
+        id: 'realwavegraph',
+        color: Desmos.Colors.BLUE,
+        latex: "\\sin(\\pi fx)+4",
+    },
+    {
+        id: 'sampledwavegraph',
+        color: Desmos.Colors.PURPLE,
+        latex: "(n, \\sin(\\pi fn)-2)",
+        lines: true,
+        lineOpacity: 0.2
+    },
+    {
+        id: 'aliaswavegraph',
+        color: Desmos.Colors.RED,
+        latex: '\\sin(\\pi f_a x)-2'
+    },
+    {
+        id: 'sampleratesliderbar',
+        color: Desmos.Colors.BLACK,
+        latex: '(4t-5,1.5)',
+    },
+    {
+        id: 'samplerateslider',
+        color: Desmos.Colors.BLACK,
+        latex: '(0.1s-5,1.5)',
+        showLabel: true,
+        labelOrientation: Desmos.LabelOrientations.ABOVE,
+        label: "Sample Rate: ${s}hz",
+    },
+    {
+        id: 'freqsliderbar',
+        color: Desmos.Colors.BLACK,
+        latex: '(8t-5,0.5)',
+    },
+    {
+        id: 'freqslider',
+        color: Desmos.Colors.BLACK,
+        latex: '(0.2f-5,0.5)',
+        showLabel: true,
+        labelOrientation: Desmos.LabelOrientations.BELOW,
+        label: "Frequency: ${f}hz",
+    }
 ]);

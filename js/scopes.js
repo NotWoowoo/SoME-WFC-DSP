@@ -70,8 +70,8 @@ function draw() {
     
     for (let i = 0; i < dspAudioContextAnalyzer.fftSize; i++) {
         let x = Math.log(999*i/dspAudioContextAnalyzer.fftSize+1)/Math.log(1000)*fftCanvas.width
-        const v = 1-(fftData[i] / 256.0)+1;
-        const y = v * fftCanvas.height / 2;
+        const v = 1-(2*fftData[i] / 256.0)+1;
+        const y = v * fftCanvas.height/2;
     
         if (i === 0) {
             fftCtx.moveTo(x, y);

@@ -67,6 +67,7 @@ function setDSPsimple(js){
     let rand = () => 2*Math.random()-1
     let floor = Math.floor
     let ceil = Math.ceil
+    let abs = Math.abs
     class MyProcessor extends AudioWorkletProcessor {
         process(_, outputs) {
             if(!_stillGood) return false

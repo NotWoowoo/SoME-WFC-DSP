@@ -65,6 +65,7 @@ function setDSPsimple(js){
     let max = Math.max
     let clamp = (v, lo, hi) => min(hi, max(lo, v))
     let rand = () => 2*Math.random()-1
+    let round = Math.round
     let floor = Math.floor
     let ceil = Math.ceil
     let abs = Math.abs

@@ -159,7 +159,7 @@
                     <img width=400 src="img/sine-sum-fourier.png">
                 </div>
                 <br/>
-                <p>The horizontal position of each peak represents the frequency of each sine wave (higher frequencies are farther right), and the height of each peak represents the amplitude of each sine wave (amplitude in this case is the value which each sine function is multiplied by). The various smaller peaks are just debris from the method used to convert this signal from the time domain to the frequency domain: <b>the Fourier Transform!</b> In the 1800s, French mathematician Joseph Fourier discovered/invented the idea that ANY signal can be decomposed into a sum of many (or few) sine waves with different amplitudes, frequencies, and phases. Every sound can be thought of as a sum of many different sine waves! </p>
+                <p>The horizontal position of each peak represents the frequency of each sine wave (higher frequencies are further right than lower ones), and the height of each peak represents the amplitude of each sine wave (amplitude in this case is the value which each sine function is multiplied by). The various smaller peaks are just debris from the method used to convert this signal from the time domain to the frequency domain: <b>the Fourier Transform!</b> In the 1800s, French mathematician Joseph Fourier discovered that ANY signal can be decomposed into a sum of many (or few) sine waves with different amplitudes, frequencies, and phases. The first <i>wave</i> is known as the “DC component," and is a flat line that represents the average amplitude of the signal. Each succeeding sinusoidal wave has a frequency that is an integer multiple of the first wave after the DC component (DC can be thought of having a frequency of 0 for convenience). In some cases, this sum can be infinite, but for digital signals, there is a finite limit (this idea will be explored when we talk about the Nyquist Sampling Theorem). As this is an introductory exploration into DSP, we aren't going to go into the details of how the Fourier Transform works specifically. If you are interested in that, 3blue1brown has a <a href="https://www.youtube.com/watch?v=spUNpyF58BY"> great video</a> on the <i>how</i> of Fourier.</p>
             </div>
         </div>
 
@@ -197,6 +197,23 @@
                 <li><a href=".?code=PTAECEHsDsFcGdQGEAWBDANhgptA5tqAMqQawAuAljAFA7mgBmoAvKACzsAMd2D0rUD3qgUggKw9GkAE4AKEZUEBGANyglAHlHrKAahbKAlKADeNUJdAhQAFRSVEAd0pZQAI0LkUhRjOwAjrC4AMYAnqAAtrAYVAAOGJTYMkyyoNhoIWLoMpEwlCEWViIoAHKwkYJyAEygAFQaJgC0oMpFljZxkE5yTcoANI1MiXGI3oRx6PCETg44oF09ZRWD1SYAJmiRcbhjPqBbCZTksOvY7aACBgvdvQNDDYtyy5GDTWv1oPCU0DWfAAoASU%2BzAaL0%2BVEi2BMNAAvjQaP4TjIBFwAHTiT7QIA%3D%3D%3D">Bonus Challenge Solution</a></li>
             </ul>
         </div>
+    </div>
+
+    <!--SECTION 3 DROPDOWN-->
+    <div class="dropdown root-dropdown">
+        <h3 class="section-title">&#8594; <b>Section 3:</b> Modulation, Making Music, and Miscellaneousness</h3>
+
+        <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; Modulation and LFOs</h3>
+            <div class="section-body">
+                <p>As cool as the basic shapes might sound, they are, for lack of a better term, a little <i>basic</i>. Unless you're making music for a game on an atari 2600, you'll probably want more dynamic sounds than just square and sawtooth waves. One of the ways that you can escape the depths of monotony is through changing the parameters of a signal over time, or in other words: <i>modulating</i> the parameters. For an introductory example to modulation, consider how you would make a sine-wave tone fade in and out over time. One way is to multiply the tone by a <i>much</i> slower sine wave:</p>
+                <div class="flex justify-center">
+                    <div id="LFODesmosCalc" class="calculator" style="width: 600px; height: 400px;"></div>
+                </div>
+                <p>The slow sine wave is an LFO (Low Frequency Oscillator) that modulates the amplitude of the fast sine wave. The fast sine wave is producing the actual tone, while the slow sine wave is controlling the amplitude. <a href=".?code=DYUwLgBMBmD2EF4IGcCWA7AFGVBbEAVAEwEAKAkgJQBQokYs6IiKG2ehJFBALDwAw1qAJ3ABXYeihwCDJkA%3D">Here</a> is this concept in action. If you return only the LFO or only the tone, you can see how each respective signal behaves on its own in the time domain. It's worth noting that the LFO is oscillating between -1 and 1, so the phase of the tone is reversed on every cycle. You can fix this by keeping the LFO's value between 0 and 1 (<a href=".?code=DYUwLgBMBmD2EF4IGcCWA7AFGVBbEAVAEwEAKAkgJQHEBQokYs6IiKG2ehJFBALHwAMlWrQBO4AK5j0UOASYsgA%3D">squaring the value of the LFO is one way to do this</a>). Another useful way to modulate a signal is in a more saw-like approach where an LFO starts at one value and follows a linear path to a second value. This can be done in javascript by <a href=".?code=DYUwLgBCB2BuEF4IEYIFoIAowEsC2IEApCgJQBQokA7gIayFIDOO0mATAFQAKAkpwBYBABk64CFAE7gArpOhQ4EThDoMgA%3D%3D">using the modulo operator with a time variable.</a></p>
+            </div>
+        </div>
+        
     </div>
 
     <p id="shared-msg" style="display:none;" class="text-center dark:text-white"><b>Playground's Code Was Supplied By URL!</b></p>

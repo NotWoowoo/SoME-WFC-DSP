@@ -656,6 +656,10 @@ video {
   position: fixed;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -684,10 +688,6 @@ video {
 
 .h-80 {
   height: 20rem;
-}
-
-.w-1\/6 {
-  width: 16.666667%;
 }
 
 .w-1\/2 {

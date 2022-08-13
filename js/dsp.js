@@ -51,7 +51,7 @@ function setDSP(js){
 function setDSPsimple(js){
     setDSP(`
     let time = 0
-    let sample = 0
+    let sampleNumber = 0
     let sin = Math.sin
     let cos = Math.cos
     let tan = Math.tan
@@ -78,7 +78,7 @@ function setDSPsimple(js){
                         for (let sample_index = 0; sample_index < channelData.length; sample_index += 1) {
                             channelData[sample_index] = (()=>{`+js+`})()
                             time += 1/sampleRate
-                            sample+=1
+                            sampleNumber+=1
                         }
                     }
                 }

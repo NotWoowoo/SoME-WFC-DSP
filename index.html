@@ -84,6 +84,14 @@
         </div>
 
         <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; <i>Try it Yourself</i>: Your First Waveform</h3>
+            <div class="section-body">
+                <p>We've been doing an awful lot of talking, so it's only fair now to let you do some programming. In addition to the lessons, we have included a playground where you can test out your audio programming skills, make cool sounds, and share your creations. This playground uses a slightly modified version of javascript, where the editor exists inside a function “processAudio” that expects a sample to be returned at the end of your code. Also, we have included aliases for multiple useful functions such as shortening Math.sin() to just sin().</p>
+                <p>Without further ado, here's your first exercise. You might have noticed that for the examples, we have been using a sine wave. The filled in code produces a sine wave, but a very slow one. You first want to speed that wave up so that it's audible (You can peek ahead to the frequency section if you get stuck). Next, try adjusting the amplitude of the wave (without adjusting the volume slider). Finally, try experimenting with adding sine waves of different speeds and amplitudes together. You can start the exercise <a href=".?code=PTAEGEAsEMBtYKYDsDmDQEYBcoDKAHBBAE1ABdIBLAZ1GsqXQHdoA3dAV3zoHtQBPHh1ABjaElCQE0AE6hKZAIQAoEBBjxkaUACYcAFQ4yJFdPUagW7UMR5MJACiYLIQsuSEiqqclNCseWA4AWzNYSmIEGQBKVTAoOERUdABmHABRAA9CGUpQpHdnClBgjlgySnxEOgZmNgRaaGJI0jIeNFMZZRkEMiMJcwcK0OigA%3D%3D">here</a>.</p>
+            </div>
+        </div>
+
+        <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; Bit Depth and the "Retro" Sound</h3>
             <div class="section-body">
                 <p>Computers, and especially older ones, have a hard time accurately storing non-whole numbers. Since a digital audio signal's values are non-whole numbers by nature, that creates a limitation on how precise each value can be. In DSP, this precision is known as the “Bit Depth” of a digital signal. The bit depth is merely the amount of bits required to hold said number (<a href="https://web.stanford.edu/class/cs101/bits-bytes.html">Here</a> is a good resource to understanding bits and binary numbers). Most modern digital audio workstations use a standard bit depth of 32 bits, meaning that there are 2<sup>32</sup> possible values a sample can have between -1 and 1. Converting to lower bit depths forces samples' amplitudes to be quantized (snapped to the closest intermediate value). The effect of this is a noiser audio signal that sounds characteristically "retro" (since old hardware had lower bit depths).</p>
@@ -95,10 +103,21 @@
         </div>
 
         <div class="dropdown child-dropdown">
-            <h3 class="section-title">&#8594; <i>Try it Yourself</i>: Your First Waveform</h3>
+            <h3 class="section-title">&#8594; <i>Try It Yourself</i>: Your First Effects</h3>
             <div class="section-body">
-                <p>We've been doing an awful lot of talking, so it's only fair now to let you do some programming. In addition to the lessons, we have included a playground where you can test out your audio programming skills, make cool sounds, and share your creations. This playground uses a slightly modified version of javascript, where the editor exists inside a function “processAudio” that expects a sample to be returned at the end of your code. Also, we have included aliases for multiple useful functions such as shortening Math.sin() to just sin().</p>
-                <p>Without further ado, here's your first exercise. You might have noticed that for the examples, we have been using a sine wave. The filled in code produces a sine wave, but a very slow one. You first want to speed that wave up so that it's audible (You can peek ahead to the frequency section if you get stuck). Next, try adjusting the amplitude of the wave (without adjusting the volume slider). Finally, try experimenting with adding sine waves of different speeds and amplitudes together. You can start the exercise <a href=".?code=PTAEGEAsEMBtYKYDsDmDQEYBcoDKAHBBAE1ABdIBLAZ1GsqXQHdoA3dAV3zoHtQBPHh1ABjaElCQE0AE6hKZAIQAoEBBjxkaUACYcAFQ4yJFdPUagW7UMR5MJACiYLIQsuSEiqqclNCseWA4AWzNYSmIEGQBKVTAoOERUdABmHABRAA9CGUpQpHdnClBgjlgySnxEOgZmNgRaaGJI0jIeNFMZZRkEMiMJcwcK0OigA%3D%3D">here</a>.</p>
+                <p>Let's put that knowledge of bit depth to good use now. For your first audio effect, you will be building a <b>Downsampler</b>. A downsampler, also known as a decimator, takes an audio signal of one sample rate, and plays it as if it was another lower sample rate. For example, if you want to halve the sample rate, you would only return every other sample of the input and make the samples in between 0. To cut the sample rate by a third, you would only return every third sample, and so on. This has the effect of creating buzzing high pitched artefacts in the sound (you can hear this effect in songs like <a href="https://www.youtube.com/watch?v=2oIAQSUt9mo">Edge by Rezz</a>). In the starter code, we have defined a sample number counter (global.s), a sine wave input (out), and a parameter for the intensity of the downsampling (b). Your job is to edit the end of the program such that the code returns every b-th sample of out, and returns 0 otherwise (hint: what does a percent sign do in javascript?)
+                <br />
+                <a href=".?code=PTAEHMBsHsCMENIDoDOoCWaAuALApqCvALYAOkBAdgK7Gx4BOAUOgGYAUAhFHIqgJSgA3k1BiIMBJADKeLOwBEKBQBpQABn5MAvkx5TUAakNMmFLKGjULAXkLpK7AEygAVKAAKASTegALH7qvljoxHha5qCwoHYAjOqmIKAAwjiIFJTgeABcoAxy1AyUlpSQAJ6geABujBWwALS4hCTkBNCsoApWWApM%2BViFxepAA%3D%3D%3D">Downsampler Starter Code</a>
+                <br />
+                <a href=".?code=PTAEHMBsHsCMENIDoDOoCWaAuALApqCvALYAOkBAdgK7Gx4BOAUOgGYAUAhFHIqgJSgA3k1BiIMBJADKeLOwBEKBQBpQABn5MAvkx5TUAakNMmFLKGjULAXkLpK7AEygAVKAAKASTegALH7qvljoxHha5qCwoHYAjOqmIKDS0JDW6NCUAFwSvMhoAKRRMXZBAMb4ZQDWaGyguAREZBSgNHSMGGgAJugAbpjosC2wAJ5RTEl16BaYag2gZdBdBAxy1AyU2Pj2lAQA7vC9eADkaE3keGrQDQx7mJcYFqtY65saSCysoOz6fIXFNlKghE4lAz1elmsOlAeEgKAIIPE4I2Gh0QA%3D">Downsampler Solution Code</a>
+                </p>
+                <br />
+                <p>If you’re up for a bit of a harder challenge, you can try building a <b>bitcrusher</b>. A bitcrusher is a common effect that takes a signal with a high bit depth and “crushes” it down to a lower bit depth by rounding the samples to the nearest evenly spaced value. For example, if the bit depth was set to 2, the values that the wave will snap to are -1, -0.5, 0.5, and 1. For a bit depth of 3, it would be -1, -0.75, -0.5, -0.25, …, 0.75, 1. In the starter code, you are given two variables: a sine wave signal (wave) and a bit depth (b). Your goal is to quantize the signal into 2b evenly spaced values between 0 and 1. (Hint: using the round() function could be useful, if you could change the range of the wave to make it work).
+                <br />
+                <a href=".?code=DYUwLgBA7ghgbiCBeCBnAlgOwBQCYIBUEACgJKEQAslADBWOgLYgCUAUKJAEbIS5tsA9IIDCACxjBQmAOYgAXBADKmGAAcIYMYjiSAriFQQA9gDNN26PERhjEHiASZgATzRqYAYxAATCLuADIy5wKBAQTAgAWgBGCBhMPxiAOjYAJ3A9NMjYBDYgA%3D%3D%3D">Bitcrusher Starter Code</a>
+                <br />
+                <a href=".?code=DYUwLgBA7ghgbiCBeCBnAlgOwBQCYIBUEACgJKEQAslADBWOgLYgCUAUKJAEbIS5tsA9ETYBlAPbAArg3GYAXBC4BPCI3FwsAcwhgAFogBOMTFsQAzQ%2BMYQ6YcX10Gl%2BiAAdxUEIbVYpqCABGABoIKylMABNtCDZ7J0RMEBhDEFRILDAQM0NQk0iEzDUNGP0jEzMlGABjAGtdB2wAWhCgllCvCGqTNEwYNzYQBENVOBhpRHieoZBMYFVUNxqQArGJpXAvWYgWiHyggDo2AkEBQUEIABU9dADbvYh%2FEHMpYAgxw3QYLlAGiD14CAOOA1LwPFA8KEuCwdkEzhcALIaRCwBBhCqTRo0UKMdicCAAL284ku4lwXEYflQgV42BoBwArBRsKjEABqNowoiMeFhcQRArxJIpNIZTBZHJsIlWUnkymYfw0lDhKLYaUkskUqmBdhCRHI6CA9GmRBcGr1eLNVo6vZRMLgKSGTBsVJgR1FfBENXE2VahXUiAXXGwwJsIA%3D%3D">Bitcrusher Solution Code</a>
+                </p>
             </div>
         </div>
 

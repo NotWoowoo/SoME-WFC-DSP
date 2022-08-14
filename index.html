@@ -232,6 +232,13 @@
                 <p>The slow sine wave is an LFO (Low Frequency Oscillator) that modulates the amplitude of the fast sine wave. The fast sine wave is producing the actual tone, while the slow sine wave is controlling the amplitude. <a href=".?code=DYUwLgBMBmD2EF4IGcCWA7AFGVBbEAVAEwEAKAkgJQBQokYs6IiKG2ehJFBALDwAw1qAJ3ABXYeihwCDJkA%3D">Here</a> is this concept in action. If you return only the LFO or only the tone, you can see how each respective signal behaves on its own in the time domain. It's worth noting that the LFO is oscillating between -1 and 1, so the phase of the tone is reversed on every cycle. You can fix this by keeping the LFO's value between 0 and 1 (<a href=".?code=DYUwLgBMBmD2EF4IGcCWA7AFGVBbEAVAEwEAKAkgJQHEBQokYs6IiKG2ehJFBALHwAMlWrQBO4AK5j0UOASYsgA%3D">squaring the value of the LFO is one way to do this</a>). Another useful way to modulate a signal is in a more saw-like approach where an LFO starts at one value and follows a linear path to a second value. This can be done in javascript by <a href=".?code=DYUwLgBCB2BuEF4IEYIFoIAowEsC2IEApCgJQBQokA7gIayFIDOO0mATAFQAKAkpwBYBABk64CFAE7gArpOhQ4EThDoMgA%3D%3D">using the modulo operator with a time variable.</a></p>
             </div>
         </div>
+
+        <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; Audio-Rate Modulation</h3>
+            <div class="section-body">
+                <p>What if we speed up an LFO such that it oscillates at the same rate as an audible tone? Well, the “O” wouldn’t be so “LF” anymore; it would just be a regular oscillator. The more general term for modulating the amplitude of one wave by another, regardless of frequency, is AM (amplitude modulation). Other common types of modulation are FM (frequency modulation), and PM (phase modulation), where one wave changes the frequency and phase of another respectively. Modulating signals like this is one (of many) approaches to creating waveforms with much more complicated timbres than those of the basic waveforms. For example, <a href=".?code=DYUwLgBGD2B2IQLwQM4EtYAoxoLYgCoAmAgBQEliiAGASgCh6Z4IDl0sd9izKAWanQLEmcBG1QZseQiQoEArINrCiolhI7TucygHZlqxgCdwAV2OwoYoA%3D%3D%3D">this</a> uses AM synthesis to generate a screechy metalic sound. The initial 220hz sine wave is multiplied by three different waves at 400, 500, and 700hz respectively.</p>
+            </div>
+        </div>
         
     </div>
 

@@ -31,7 +31,7 @@
     <div class="dropdown root-dropdown">
         <h3 class="section-title">&#8594; <b>About</b></h3>
         <div class="section-body">
-            <p>This website is designed to teach enough digital signal processing (DSP) in order for you to be able to start your journey into programming audio software. Whether you want to create VST plugins for digital audio workstations, add complex audio to your website / application / game, or just want to pick up a new skill, this free course will give you a great foundation in DSP.</p>
+            <p>This website is designed to teach enough digital signal processing to start your journey into programming audio software. Whether you want to create VST plugins for digital audio workstations, add complex audio to your website/application/game, or just want to pick up a new skill, this free course will give you a great foundation in DSP.</p>
             <p>For those interested in what technology powers this site, we are using Github Pages to host the website, Tailwind CSS to style the pages, Desmos' API to create the interactive visualizations, and C++ (compiled into web assembly) for the editing environments. The public GitHub repository can be found 
             <a href=”https://github.com/NotWoowoo/SoME-WFC-DSP”>here</a>.</p>
         </div>
@@ -45,7 +45,7 @@
         <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; Prerequisite knowledge</h3>
             <div class="section-body">
-                <p>While we do aim to make this course beginner friendly, there are a couple things that we recommend that you learn before starting this course. The programming sections use Javascript as the language, so we recommend learning the fundamentals of programming and the Javascript language before trying the programming sections. As for the math in this course, it should be accessible to anyone who has taken a pre-calculus course or higher.</p>
+                <p>While we aim to make this course beginner friendly, there are a couple of things that we recommend you learn before starting this course. The programming sections use Javascript as the language, so we recommend learning the fundamentals of programming and the Javascript language before trying the programming sections. As for the math in this course, it should be accessible to anyone who has taken a pre-calculus course or higher.</p>
             </div>
         </div>
     </div>
@@ -57,7 +57,7 @@
         <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; The Wide World of DSP</h3>
             <div class="section-body">
-                <p>It seems pretty reasonable that in order to understand how to process digital audio, you must first understand what digital audio is. As you'll soon find out, digital audio is merely a category of a larger kind of digital data called signals. Signals are that new beat you spent all night working on, the readings from an EKG sensor, seismic data from geophones, and even images of cats on the internet! The point is that while this course is specifically geared towards digital audio in particular, that is far from the only application of this course's material. If you want more information on DSP's applications in image processing and data compression, I'd recommend looking through Chapters 23 to 27 of <a href="http://www.dspguide.com/">Dr. Steven W. Smith's “The Scientist and Engineer's Guide to Digital Signal Processing”</a>
+                <p>It seems pretty reasonable that to understand how to process digital audio, you must first understand what digital audio is. As you'll soon find out, digital audio is merely a category of a larger kind of digital data called signals. Signals are that new beat you spent all night working on, the readings from an EKG sensor, seismic data from geophones, and even images of cats on the internet! The point is that while this course is specifically geared towards digital audio, that is far from the only application of this course's material. If you want more information on DSP's applications in image processing and data compression, I'd recommend looking through Chapters 23 to 27 of <a href="http://www.dspguide.com/">Dr. Steven W. Smith's “The Scientist and Engineer's Guide to Digital Signal Processing”</a>
                 </p> 
             </div>
         </div>
@@ -87,15 +87,14 @@
             <h3 class="section-title">&#8594; <i>Try it Yourself</i>: Your First Waveform</h3>
             <div class="section-body">
                 <p>We've been doing an awful lot of talking, so it's only fair now to let you do some programming. In addition to the lessons, we have included a playground where you can test out your audio programming skills, make cool sounds, and share your creations. This playground uses a slightly modified version of javascript, where the editor exists inside a function “processAudio” that expects a sample to be returned at the end of your code. Also, we have included aliases for multiple useful functions such as shortening Math.sin() to just sin().</p>
-                <p>Without further ado, here's your first exercise. You might have noticed that for the examples, we have been using a sine wave. The filled in code produces a sine wave, but a very slow one. You first want to speed that wave up so that it's audible (You can peek ahead to the frequency section if you get stuck). Next, try adjusting the amplitude of the wave (without adjusting the volume slider). Finally, try experimenting with adding sine waves of different speeds and amplitudes together. You can start the exercise <a href=".?code=PTAEGEAsEMBtYKYDsDmDQEYBcoDKAHBBAE1ABdIBLAZ1GsqXQHdoA3dAV3zoHtQBPHh1ABjaElCQE0AE6hKZAIQAoEBBjxkaUACYcAFQ4yJFdPUagW7UMR5MJACiYLIQsuSEiqqclNCseWA4AWzNYSmIEGQBKVTAoOERUdABmHABRAA9CGUpQpHdnClBgjlgySnxEOgZmNgRaaGJI0jIeNFMZZRkEMiMJcwcK0OigA%3D%3D">here</a>.</p>
+                <p>Without further ado, here's your first exercise. You might have noticed that for the examples, we have been using a sine wave. The filled-in code produces a sine wave, but a very slow one. You first want to speed that wave up so that it's audible (You can peek ahead to the frequency section if you get stuck). Next, try adjusting the amplitude of the wave (without adjusting the volume slider). Finally, try experimenting with adding sine waves of different speeds and amplitudes together. You can start the exercise <a href=".?code=PTAEGEAsEMBtYKYDsDmDQEYBcoDKAHBBAE1ABdIBLAZ1GsqXQHdoA3dAV3zoHtQBPHh1ABjaElCQE0AE6hKZAIQAoEBBjxkaUACYcAFQ4yJFdPUagW7UMR5MJACiYLIQsuSEiqqclNCseWA4AWzNYSmIEGQBKVTAoOERUdABmHABRAA9CGUpQpHdnClBgjlgySnxEOgZmNgRaaGJI0jIeNFMZZRkEMiMJcwcK0OigA%3D%3D">here</a>.</p>
             </div>
         </div>
 
         <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; Bit Depth and the "Retro" Sound</h3>
             <div class="section-body">
-                <p>Computers, and especially older ones, have a hard time accurately storing non-whole numbers. Since a digital audio signal's values are non-whole numbers by nature, that creates a limitation on how precise each value can be. In DSP, this precision is known as the “Bit Depth” of a digital signal. The bit depth is merely the amount of bits required to hold said number (<a href="https://web.stanford.edu/class/cs101/bits-bytes.html">Here</a> is a good resource to understanding bits and binary numbers). Most modern digital audio workstations use a standard bit depth of 32 bits, meaning that there are 2<sup>32</sup> possible values a sample can have between -1 and 1. Converting to lower bit depths forces samples' amplitudes to be quantized (snapped to the closest intermediate value). The effect of this is a noiser audio signal that sounds characteristically "retro" (since old hardware had lower bit depths).</p>
-                <p>[two files to compare of different bit depths maybe]</p>
+                <p>Computers, and especially older ones, have a hard time accurately storing non-whole numbers. Since a digital audio signal's values are non-whole numbers by nature, that creates a limitation on how precise each value can be. In DSP, this precision is known as the “Bit Depth” of a digital signal. The bit depth is merely the amount of bits required to hold said number (<a href="https://web.stanford.edu/class/cs101/bits-bytes.html">Here</a> is a good resource to understanding bits and binary numbers). Most modern digital audio workstations use a standard bit depth of 32 bits, meaning that there are 2<sup>32</sup> possible values a sample can have between -1 and 1. Converting to lower bit depths forces samples' amplitudes to be quantized (snapped to the closest intermediate value). The effect of this is a noisier audio signal that sounds characteristically "retro" (since old hardware had lower bit depths).</p>
                 <div class="flex justify-center">
                     <div id="bitDepthDesmosCalc" class="calculator" style="width: 600px; height: 400px;"></div>
                 </div>
@@ -105,14 +104,14 @@
         <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; <i>Try It Yourself</i>: Your First Effects</h3>
             <div class="section-body">
-                <p>Let's put that knowledge of bit depth to good use now. For your first audio effect, you will be building a <b>downsampler</b>. A downsampler, also known as a decimator, takes an audio signal of one sample rate, and plays it as if it was another lower sample rate. For example, if you want to halve the sample rate, you can output a variable which only updates for every other sample. To cut the sample rate by a third, you would only update the variable every third sample, and so on. This has the effect of creating buzzing high pitched artefacts in the sound (you can hear this effect in songs like <a href="https://www.youtube.com/watch?v=2oIAQSUt9mo">Edge by Rezz</a>). In the starter code, we have defined a persistent output variable (global.output), a sine wave input (input), and a parameter for the intensity of the downsampling (b). The output variable is persistent (by being in the global object), because all other variable declarations/definitions are executed for every sample and can't persist across multiple samples. Your job is to edit the program such that the output updates every b-th sample. (hint: what does a percent sign do in javascript?)
+                <p>Let's put that knowledge of bit depth to good use now. For your first audio effect, you will be building a <b>downsampler</b>. A downsampler, also known as a decimator, takes an audio signal of one sample rate and plays it as if it was another lower sample rate. For example, if you want to halve the sample rate, you can output a variable that only updates for every other sample. To cut the sample rate by a third, you would only update the variable for every third sample, and so on. This has the effect of creating buzzing high-pitched artifacts in the sound (you can hear this effect in songs like <a href="https://www.youtube.com/watch?v=2oIAQSUt9mo">Edge by Rezz</a>). In the starter code, we have defined a persistent output variable (global.output), a sine wave input (input), and a parameter for the intensity of the downsampling (b). The output variable is persistent (by being in the global object), because all other variable declarations/definitions are executed for every sample and can't persist across multiple samples. Your job is to edit the program such that the output updates every b-th sample. (hint: what does a percent sign do in javascript?)
                 <br />
                 <a href=".?code=OYGw9gRghiDKCmAXAFAcjAV0QBy6gNAAQAMAlIQPQVQDGN8Azg4QG4CWUhokMAdJjiwAoEEkJsAdrkSEAvIQaTkAJgBUABQCSqxGwC28VcuVkhIsRDmEAjMTNVCAYQAWMURODwAXIQzYAJlCI8Fzg0CD8WNKEAGZgAE6EYBIgAJ6E8Czw8ekQALSIzgpQetiiSTHiUsIOAHIA8gAqAKI%2BqZioICCEEvDw%2FoSIYL4MIYUhAEQMJWXwtRh6ENkTrFDxHBCivEIOAJqYhDRQEknY8CfjhBMAEmAA7oSNzmzMAOoJANYMK%2F7xYAH3E5xRJ6BIhfpsIaJSTAvRBNjJMzxJAYeInbjhSKCRBAA">Downsampler Starter Code</a>
                 <br />
                 <a href=".?code=OYGw9gRghiDKCmAXAFAcjAV0QBy6gNAAQAMAlIQPQVQDGN8Azg4QG4CWUhokMAdJjiwAoEEkJsAdrkSEAvIQaTkAJgBUABQCSqxGwC28VcuVkhIsRDmEAjMTNVCsMCCxswEoWwBmyBlD3YogByGHoQ8ABOhACkhJayCSSkQoSpXODQIPxY0laS0mYRSBgREuk8WQLSQA">Downsampler Solution Code</a>
                 </p>
                 <br />
-                <p>If you're up for a bit of a harder challenge, you can try building a <b>bitcrusher</b>. A bitcrusher is a common effect that takes a signal with a high bit depth and “crushes” it down to a lower bit depth by rounding the samples to the nearest evenly spaced value. For example, if the bit depth was set to 2, the values that the wave will snap to are -1, -0.5, 0.5, and 1. For a bit depth of 3, it would be -1, -0.75, -0.5, -0.25, …, 0.75, 1. In the starter code, you are given two variables: a sine wave signal (wave) and a bit depth (b). Your goal is to quantize the signal into 2b evenly spaced values between 0 and 1. (Hint: using the round() function could be useful, if you could change the range of the wave to make it work).
+                <p>If you're up for a bit of a harder challenge, you can try building a <b>bitcrusher</b>. A bitcrusher is a common effect that takes a signal with a high bit depth and “crushes” it down to a lower bit depth by rounding the samples to the nearest evenly spaced value. For example, if the bit depth was set to 2, the values that the wave will snap to are -1, -0.5, 0.5, and 1. For a bit depth of 3, it would be -1, -0.75, -0.5, -0.25, …, 0.75, 1. In the starter code, you are given two variables: a sine wave signal (wave) and a bit depth (b). Your goal is to quantize the signal into 2b evenly spaced values between 0 and 1. (Hint: using the round() function could be useful if you could change the range of the wave to make it work).
                 <br />
                 <a href=".?code=DYUwLgBA7ghgbiCBeCBnAlgOwBQCYIBUEACgJKEQAslADBWOgLYgCUAUKJAEbIS5tsA9IIDCACxjBQmAOYgAXBADKmGAAcIYMYjiSAriFQQA9gDNN26PERhjEHiASZgATzRqYAYxAATCLuADIy5wKBAQTAgAWgBGCBhMPxiAOjYAJ3A9NMjYBDYgA%3D%3D%3D">Bitcrusher Starter Code</a>
                 <br />
@@ -136,7 +135,7 @@
                     <img src="img/cat-spin.gif">
                 </div>
                 <p>We can measure the “frequency” by finding how many times the cat makes a full rotation per unit time. The standard unit for frequency is the hertz (hz), or cycles/second. Since the cat is spinning on a 33 rpm (revolutions per minute) record, we can find the revolutions per second by dividing 33 by 60. Therefore, we can find that the cat is spinning at a frequency of 0.55 hz, or roughly one full rotation for every 1.8 seconds.</p>
-                <p>The best equivalent to this spinning cat in the world of DSP is the sine wave. Much like the GIF of the cat, sine waves are periodic, or repeat infinitely in a very predictable manner. Because of this property, we can measure a sine wave's frequency in a similar way. The frequency of a sine wave is 1 divided by the “period” of the wave, or the time it takes to complete one cycle.</p>
+                <p>The best equivalent to this spinning cat in the world of DSP is the sine wave. Much like the GIF of the cat, sine waves are periodic, or repeat infinitely in a very predictable manner. Because of this property, we can measure a sine wave's frequency in a similar way. The frequency of a sine wave is 1 divided by the “period” of the wave, a.k.a. the time it takes to complete one cycle.</p>
                 <div class="flex justify-center">
                     <div id="frequencyDesmosCalc" class="calculator" style="width: 600px; height: 400px;"></div>
                 </div>
@@ -146,7 +145,7 @@
         <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; What is Phase?</h3>
             <div class="section-body">
-                <p>While frequency is the amount of cycles per second, phase is the starting position of the cycle. Phase is measured in either degrees or radians depending on the context (in this section we use degrees). Yet again, let's think about these <i>two</i> gifs of cats spinning on a record player.</p>
+                <p>While frequency is the number of cycles per second, phase is the starting position of the cycle. Phase is measured in either degrees or radians depending on the context (in this section, we use degrees). Yet again, let's think about these <i>two</i> gifs of cats spinning on a record player.</p>
                 <div class="flex justify-center overflow-hidden">
                     <img src="img/cat-spin-phase-1.gif">
                     <img src="img/cat-spin-phase-2.gif">
@@ -166,7 +165,7 @@
         <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; Everything is Sine Waves!</h3>
             <div class="section-body">
-                <p>While a sine wave's signal can be described as having a single frequency, most audio signals are not a simple sine wave. For instance, take a look this signal which is the sum of <i>two</i> sine waves where the second has a higher frequency and lower amplitude than the first:</p>
+                <p>While a sine wave's signal can be described as having a single frequency, most audio signals are not simple sine waves. For instance, take a look this signal which is the sum of <i>two</i> sine waves where the second has a higher frequency and lower amplitude than the first:</p>
                 <br/>
                 <div class="flex justify-center">
                     <img width=400 src="img/sine-sum.png">
@@ -178,14 +177,14 @@
                     <img width=400 src="img/sine-sum-fourier.png">
                 </div>
                 <br/>
-                <p>The horizontal position of each peak represents the frequency of each sine wave (higher frequencies are further right than lower ones), and the height of each peak represents the amplitude of each sine wave (amplitude in this case is the value which each sine function is multiplied by). The various smaller peaks are just debris from the method used to convert this signal from the time domain to the frequency domain: <b>the Fourier Transform!</b> In the 1800s, French mathematician Joseph Fourier discovered that ANY signal can be decomposed into a sum of many (or few) sine waves with different amplitudes, frequencies, and phases. The first <i>wave</i> is known as the “DC component," and is a flat line that represents the average amplitude of the signal. Each succeeding sinusoidal wave has a frequency that is an integer multiple of the first wave after the DC component (DC can be thought of having a frequency of 0 for convenience). In some cases, this sum can be infinite, but for digital signals, there is a finite limit (this idea will be explored when we talk about the Nyquist Sampling Theorem). As this is an introductory exploration into DSP, we aren't going to go into the details of how the Fourier Transform works specifically. If you are interested in that, 3blue1brown has a <a href="https://www.youtube.com/watch?v=spUNpyF58BY"> great video</a> on the <i>how</i> of Fourier.</p>
+                <p>The horizontal position of each peak represents the frequency of each sine wave (higher frequencies are further right than lower ones), and the height of each peak represents the amplitude of each sine wave (amplitude in this case is the value which each sine function is multiplied by). The various smaller peaks are just debris from the method used to convert this signal from the time domain to the frequency domain: <b>the Fourier Transform!</b> In the 1800s, French mathematician Joseph Fourier discovered that ANY signal can be decomposed into a sum of many (or few) sine waves with different amplitudes, frequencies, and phases. The first <i>wave</i> is known as the “DC component," and is a flat line that represents the average amplitude of the signal. Each succeeding sinusoidal wave has a frequency that is an integer multiple of the first wave after the DC component (DC can be thought of as having a frequency of 0 for convenience). In some cases, this sum can be infinite, but for digital signals, there is a finite limit (this idea will be explored when we talk about the Nyquist Sampling Theorem). As this is an introductory exploration into DSP, we aren't going to go into the details of how the Fourier Transform works specifically. If you are interested in that, 3blue1brown has a <a href="https://www.youtube.com/watch?v=spUNpyF58BY"> great video</a> on the <i>how</i> of Fourier.</p>
             </div>
         </div>
 
         <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; The Vocabulary of Frequency</h3>
             <div class="section-body">
-                <p>As we briefly touched on in the previous section, a lot of language surrounding frequency and the frequency domain is abstracted from the actual concepts. The ideas of harmonics, pitch, and timbre are intimately tied with the idea of frequency, even if the hobbyist musician doesn't necessarily think of them in this way. For example, if you ever hear a musician talking about “harmonics”, they are merely talking about what you know as the frequency components of a sound. For any given sound, there is a “fundamental” harmonic/frequency, which is the lowest frequency of a sound, and then its “overtones”, or subsequent harmonics above the fundamental. The “pitch” of a sound is determined by the frequency of the fundamental, while the timbre (a fancy french word for the <i>sound</i> of a sound) is determined by the overtones of a sound. In the example below, you can add overtones to a fundamental sine wave and watch the signal morph into what is called a “square wave”, which is a signal that regularly alternates between a positive and negative value, such that the signal is positive 50% of the time and negative the other 50% of the time.</p>
+                <p>As we briefly touched on in the previous section, a lot of language surrounding frequency and the frequency domain is abstracted from the actual concepts. The ideas of harmonics, pitch, and timbre are intimately tied with the idea of frequency, even if the hobbyist musician doesn't necessarily think of them in this way. For example, if you ever hear a musician talking about “harmonics”, they are merely talking about what you know as the frequency components of a sound. For any given sound, there is a “fundamental” harmonic/frequency, which is the lowest frequency of a sound, and then its “overtones”, or subsequent harmonics above the fundamental. The “pitch” of a sound is determined by the frequency of the fundamental, while the timbre (a fancy french word for the <i>sound</i> of a sound) is determined by the overtones. In the example below, you can add overtones to a fundamental sine wave and watch the signal morph into what is called a “square wave”, which is a signal that periodically alternates between a positive and negative value, such that the signal is positive 50% of the time and negative the other 50% of the time.</p>
                 <div class="flex justify-center">
                     <div id="squareDesmosCalc" class="calculator" style="width: 600px; height: 400px;"></div>
                 </div>
@@ -193,7 +192,7 @@
                 <div class="flex justify-center">
                     <div id="sawtoothDesmosCalc" class="calculator" style="width: 600px; height: 400px;"></div>
                 </div>
-                <p>So what makes these signals look different? In the case of the sawtooth wave, the overtones are added at every integer multiple of the fundamental frequency, at an amplitude of 1 divided by the number of the harmonic (the first overtone will be half as strong as the fundamental, the second will be one third, and so on). For the square wave, only the harmonics with a frequency with an odd multiple of the fundamental are added. For more complicated sounds, such as guitars and pianos, these harmonics will be much less orderly than basic shapes such as square and sawtooth waves, and are subject to change over time. For example, the start of a piano has a lot of high frequency content as the mallet hits the string, but over time, those higher harmonics are dampened out.</p>
+                <p>So what makes these signals look different? In the case of the sawtooth wave, the overtones are added at every integer multiple of the fundamental frequency, at an amplitude of 1 divided by the number of the harmonic (the first overtone will be half as strong as the fundamental, the second will be one third, and so on). For the square wave, only the harmonics with a frequency with an odd multiple of the fundamental are added. For more complicated sounds, such as guitars and pianos, these harmonics will be much less orderly than basic shapes such as square and sawtooth waves, and are subject to change over time. For example, the start of a piano has a lot of high-frequency content as the mallet hits the string, but over time, those higher harmonics are dampened out.</p>
             </div>
         </div>
 
@@ -202,14 +201,14 @@
             <div class="section-body">
                 <p>The Nyquist Sampling Theorem connects two of the concepts that we touched on previously: sample rate, and frequency. One of the main limitations of digital audio is the fact that it can only be precise to a finite amount. We explored this idea in the section about bit depth by talking about how lower bit depths quantize a digital signal, but there exists another form of digital information loss known as <i>aliasing</i>. When digitally sampling an analog signal, the highest frequency that a system can accurately store is equal to one half of the sampling rate of the system. This frequency is known as the “nyquist frequency”. This theorem is one of the main reasons why the most common sampling rate for digitally storing music is 44.1khz. Humans can only hear sounds up to about 20khz, which is close to half of 44.1khz (with a bit more room for good measure). When a wave containing frequencies higher than a sampler's nyquist frequency is sampled, aliasing occurs, where extra frequency content is introduced. By interacting with the graph below, you can see the effects that sampling a sine wave at different frequencies and sample rates has. The two sliders are scaled such that when they are lined up, the sine wave will be at the sampling rate's corresponding nyquist frequency. Pushing the frequency slider to the right of the sample rate slider shows the effects of aliasing, where the samples collected incorrectly introduce a sine wave that didn't exist in the source signal. </p>
                 <div class="flex justify-center">
-                    <div id="nyquistDesmosCalc" class="calculator" style="width: 600px; height: 400px;"></div>
+                    <div id="nyquistDesmosCalc" class="calculator" style="width: 800px; height: 500px;"></div>
                 </div>    
             </div>
         </div>
 
         <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; <i>Try it Yourself</i>: Basic Shapes</h3>
-            <p>Now that we understand how frequencies work, we can now make basic shapes other than sine waves using a process known as <i>Additive Synthesis</i>. Additive Synthesis is merely the process of creating sounds using the sum of sine waves at different frequencies, phases, and amplitudes. In the starter code, we are using a for loop to create a sawtooth wave, where each harmonic is at an amplitude of 1 divided by the harmonic number. Your first challenge is to make this code produce a square wave. If you remember from the “Vocabulary of Frequency” section, a square wave contains only odd numbered harmonics. If you feel good about that, try producing a triangle wave. Similarly to square waves, triangle waves only contain odd harmonics. What differs is that the phase of each harmonic is a 180 degree turn from the previous harmonic (which is equivalent to multiplying the wave by -1). Additionally, the amplitude of each harmonic dampens by 1 over the harmonic number squared (or the harmonic number to the -2nd power). In this exercise, we have also included possible solutions for each challenge with comments explaining how they work.</p>
+            <p>Now that we understand how frequencies work, we can now make basic shapes other than sine waves using a process known as <i>Additive Synthesis</i>. Additive Synthesis is merely the process of creating sounds using the sum of sine waves at different frequencies, phases, and amplitudes. In the starter code, we are using a for loop to create a sawtooth wave, where each harmonic is at an amplitude of 1 divided by the harmonic number. Your first challenge is to make this code produce a square wave. If you remember from the “Vocabulary of Frequency” section, a square wave contains only odd-numbered harmonics. If you feel good about that, try producing a triangle wave. Like square waves, triangle waves only contain odd harmonics. What differs is that the phase of each harmonic is a 180-degree turn from the previous harmonic (which is equivalent to multiplying the wave by -1). Additionally, the amplitude of each harmonic dampens by 1 over the harmonic number squared (or the harmonic number to the -2nd power). In this exercise, we have also included possible solutions for each challenge with comments explaining how they work.</p>
             <ul>
                 <li><a href=".?code=PTDCAsEMBtoUwHYHM4AICMAuVBZSBrNAF3AEsBnVAYwHsATNABwCd6BXKtSVcgRzcjM0Ad0gA3OACgQAIRoI25bHkKoSFavSas6HLmualIyeKlETJ8IqgBmqALyoALE4AMqEDaH9EVAJ6WcNYIDqjuIDRsRIxRPJAAtozwgdbgoQCs4cAK8QBGcMyoNHZQzPHypFTkkjY0zAAUVqikoegA3M2oADyo4B2kANT26ACUqADekqjTqCFDqPXoHs1jAFQ8pAj1AEyo6wAKAJJ7tict60Sk8XBjkgC%2BkpJCRGzMIa4AdOknCEA%3D%3D%3D">Starter Code</a></li>
                 <li><a href=".?code=PTAEGEAsEMBtYKYDsDmDQEZQGUD2sBXAFwEtckAoRI0AM1AF5QAWZgBioRqUdA%2BtCReAVg4hQJUElwB3UClwIAznQBOuALaYANKADMu4buhIAJqCW5Q5AHR2KtXKoAUAyUwwBuCaAA8g7xIAagYAJgBKUABvClA4qVAQ0GcsMBJIgCoLEiRnUNAsgAUASQK6Msks0g0ESIoAXwoKVS4CVR42G2EypCA%3D">Challenge 1 Solution</a></li>
@@ -220,7 +219,97 @@
 
     <!--SECTION 3 DROPDOWN-->
     <div class="dropdown root-dropdown">
-        <h3 class="section-title">&#8594; <b>Section 3:</b> Modulation, Making Music, and Miscellaneousness</h3>
+        <h3 class="section-title">&#8594; <b>Section 3:</b> Filters and Filter Analysis</h3>
+
+        <p class="mt-2">Filters are any system that takes a single input signal (commonly denoted as x[n] in DSP-world), and returns a single output signal (denoted as y[n]).</p>
+
+        <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; LTI Systems</h3>
+            <div class="section-body">
+                <p>Before we jump into filters themselves, it would be best to explain a concept that dictates a lot of the things we will be able to do later. Pretty much everything that we assume in this section hinges on the condition that the filter is LTI. LTI stands for Linear (and) Time-Invariant, and is a set of rules about how a system can output based on an input (a system is a more general word for this concept, but we'll be looking at filters specifically). There are three rules in total: Additivity, Homogeneity (these two being bundled under the term “Linearity”), and Time Invariance. The additive property states that two signals passed through a filter and then added together is equivalent to those two signals added together first and then passed through the filter. If a filter does not have this property, it is not additive. The homogeneous property states that a change in an input signal's amplitude results in a corresponding change in amplitude in the output signal. For example, if you change the amplitude of an input signal into a homogenous filter to twice what it was before, the output will also be twice the amplitude. The last property, time invariance, states that if a system receives an input shifted in time by k samples, then the only change in the output will be a shift by k samples. If a filter has all 3 of these properties (or any one-input one-output system for that matter), it is LTI. Below are some examples of different filters, and whether they are LTI or not.</p>
+                <ol class="mt-2">
+                    <li><b>y[n] = 0.5*x[n]</b> ✅</li>
+                    This filter is LTI
+                    <li><b>y[n] = x[n] + 1</b> ✅</li>
+                    This filter is LTI
+                    <li><b>y[n] = sin(n)*x[n]</b> ❌</li>
+                    This filter is not LTI because the amplitude is dictated by sin(n), which changes over time. This makes the filter not adhere to the rule of Time Invariance.
+                    <li><b>y[n] = x[n-1]</b> ✅</li>
+                    This filter is LTI
+                    <li><b>y[n]  = x[n]<sup>2</sup></b> ❌</li>
+                    This filter is not LTI because it does not adhere to Additivity or Homogeneity. The additivity rule breaks because if it were additive, (a + b)<sup>2</sup> would have to equal a<sup>2</sup> + b<sup>2</sup>, which we know is false. It also breaks the rule of homogeneity because a change in amplitude in the input results in a change of amplitude by a power of 2 in the output.
+                </ol>
+            </div>
+        </div>
+
+        <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; Moving Average Filter</h3>
+            <div class="section-body">
+                <p>To start our exploration of filters, we'll be studying the moving average filter. What a moving average filter does is store the past <b>n</b> samples of the input in an array, and then return the average of them. If you run the <a href=".?code=PTAEDtQXlBDAnesCeBlAlgLwKYCgA22ALhFAEwAMuuIoAkuOkerPltqAEYCuAZr9nhxEKXOl4AKAIQBzfAHtOrAHQ9eASgDeuULtBzFKtdAjYA7qACCI5BPDqde3vPgTCJdCYoBuUJ4A8EL7oANRQAIwOetH6Ckr4qnwA2ugAul64AL7UtABK2AC28gBuHLzo8ADOJNiEBdjgRAA0cAAmrRDy6JUclbAFAA6EcDXgrbgG8Ym8ypUAFuJEEg6TRnzKA9zzEkhjEgC04U2RDjRg%2BUTc8JCWpUgyePDEV5CrCWrKT63cAMbYEhJYE1OOooAA%2BWAhEGgMDgIA%3D%3D%3D">example here</a>, you'll see that this has the effect of smoothing out the input sound and taming the high-frequency content. If you play around with the value of <b>n</b>, you'll see that higher values of n results in less high-end, and more little notches in magnitude. Why is that? </p>
+                <p>One really powerful way of analyzing filters is through response curves. The two common response curves in DSP are the impulse response and the frequency response. The impulse response shows how a filter responds in the time domain by graphing how a single impulse of amplitude 1 at time 0 behaves in a filter. This “impulse” has many names in DSP, such as the unit impulse function, the delta function, Dirac's delta function, δ[n], but the name we'll be using in this guide is the <b>unit impulse</b>. The frequency response curve shows how a unit impulse responds in the frequency domain (you can also think of the frequency response being the Fourier Transform of the Impulse Response if you'd like). For the moving average filter, this impulse response can be done pretty simply in your head. If you are taking the average of k samples at time 0, one of those samples has an amplitude of 1, and the rest are at 0, the average will just be 1 divided by k. Once the moving average buffer moves out of the range of that impulse at time 0 (or when time ≥ k), the average will just be 0.</p>
+                <div class="flex justify-center">
+                    <div id="MAFDesmosCalc" class="calculator" style="width: 800px; height: 400px;"></div>
+                </div>
+                <p>The frequency response curve, however, is a bit more complicated. The response can be graphed using this equation which is derived from taking the Fourier Transform of k<sup>-1</sup>:</p>
+                <div class="flex justify-center">
+                    <img class="dark:invert" src="img/moving-average-freq-response.png">
+                </div>
+                <p>The input variable, ω (omega), is the frequency as a fraction of the sampling rate. For example, if the frequency in hz is 20hz, and the sampling rate is 80hz, the corresponding ω value would be ¼. The k value here represents the buffer length of the moving average filter, and the output is the amplitude of a frequency ω passed through the moving average filter.</p>
+            </div>
+        </div>
+        
+        <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; Convolution</h3>
+            <div class="section-body">
+                <p>Convolution, for lack of a better term, can be a pretty convoluted concept in DSP. Convolution is a binary operation. It takes in two signals, the input, and the kernel, and returns a singular output signal that blends the two signals together. Since this operation is commutative, there is really no difference mathematically which signal is the input and which is the kernel. However, the common convention in audio programming is to treat the input as the source to be filtered and the kernel as a parameter of said filter (more on why that is later). Here is the equation for the convolution of an input signal x[n] and kernel h[n] (the asterisk is the standard symbol for convolution):</p>
+                <div class="flex justify-center">
+                    <img class="dark:invert w-1/2" src="img/convolution.png">
+                </div>
+                <p>In the convolution operation, the kernel is first flipped horizontally and then shifted by a horizontal offset <i>n</i>. The resulting output is the inner product of the input, and this flipped and shifted kernel (the inner product is when the samples at each index are multiplied together, and then all summed up).</p>
+                <div class="flex justify-center">
+                    <video width="600" height="400" controls>
+                        <source src="video/Convolution.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <p>In the animation above, you can see the input wave in yellow being convoluted by the 3-point kernel in blue, resulting in the red output. This results in another sine wave of different phases and amplitudes. For inputs in kernels of different sizes, any place where the kernel or input is undefined is assumed to be 0, so in this case, the only 3 points that are multiplied and then added are the points where the kernel is. In the graph below, you can play around with the 3 points of the kernel, and see what the convolution will be.</p>
+                <div class="flex justify-center">
+                    <div id="convolutionDesmosCalc" class="calculator" style="width: 1000px; height: 500px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; Why is Convolution?</h3>
+            <div class="section-body">
+                <p>Convolution has a property that makes it amazingly useful when it comes to filter design and implementation. That property is that <b>any LTI system can be represented as a convolution operation</b>. To understand why this is, let's look at a special example of convolution. We are going to make the kernel of the convolution equation the unit impulse function:</p>
+                <div class="flex justify-center">
+                    <video width="600" height="400" controls>
+                        <source src="video/IdentityConvolution.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <p>As you can see, using the unit impulse as the kernel does not change the input signal at all. In math, this is known as an <i>Identity</i>. Much like how multiplying a number by 1 or adding 0 doesn't change the number, convoluting a signal by the unit impulse doesn't change the signal. We can use this property to our advantage by decomposing our input signal into a sum of much smaller signals. For our purposes, we will decompose the signal into a sum of shifted and amplified unit impulses. Each sample in the time domain can be expressed in terms of a unit impulse that is shifted to the position of each sample, and then multiplied by the amplitude of that sample. In equation form, this decomposition looks like this (δ[n] being the unit impulse function and N being the length of the signal):</p>
+                <div class="flex justify-center">
+                    <img class="dark:invert w-1/2" src="img/impulse-decomposition.png">
+                </div>
+                <p>Since we know how a unit impulse responds through any given filter through its impulse response, we can now replace δ[n] with our impulse response. We are able to do this because the response will be the same regardless of if we add the impulses or filter them first (additivity), adjust the amplitude of the impulse (homogeneity), or shift the signals in the time domain (time invariance):</p>
+                <div class="flex justify-center">
+                    <img class="dark:invert w-1/2" src="img/impulse-response-decomposition.png">
+                </div>
+                <p>In the equation above, H is our filter and δ<sub>h</sub>[n] is the impulse response of filter H. Finally, we can rewrite the right-hand side as a summation equation:</p>
+                <div class="flex justify-center">
+                    <img class="dark:invert w-1/2" src="img/impulse-response-convolution.png">
+                </div>
+                <p>Look familiar? Yup. It's the convolution equation. What this tells us is that putting a signal through an LTI filter is an equivalent operation to convoluting the signal with the filter's impulse response. This also has the implication that all information about a filter can be stored in just an impulse response.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!--SECTION 4 DROPDOWN-->
+    <div class="dropdown root-dropdown">
+        <h3 class="section-title">&#8594; <b>Section 4:</b> Modulation, Making Music, and Miscellaneousness</h3>
 
         <div class="dropdown child-dropdown">
             <h3 class="section-title">&#8594; Modulation and LFOs</h3>
@@ -241,7 +330,6 @@
         </div>
         
     </div>
-
     <p id="shared-msg" style="display:none;" class="text-center dark:text-white"><b>Playground's Code Was Supplied By URL!</b></p>
 
     <!--CUSTOM EDITOR DROPDOWN-->

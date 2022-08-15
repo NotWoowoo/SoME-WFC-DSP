@@ -259,7 +259,7 @@
         </div>
         
         <div class="dropdown child-dropdown">
-            <h3 class="section-title">&#8594; Convolution</h3>
+            <h3 class="section-title">&#8594; What is Convolution</h3>
             <div class="section-body">
                 <p>Convolution, for lack of a better term, can be a pretty convoluted concept in DSP. Convolution is a binary operation. It takes in two signals, the input, and the kernel, and returns a singular output signal that blends the two signals together. Since this operation is commutative, there is really no difference mathematically which signal is the input and which is the kernel. However, the common convention in audio programming is to treat the input as the source to be filtered and the kernel as a parameter of said filter (more on why that is later). Here is the equation for the convolution of an input signal x[n] and kernel h[n] (the asterisk is the standard symbol for convolution):</p>
                 <div class="flex justify-center">
@@ -280,7 +280,7 @@
         </div>
 
         <div class="dropdown child-dropdown">
-            <h3 class="section-title">&#8594; Why is Convolution?</h3>
+            <h3 class="section-title">&#8594; <i>Why</i> is Convolution?</h3>
             <div class="section-body">
                 <p>Convolution has a property that makes it amazingly useful when it comes to filter design and implementation. That property is that <b>any LTI system can be represented as a convolution operation</b>. To understand why this is, let's look at a special example of convolution. We are going to make the kernel of the convolution equation the unit impulse function:</p>
                 <div class="flex justify-center">

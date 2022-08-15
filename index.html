@@ -541,7 +541,10 @@ return v` : localStorage.getItem('code')
         const fftCtx = fftCanvas.getContext("2d");
         clearScopes(oscCanvas, fftCanvas, oscCtx, fftCtx)
 
-        function saveUserCode(){ localStorage.setItem('code', editor.getValue()) }
+        function saveUserCode(){
+            localStorage.setItem('code', editor.getValue())
+            alert('Code Saved for Next Vist!')
+        }
 
         var userCodeRunning = false
         function toggleUserCode(btn){

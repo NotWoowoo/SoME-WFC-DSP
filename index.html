@@ -384,7 +384,7 @@
             <button onclick="shareUserCode()" class="button-colors rounded-md px-2 py-1 mb-2">Share</button>
             <p id="editor-err" class="text-red-700 dark:text-red-300"></p>
             <p>Volume:</p>
-            <input id="vol-slider" oninput="dspSetVolume(this.value/100)" type="range" min="0" max="100" value="100">
+            <input id="vol-slider" oninput="setVolume(this.value)" type="range" min="0" max="100" value="100">
             <div class="dropdown child-dropdown">
                 <h3 class="section-title">&#8594; How This Works</h3>
                 <p>The code in this editor is executed in a function that is called for every processed sample; you just have to return a number for each sample.</p>
@@ -563,6 +563,13 @@ return v` : localStorage.getItem('code')
                 alert('Unable to Copy to Clipboard: ', err);
             });
         }
+
+        function setVolume(value){
+            dspSetVolume(value/100)
+            localStorage.volume = value
+        }
+
+        if('volume' in localStorage) document.getElementById('vol-slider').value = localStorage.volume
     </script>
 
     <!--Dark Mode Listener Script-->

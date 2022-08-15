@@ -168,13 +168,13 @@
                 <p>While a sine wave's signal can be described as having a single frequency, most audio signals are not simple sine waves. For instance, take a look this signal which is the sum of <i>two</i> sine waves where the second has a higher frequency and lower amplitude than the first:</p>
                 <br/>
                 <div class="flex justify-center">
-                    <img width=400 src="img/sine-sum.png">
+                    <img width=400 class="dark:invert" src="img/sine-sum.png">
                 </div>
                 <br/>
                 <p>Instead of assigning this complicated signal a single frequency value, it can be thought of as having two coexisting frequencies. If you graph this signal in the frequency domain instead of the time domain, you can see two distinct peaks which represent the amplitude of each sine wave in the original signal.</p>
                 <br/>
                 <div class="flex justify-center">
-                    <img width=400 src="img/sine-sum-fourier.png">
+                    <img width=400 class="dark:invert" src="img/sine-sum-fourier.png">
                 </div>
                 <br/>
                 <p>The horizontal position of each peak represents the frequency of each sine wave (higher frequencies are further right than lower ones), and the height of each peak represents the amplitude of each sine wave (amplitude in this case is the value which each sine function is multiplied by). The various smaller peaks are just debris from the method used to convert this signal from the time domain to the frequency domain: <b>the Fourier Transform!</b> In the 1800s, French mathematician Joseph Fourier discovered that ANY signal can be decomposed into a sum of many (or few) sine waves with different amplitudes, frequencies, and phases. The first <i>wave</i> is known as the “DC component," and is a flat line that represents the average amplitude of the signal. Each succeeding sinusoidal wave has a frequency that is an integer multiple of the first wave after the DC component (DC can be thought of as having a frequency of 0 for convenience). In some cases, this sum can be infinite, but for digital signals, there is a finite limit (this idea will be explored when we talk about the Nyquist Sampling Theorem). As this is an introductory exploration into DSP, we aren't going to go into the details of how the Fourier Transform works specifically. If you are interested in that, 3blue1brown has a <a href="https://www.youtube.com/watch?v=spUNpyF58BY"> great video</a> on the <i>how</i> of Fourier.</p>

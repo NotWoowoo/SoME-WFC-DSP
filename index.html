@@ -378,9 +378,9 @@
                     <canvas style="height: 40%" id="playgroundFFT" class="w-full" width="1560" height="256"></canvas>
                 </div>
             </div>
-            <button onclick="runUserCode(false)" class="button-colors rounded-md px-2 py-1 mb-2">Run</button>
-            <button onclick="runUserCode(true)" class="button-colors rounded-md px-2 py-1 mb-2" title="Save the code for your next visit to this site">Run + Save</button>
-            <button onclick="closeDSP()" class="button-colors rounded-md px-2 py-1 mb-2">Stop</button>
+            <button onclick="toggleUserCode(this)" class="button-colors rounded-md px-2 py-1 mb-2">Run</button>
+            <button onclick="saveUserCode()" class="button-colors rounded-md px-2 py-1 mb-2" title="Save the code for your next visit to this site">Save</button>
+            <!--<button onclick="closeDSP()" class="button-colors rounded-md px-2 py-1 mb-2">Stop</button>-->
             <button onclick="shareUserCode()" class="button-colors rounded-md px-2 py-1 mb-2">Share</button>
             <p id="editor-err" class="text-red-700 dark:text-red-300"></p>
             <p>Volume:</p>
@@ -541,11 +541,18 @@ return v` : localStorage.getItem('code')
         const fftCtx = fftCanvas.getContext("2d");
         clearScopes(oscCanvas, fftCanvas, oscCtx, fftCtx)
 
-        function runUserCode(save){
-            setDSPsimple(editor.getValue())
-            //also save it
-            if(save)
-                localStorage.setItem('code', editor.getValue())
+        function saveUserCode(){ localStorage.setItem('code', editor.getValue()) }
+
+        var userCodeRunning = false
+        function toggleUserCode(btn){
+            if(userCodeRunning){
+                closeDSP()
+                userCodeRunning = false
+            }else{
+                setDSPsimple(editor.getValue())
+                userCodeRunning = true
+            }
+            btn.innerHTML = userCodeRunning ? 'Stop' : 'Run'
         }
 
         function shareUserCode(){

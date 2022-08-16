@@ -252,7 +252,7 @@
                 </div>
                 <p>The frequency response curve, however, is a bit more complicated. The response can be graphed using this equation which is derived from taking the Fourier Transform of k<sup>-1</sup>:</p>
                 <div class="flex justify-center">
-                    <img class="dark:invert w-1/3" src="img/moving-average-freq-response.png">
+                    <img class="dark:invert lg:w-1/3 md:w-1/2" src="img/moving-average-freq-response.png">
                 </div>
                 <p>The input variable, ω (omega), is the frequency as a fraction of the sampling rate. For example, if the frequency in hz is 20hz, and the sampling rate is 80hz, the corresponding ω value would be ¼. The k value here represents the buffer length of the moving average filter, and the output is the amplitude of a frequency ω passed through the moving average filter.</p>
             </div>
@@ -263,7 +263,7 @@
             <div class="section-body">
                 <p>Convolution, for lack of a better term, can be a pretty convoluted concept in DSP. Convolution is a binary operation. It takes in two signals, the input, and the kernel, and returns a singular output signal that blends the two signals together. Since this operation is commutative, there is really no difference mathematically which signal is the input and which is the kernel. However, the common convention in audio programming is to treat the input as the source to be filtered and the kernel as a parameter of said filter (more on why that is later). Here is the equation for the convolution of an input signal x[n] and kernel h[n] (the asterisk is the standard symbol for convolution):</p>
                 <div class="flex justify-center">
-                    <img class="dark:invert w-1/3" src="img/convolution.png">
+                    <img class="dark:invert lg:w-1/3 md:w-5/6" src="img/convolution.png">
                 </div>
                 <p>In the convolution operation, the kernel is first flipped horizontally and then shifted by a horizontal offset <i>n</i>. The resulting output is the inner product of the input, and this flipped and shifted kernel (the inner product is when the samples at each index are multiplied together, and then all summed up).</p>
                 <div class="flex justify-center">
@@ -291,15 +291,15 @@
                 </div>
                 <p>As you can see, using the unit impulse as the kernel does not change the input signal at all. In math, this is known as an <i>Identity</i>. Much like how multiplying a number by 1 or adding 0 doesn't change the number, convoluting a signal by the unit impulse doesn't change the signal. We can use this property to our advantage by decomposing our input signal into a sum of much smaller signals. For our purposes, we will decompose the signal into a sum of shifted and amplified unit impulses. Each sample in the time domain can be expressed in terms of a unit impulse that is shifted to the position of each sample, and then multiplied by the amplitude of that sample. In equation form, this decomposition looks like this (δ[n] being the unit impulse function and N being the length of the signal):</p>
                 <div class="flex justify-center">
-                    <img class="dark:invert w-1/2 my-2" src="img/impulse-decomposition.png">
+                    <img class="dark:invert lg:w-1/2 md:w-full my-2" src="img/impulse-decomposition.png">
                 </div>
                 <p>Since we know how a unit impulse responds through any given filter through its impulse response, we can now replace δ[n] with our impulse response. We are able to do this because the response will be the same regardless of if we add the impulses or filter them first (additivity), adjust the amplitude of the impulse (homogeneity), or shift the signals in the time domain (time invariance):</p>
                 <div class="flex justify-center">
-                    <img class="dark:invert w-1/2 my-2" src="img/impulse-response-decomposition.png">
+                    <img class="dark:invert lg:w-1/2 md:w-full my-2" src="img/impulse-response-decomposition.png">
                 </div>
                 <p>In the equation above, H is our filter and δ<sub>h</sub>[n] is the impulse response of filter H. Finally, we can rewrite the right-hand side as a summation equation:</p>
                 <div class="flex justify-center">
-                    <img class="dark:invert w-1/3 my-2" src="img/impulse-response-convolution.png">
+                    <img class="dark:invert lg:w-1/3 md:w-5/6 my-2" src="img/impulse-response-convolution.png">
                 </div>
                 <p>Look familiar? Yup. It's the convolution equation. What this tells us is that putting a signal through an LTI filter is an equivalent operation to convoluting the signal with the filter's impulse response. This also has the implication that all information about a filter can be stored in just an impulse response.</p>
             </div>

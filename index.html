@@ -305,6 +305,52 @@
             </div>
         </div>
 
+        <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; The Window Sinc Method</h3>
+            <div class="section-body">
+                <p>While the moving average filter is simple, it isn't too great in separating content by frequency as it leaves those little notches in the frequency domain. Ideally, what we want is a “brick-wall filter”, where every frequency above a cutoff frequency is completely cut out. In the graph below, you'll see what this ideal frequency response looks like, and how the corresponding impulse response looks as well.</p>
+                <div class="flex justify-center">
+                    <div id="brickwallDesmosCalc" class="calculator" style="width: 1000px; height: 500px;"></div>
+                </div>
+                <p>This impulse response can be calculated by taking the Inverse Fourier Transform of the frequency response curve. The general equation for this type of response is:</p>
+                <div class="flex justify-center">
+                    <img class="dark:invert lg:w-1/6 md:w-1/4 my-2" src="img/sinc-function.png">
+                </div>
+                <p>where f<sub>c</sub> is the cutoff frequency as a fraction of the sample rate. This function shows up so frequently in DSP that it has been given its own special name - the <b>sinc function</b>.</p>
+                <br>
+                <p>Using what we learned in our lesson on convolution, we should just be able to plug in the sinc function as our kernel and we have our filter, right? Well, there's a slight problem with that. The sinc function goes on forever in both directions, meaning that to convolve a signal with the sinc function, we would need to multiply an infinite number of times for every sample. To get around this, we need to “window” the function, which restricts the domain of the function in order to make it finite. The simplest window function is a rectangular window, which sets all samples more than M samples away from t=0 to 0. You can see how this works in practice with <a href=".?code=PTBKFMGMBcEMDsDmBXANrATgAgMoEt5IsAzPVacDAKFXGhKIF4sAGAOgCYsQtJloA9sWIkM4AI7JwhAJ406WALJZmAFhbdgWAM6CADgCMEAE3n0AbitaaB%2FPfx2wAtntpV3PAMJjY0AoiwAa0p4cFQqPGIACgBCRFQBI1Q2YIxQ1ABKLABvKix8zSwAaRCwrG9wXzwBeCwAMWRCPxq8gsga3V5YVEgStLLmEkaYavgogA8s3IKZrDFoZDSscawY5g0Afh0CKK4AKnyABQBJLAPiIgPJ7iwok7PlrIAuLH2GVvyAXw%2FCurJULCYDCwGRYADueGgAAsgqVwjN4oluik4VZQmCsABBDDAmRRRQZH7EAQYKK0eh4KwsADcWEpAB4lLTKQBqZgARkJswKiKSKP6qAA2ngALpWSDdXpwqJ4QnfKg8Y7wez0ABCyGElAi0TiCT5Bg1Ux%2BvORBpEzHRWJxIPxXIKxNJ5LpVOZWEZimZbM5PwRetNGuFYvWVHlPExxmMWHgAjw2nAWEEWDNxC1JuSZrY2ihkWgUUJabYGfsWaiwPgxiiAFp2QAaTmEhVaTw1cwCVDmcBUB1khSU9au92utlYTk5H6WYcFs2C5SVkdYOeih4F1LpQMh9zzRa1cxAA%3D">this code</a> (try messing with the cutoff variable, fc, and the stopband variable, M).</p>
+                <div class="flex my-2 px-2">
+                    <img class="dark:invert w-1/3" src="img/windows/rectangular/impulse-response.png">
+                    <img class="dark:invert w-2/3" src="img/windows/rectangular/freq-response.png">
+                </div>
+                <p>While this does work, the frequency response contains a huge boost before rolling off, and the phase is nearly inverted at that cutoff as well. This can be attributed to the very sudden snap to a horizontal line of 0 amplitude at t = M on. What we'll try next is what's known as the “hamming window”. Unlike the rectangular window, the hamming window eases the signal to 0 rather than snap it after a certain point. Here's the equation for the hamming window:</p>
+                <div class="flex justify-center">
+                    <img class="dark:invert lg:w-1/3 md:w-1/2 my-2" src="img/windows/hamming/equation.png">
+                </div>
+                <p>In the graph below, you can play with the cutoff frequency and stopband (M) to see the corresponding hamming window, and in <a href=".?code=PTASEMFtISwOwOYAIDq8AmB7A7kgyvAMZIBmMANgC4CmATgFDnWWnEC8SADAHQCMSIJIQCulTCRKla1AI7DqcQgE9GzJAFkkHAEycBwJAGcxABwBG4OOlUsAblq77Mok6KNQTTet8EBhaeCU8MgA1nRw1OT0MCQAFACECOSYFuTcYbQR5ACUSADe9EhF%2BkgA0uGRSL7g5CLkgTCYcEgAYsKKQU2FxYRNxkI1hOWZlRyk7YSdcLEAHrkFxYtITCyGRA4zSPEcegD8RvCx2kgAVEUACgCSp6w3cwJIsVd3uQBcSMdnJITdS8tqAAsoLBEA4eABWAAsSAAtI8eJCAGwnXqGI4nK4nTYGWKaOG8bKE35LaSUYSZJBA6DBG5rRTEgC%2BxMELQo5CQ4FotHASiQ2BglABSAyWWJSRSNXSFXZHAiuAAglyebjssSSJhaLEVkgYGCANw6pAAHg0Bt1AGoOATiYtxakpSNyABtGAAXQchEGwyysRgqqZ9EElzgrhYACFhBI6NE4olkvazJH5mL45LE5JZdQFUqlCq1RqtWpdTszcbTTrLda%2FkU7WnIy73Tt6AHBPL0OgkHBMDBDNQkGIkOmSNHa2l09xDACYpRYqrR9xx65J7FuVZYjDeAAaAmqwMGXxNWyYci2aj0dWa7XFrilk3qUuWpAE%2FLE%2ByP%2Bfpp14p%2BwnXus7ziKkQNs23ikuSzS2EAA%3D%3D%3D">this code here</a>, you can hear how different cutoffs and stopband values filter a white noise signal.</p>
+                <div class="flex justify-center">
+                    <div id="hammingDesmosCalc" class="calculator" style="width: 1000px; height: 500px;"></div>
+                </div>
+                <p>While this window does give more control over the speed of the roll-off through the stopband value, there is a pretty apparent resonance that forms at the cutoff frequency. The phase response isn't great either, with both a huge divot and a peak at the cutoff frequency.</p>
+                <div class="flex my-2 px-2">
+                    <img class="dark:invert w-1/3" src="img/windows/hamming/impulse-response.png">
+                    <img class="dark:invert w-2/3" src="img/windows/hamming/freq-response.png">
+                </div>
+                <p>So, what is the magic solution? Well, there really isn't one for this method. Every window has its own offshoots, roll-offs, and ripples that make them unique. Fortunately, in the context of audio programming, this is ok! There are times when you might <i>want</i> that resonating frequency at the cutoff frequency of a hamming window or the roll-off of a rectangular window. The joy of audio programming is that it's one of the more creative applications of math and programming, so why not play around a little?</p>
+            </div>
+        </div>
+
+        <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; <i>Try it Yourself</i>: One more Window</h3>
+            <p>For this challenge, you're going to take the example code from the Hamming Window, and use it to make a filter using the <i>Blackman Window</i>. The equation for the Blackman Window is this:</p>
+            <div class="flex justify-center">
+                <img class="dark:invert lg:w-1/3 md:w-1/2 my-2" src="img/windows/blackman/equation.png">
+            </div>
+            <ul>
+                <li><a href=".?code=PTDCAsEMBtoUwHYHM4C4AEoD2CBucAnAF3SPAEsBndKAW1vOXQHdGATLZ9AM3OiMLpGRLOkjoAQtEgBjANa1ICdAHV2ndADE%2BAggCh4JbjPQBedAAYAdAEZ0IdDICuI7tx4E4ARyeIZATwM4EgBZM3QAJgt7YHRKEQAHACMlNiCSXHDokCwXBJc4yFoE%2BD0yh1BPSCJGJHQ5QgQ4aD1ybgAKAEIkaCwU6CsGgiboAEp0AG89dBmY9ABpRubMGGdpGpwtJwQZDYRp2ZkceMdVxeHl8x5t3fIcdoAPcanZ1%2FRDOMYTcwf0TvNogB%2BT4IdoRdAAKhmAAUAJKQngmKFPezodpwhEojDgqHGA5vGLgei0Kyk0n4t4fOgMJgAqwAVgALOgALRo6yMgBsEKOlDBELhEN%2BsXaYTZNlGkopr08RCcwxoRRpdShlC%2BFIAvhSHNpYGICARIP4WOQyPUli1Xj0%2BjBBhbwk0uABBA1G0WjCncLAEdofchZADcQnQAB50CEg%2F6ANTmCXS2bW%2Fp2i7QADa5AAuuEZGcLe1yB6tXoHLCEPkSBInG5CK0Ot1ekmklXnhTE7am%2B5zI70C7Df53Z7vb7gsGAZHQ%2BHIzG4wSZm2Bh301mAXoiw4nWw2OgEFgqHBSKIO9wa%2FOrB2rJQKNwiO0Pafz%2FlL%2B1DQg2O0WTYADQSj3F2LYPAsGgfA9C9H0%2FUDYMwwjYMY3QCVJgpTI4PvKtUzFeDWSELMoVPIYRiXVcylleVlFwIA%3D">Starter Code</a></li>
+                <li><a href=".?code=PTBCBsEMGMGsFtIDsAEB1AlkgJgewO4oDKu4ArgC4a6oDCu2ApgFDiMUoBm0KAvCgAYAdAEYUIFNEq5OnLgCdGARzKMk0AJ6t2KALJ8UAJgHjgKAM4VcABwBGybNo4A3AyZC5K1yhcjxrbMxBErSKkFRIAOYosIzySIzgzBicABQAhJHguPbgQrHxiQCUKADezCiVpigA0nEJ4Ci0kOBSUFQ0KABiZOodSBVV0DSWki3QdYWN%2FFy90P2pAB4l5VVrKGwc5lg8%2FIso6fwmAPwWWKmGKABUlQAKAJLXXDw3y%2BIoqQ9PbwBcRk%2FcQbraoAKTIo2GSGccQ4FAAFowUIh4ShlGRwtRUFYUNYNPCaED1psULYoHBEKgjkIAKwAFhQAFoPsJqU9huZUhcnl9XiUzLoiiUANTMoQCAAcV3ZnPpNx5KDe%2FMFhLWigoZHiJLJCGQT226kJAF9CRIuhhwI1IPJ5JANCh8BgUQUGoSsjkWvl6okDAlCABBa221ICwmcXDyVLEjBuADcKGjAB49HHo0L%2BCIiiqqm7cp6pgBtDAAXQM0HGkwaqQwmeNzAk9yQ3g4oDIsjiyTSmWyudsrZWru7Ht7cn4vpQAZtGmDmbWYYjUdj8ZQSd0KbTGazlRzQ9bhZLR2YtYkfuw2BQSFwGHMiOxw847e3eWHQnMcJSFFSmcfQmf3lfqRtHBUgZEQABoM0zOszHoKFSGhZg50jHRoyOFNl2TJc0xQDMykJVwsO%2FYd830JkxCZYsnm%2FZ1Ej3Q8gjVDVUGcIA">Challenge Solution</a></li>
+            </ul>
+        </div>
     </div>
 
     <!--SECTION 4 DROPDOWN-->
@@ -359,6 +405,7 @@
         </div>
         
     </div>
+
     <p id="shared-msg" style="display:none;" class="text-center dark:text-white"><b>Playground's Code Was Supplied By URL!</b></p>
 
     <!--CUSTOM EDITOR DROPDOWN-->

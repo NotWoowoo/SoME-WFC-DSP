@@ -301,7 +301,12 @@
                 <div class="flex justify-center">
                     <img class="dark:invert lg:w-1/3 md:w-5/6 my-2" src="img/impulse-response-convolution.png">
                 </div>
-                <p>Look familiar? Yup. It's the convolution equation. What this tells us is that putting a signal through an LTI filter is an equivalent operation to convoluting the signal with the filter's impulse response. This also has the implication that all information about a filter can be stored in just an impulse response.</p>
+                <p>Look familiar? Yup. It's the convolution equation. What this tells us is that putting a signal through an LTI filter is an equivalent operation to convolving the signal with the filter's impulse response. This also has the implication that all information about a filter can be stored in just an impulse response. If you take a look at the frequency response of the unit impulse, this should make intuitive sense why:</p>
+                <div class="flex my-2 px-2">
+                    <img class="dark:invert w-1/3" src="img/delta/time-domain.png">
+                    <img class="dark:invert w-2/3" src="img/delta/frequency-domain.png">
+                </div>
+                <p>The unit impulse signal contains <b>all frequencies</b> at the same magnitude of 1, with no deviations in phase. This means that when a unit impulse is run through a filter, the output represents how <b>any signal</b>  will change in the filter because the unit impulse's response contains information about the response of <b>every frequency</b>.</p>
             </div>
         </div>
 
@@ -351,6 +356,32 @@
                 <li><a href=".?code=PTBCBsEMGMGsFtIDsAEB1AlkgJgewO4oDKu4ArgC4a6oDCu2ApgFDiMUoBm0KAvCgAYAdAEYUIFNEq5OnLgCdGARzKMk0AJ6t2KALJ8UAJgHjgKAM4VcABwBGybNo4A3AyZC5K1yhcjxrbMxBErSKkFRIAOYosIzySIzgzBicABQAhJHguPbgQrHxiQCUKADezCiVpigA0nEJ4Ci0kOBSUFQ0KABiZOodSBVV0DSWki3QdYWN%2FFy90P2pAB4l5VVrKGwc5lg8%2FIso6fwmAPwWWKmGKABUlQAKAJLXXDw3y%2BIoqQ9PbwBcRk%2FcQbraoAKTIo2GSGccQ4FAAFowUIh4ShlGRwtRUFYUNYNPCaED1psULYoHBEKgjkIAKwAFhQAFoPsJqU9huZUhcnl9XiUzLoiiUANTMoQCAAcV3ZnPpNx5KDe%2FMFhLWigoZHiJLJCGQT226kJAF9CRIuhhwI1IPJ5JANCh8BgUQUGoSsjkWvl6okDAlCABBa221ICwmcXDyVLEjBuADcKGjAB49HHo0L%2BCIiiqqm7cp6pgBtDAAXQM0HGkwaqQwmeNzAk9yQ3g4oDIsjiyTSmWyudsrZWru7Ht7cn4vpQAZtGmDmbWYYjUdj8ZQSd0KbTGazlRzQ9bhZLR2YtYkfuw2BQSFwGHMiOxw847e3eWHQnMcJSFFSmcfQmf3lfqRtHBUgZEQABoM0zOszHoKFSGhZg50jHRoyOFNl2TJc0xQDMykJVwsO%2FYd830JkxCZYsnm%2FZ1Ej3Q8gjVDVUGcIA">Challenge Solution</a></li>
             </ul>
         </div>
+
+        <div class="dropdown child-dropdown">
+            <h3 class="section-title">&#8594; Passing All the Things!</h3>
+            <div class="section-body">
+                <p>Up until now, all of the filters we have looked at were “low-pass” filters, where the frequencies allowed through are below the cutoff frequency. Now, we're going to use what we've learned previously to find a kernel for a highpass filter. To start, we'll use the window-sinc method for this exercise, only now, the ideal brick-wall frequency response is different. Instead of the amplitude being 1 above f<sub>c</sub>, the amplitude with be 1 <b>below</b> f<sub>c</sub>.</p>
+                <div class="flex justify-center">
+                    <img class="dark:invert lg:w-1/3 md:w-1/2 my-2" src="img/hp-brickwall-frequency-equation.png">
+                </div>
+                <p>So for this equation, what would the corresponding impulse response be? We can take advantage of the fact that the fourier transform (and its inverse) are linear systems, meaning they both follow rules of additivity and linearity. To start, we can think about how the frequency response of the brick-wall high pass in terms of its corresponding lowpass frequency response. If we look at the low-pass response's graph, we can see that if we can see that by multiplying by -1, and then adding 1, we get the high pass graph. More formally, we can write this equation:</p>
+                <div class="flex justify-center">
+                    <img class="dark:invert lg:w-1/3 md:w-1/2 my-2" src="img/hp-lp-brickwall-relationship.png">
+                </div>
+                <p>Now, since we want the impulse response from the frequency response, we'll want to take the inverse fourier transform on both sides, and since this operation is linear, we can rewrite the right side as two separate inverse fourier transforms (the homogeneous rule being applied by the -1 being multiplied by B<sub>lo</sub>(n), and the additive rule being applied by first taking the inverse fourier transforms and then adding the two terms):</p>
+                <div class="flex justify-center">
+                    <img class="dark:invert lg:w-1/3 md:w-1/2 my-2" src="img/inverse-ft-ideal-hp.png">
+                </div>
+                <p>As we discussed in our look into window sinc filter design, the inverse fourier transform of a lowpass brick-wall frequency response is the sinc function, but what's less obvious is what the inverse fourier transform of 1 is. If you remember the little intuition we gave at the end of the convolution section, you'll remember that the unit impulse has a magnitude of 1 at every frequency, or in other words, the fourier transform of the unit impulse is a horizontal line at 1. Therefore, the inverse fourier transform of 1 will just be the unit impulse. Finally, we can write the solution to the inverse fourier transform of the high-pass brick-wall frequency response at the unit impulse subtracted by the sinc function:</p>
+                <div class="flex justify-center">
+                    <img class="dark:invert lg:w-1/3 md:w-1/2 my-2" src="img/inverse-ft-hp-spectral-inverse.png">
+                </div>
+                <p>Luckily for us, subtracting the impulse response from the unit impulse is a general solution for finding the corresponding high-pass filter for any low-pass filter (for the ones we've looked at so far, at least). <a href=".?code=PTDqEsDsBMHsHcAEBlKBjRAJcBzAFgLQAKAhgM5mIBi4ANgC4CmATgFC2P2IBmGAvIgAMAOgBMiEIjQBXerG7cezRgEdpjSGgCe7TogCyiAaMETgiMnIAOAIxIxdXAG5GhZ2LKuyLJALZWOViDJAGFlEnooHEQAaxZIRlpWcG4ACgBCHFpYO1phOOYE2gBKRABvVkQqs0QAaXjExBCSWhlaCPBYSGppTUiuyuq0LsspFrR6wsaBHl60fshUgA9Siur1xA4uMnRXJcR0gVMAfgsoVPEAKiqiAElEa94HxBWJRFS759eALkQrnjQgw2mz0eD8viirhEAFYACyIAjvESwgBsl2GZAulzul325lShkRAEZiqSgRtJNBEvQSLM%2Bp1uhDINJKDtNHT5gzyestogoE4WGRGKh2QJ9nwjohTkSEWd2b8CDLrmzAcCqpJ4FA4JrINF6HhGHzIALmEK5RgoJZGCRoNzqsp6NJCogwb4mdFrvzBcL0OSAL7kyQ0Wi0RAkZjMEhaRCa%2FWxBpJdZZHItfIJ1wJJAAQQjUYJxXJ3FgzFSvPAUIA3HzEAAeAxV8sAagEJLtVWTuTTU1oAG1wABdVxocaTIqpcAFgOsSS3SBeLgAIWkChYyTSmWynZsy9W5I7qe3igEmcQOcjWnzheLpb05aODdr9b5zdbasQ%2B7yh77g6OrCnkizaBoEQSBYHAM05EQQ9uFXD9hEPYQyDwFJ6FSAs4IQrwkNSSMYFSRUABoSQLadzBCLonFgWgBVYIsSzLStqzrfQH2bRASXKckXDYjDlx7Ql2NlAdnjggoim%2FP8ggdJ1uicIA%3D%3D">Here is the code</a> for a high pass hamming window filter if you're interested in how the implementation looks.</p>
+                <br>
+                <p>High-pass filters are cool, but there are more than just the two. For instance, if you run a signal through a high-pass <i>and</i> a low-pass filter, you'll get a band-pass filter, which subdues frequencies outside a specific “band” between the high-pass cutoff frequency and low-pass cutoff frequency (assuming the high-pass cutoff is less than the low-pass cutoff). In fact, since convolution is an associative operation (the order in which you do successive convolutions doesn't matter), you can actually convolve the impulse responses of the high-pass and low-pass filter <i>first</i>, and then achieve the same effect with half of the multiplications required every sample. If instead, the high-pass cutoff is <i>higher</i> than the low-pass cutoff, you'll get a band-reject filter, where everything inside the band of frequencies between the cutoffs is subdued.</p>
+            </div>
+        </div>
+
     </div>
 
     <!--SECTION 4 DROPDOWN-->

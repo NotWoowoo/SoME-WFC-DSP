@@ -84,7 +84,9 @@ function setDSPsimple(js){
                 }
             }catch(err){
                 _stillGood = false
-                this.port.postMessage(err.message)
+                let linenum = err.stack.split(":")
+                linenum = linenum[linenum.length-2]-27
+                this.port.postMessage('on line ' + linenum + ' : ' + err.message)
             }
             return true
         }
